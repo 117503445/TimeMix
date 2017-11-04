@@ -10,7 +10,7 @@ namespace TimeMix
 {
   public static  class Public
     {
-        public static Form1 form1;
+
         /// <summary>
         /// 小课表
         /// </summary>

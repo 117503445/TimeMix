@@ -38,25 +38,25 @@
             this.LblBig.Font = new System.Drawing.Font("微软雅黑", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.LblBig.Location = new System.Drawing.Point(0, 0);
             this.LblBig.Name = "LblBig";
-            this.LblBig.Size = new System.Drawing.Size(603, 249);
+            this.LblBig.Size = new System.Drawing.Size(202, 83);
             this.LblBig.TabIndex = 0;
             this.LblBig.Text = "17:41";
             // 
             // LblSmall
             // 
             this.LblSmall.AutoSize = true;
-            this.LblSmall.Location = new System.Drawing.Point(504, 198);
+            this.LblSmall.Location = new System.Drawing.Point(180, 66);
             this.LblSmall.Name = "LblSmall";
-            this.LblSmall.Size = new System.Drawing.Size(62, 46);
+            this.LblSmall.Size = new System.Drawing.Size(22, 17);
             this.LblSmall.TabIndex = 1;
             this.LblSmall.Text = "59";
             // 
             // FrmTime
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(22F, 46F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(595, 259);
+            this.ClientSize = new System.Drawing.Size(207, 91);
             this.Controls.Add(this.LblSmall);
             this.Controls.Add(this.LblBig);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
