@@ -50,7 +50,7 @@ namespace TimeCore
         public Core(string schedulePath, string classTablePath)
         {
 
-            string[] sourceSections = File.ReadAllLines(schedulePath,Encoding.Default);
+            string[] sourceSections = File.ReadAllLines(schedulePath, Encoding.Default);
             Section[] sections = new Section[sourceSections.Length];
             for (int i = 0; i < sourceSections.Length; i++)
             {
@@ -77,11 +77,11 @@ namespace TimeCore
                     }
                 }
             }//解析
-            //foreach (var item in sections)
-            //{
-            //    Console.WriteLine("开始时间_{0},名称_{1},额外信息_{2}",item.beginTime.ToShortTimeString(),item.name,item.extraString);
-            //}
-          
+             //foreach (var item in sections)
+             //{
+             //    Console.WriteLine("开始时间_{0},名称_{1},额外信息_{2}",item.beginTime.ToShortTimeString(),item.name,item.extraString);
+             //}
+
             //若干年后一定要再写记录为0,1的情况!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             for (int i = 0; i < sections.Length; i++)
@@ -90,7 +90,7 @@ namespace TimeCore
                 //Console.WriteLine(sections[i].beginTime);
                 //Console.WriteLine((sections[i].beginTime.CompareTo(DateTime.Now)));
                 //Console.WriteLine();
-                if (sections[i].beginTime.CompareTo(DateTime.Now)<=0)
+                if (sections[i].beginTime.CompareTo(DateTime.Now) <= 0)
                 {
                     //现在更晚一点   
                     currentSection = sections[i];
@@ -101,8 +101,20 @@ namespace TimeCore
                     break;
                 }
             }
-      //      Console.WriteLine("现在name={0},下一name={1}",currentSection.name,nextSection.name);
+            //   Console.WriteLine("现在name={0},下一name={1}",currentSection.name,nextSection.name);
+            currentSection.endTime = nextSection.beginTime;
+            string preProgress = ((DateTime.Now - currentSection.beginTime).TotalSeconds / (currentSection.endTime - currentSection.beginTime).TotalSeconds*100).ToString();//计算进度
+            int p = preProgress.IndexOf('.');
+            string final = preProgress.Substring(0, p + 2);
+            if (final.Substring(0,1)=="0") {
+                final = "0" + final;
+            }
+            final += "%";
+            Console.WriteLine(final);
 
+
+            Console.WriteLine("Fuck");
+            //      Console.WriteLine("BeginTime={0},EndTime={1},name={2},progress={3},ExtraString={4}", currentSection.beginTime, currentSection.endTime,currentSection.name,currentSection.progress,currentSection.extraString);
         }
 
         public Section Section { get => currentSection; set => currentSection = value; }
