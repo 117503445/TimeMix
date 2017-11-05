@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -30,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ClassLibrary_117503445, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -49,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core.cs" />
     <Compile Include="FrmManage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +115,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DLL\ClassLibrary_117503445.dll" />
+    <Content Include="File\Data\Source\课表NEW.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="File\Data\Source\时间NEW.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -133,12 +139,6 @@
     <Content Include="File\Data\Source\课表5班周六.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TimeCore\TimeCore.csproj">
-      <Project>{4b1b1cc7-0c0a-406d-b965-8d704146c460}</Project>
-      <Name>TimeCore</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

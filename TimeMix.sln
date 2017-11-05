@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeMix", "TimeMix\TimeMix.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeChanger", "TimeChanger\TimeChanger.csproj", "{E4116302-1DF9-44C8-AD34-A2869C59C553}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeCore", "TimeCore\TimeCore.csproj", "{4B1B1CC7-0C0A-406D-B965-8D704146C460}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{E4116302-1DF9-44C8-AD34-A2869C59C553}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4116302-1DF9-44C8-AD34-A2869C59C553}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4116302-1DF9-44C8-AD34-A2869C59C553}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4B1B1CC7-0C0A-406D-B965-8D704146C460}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4B1B1CC7-0C0A-406D-B965-8D704146C460}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4B1B1CC7-0C0A-406D-B965-8D704146C460}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4B1B1CC7-0C0A-406D-B965-8D704146C460}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
