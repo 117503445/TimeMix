@@ -112,9 +112,33 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DLL\ClassLibrary_117503445.dll" />
+    <Content Include="File\Data\Source\时间NEW.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="File\Data\Source\时间夏季%28不延时%29.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="File\Data\Source\时间夏季%28延时%29.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="File\Data\Source\时间春秋季%28不延时%29.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="File\Data\Source\时间春秋季%28延时%29.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="File\Data\Source\课表5班.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="File\Data\Source\课表5班周六.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="File\" />
+    <ProjectReference Include="..\TimeCore\TimeCore.csproj">
+      <Project>{4b1b1cc7-0c0a-406d-b965-8d704146c460}</Project>
+      <Name>TimeCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
