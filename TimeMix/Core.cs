@@ -35,11 +35,15 @@ namespace TimeCore
         /// 周几,Like周一
         /// </summary>
         public string week;
+        /// <summary>
+        /// 是否被赋值了
+        /// </summary>
+        public bool available;
     }
     /// <summary>
     /// 课表节,包含周几,名称
     /// </summary>
-    public struct classTableSection
+    public struct ClassTableSection
     {
         /// <summary>
         /// 周几,Like周一
@@ -70,13 +74,14 @@ namespace TimeCore
         /// </summary>
         /// <param name="timePath">时间表文本路径</param>
         /// <param name="classTablePath">课表文本路径</param>
-        public Core(string timePath, string classTablePath)
+        /// <param name="timeDifference">时间d</param>
+        public Core(string timePath, string classTablePath,int timeDifference)
         {
             string[] sourceTimeSections = File.ReadAllLines(timePath, Encoding.Default);
             string[] sourceClassTableSections = File.ReadAllLines(classTablePath, Encoding.Default);
 
             TimeSection[] timeSections = new TimeSection[sourceTimeSections.Length];
-            classTableSection[] classTableSections = new classTableSection[sourceClassTableSections.Length];
+            ClassTableSection[] classTableSections = new ClassTableSection[sourceClassTableSections.Length];
             for (int i = 0; i < sourceClassTableSections.Length; i++)
             {
                 string[] FirstCut = sourceClassTableSections[i].Split(';');
@@ -142,6 +147,7 @@ namespace TimeCore
                                 Console.WriteLine("无法解析");//以后写入logger!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                                 break;
                         }
+                        timeSections[i].available = true;
                     }
                 }
             }//解析时间表
@@ -170,7 +176,17 @@ namespace TimeCore
                 }
             }//定位当前Section
             //  Console.WriteLine("现在name={0},下一name={1}",currentSection.name,nextSection.name);
-            currentSection.endTime = nextSection.beginTime;
+
+            if (nextSection.available)//看上去快到最后一位了
+            {
+                currentSection.endTime = nextSection.beginTime;
+            }
+            else
+            {
+                currentSection.endTime = DateTime.Now.Date.AddDays(1);
+            }
+            
+
             string preProgress = ((DateTime.Now - currentSection.beginTime).TotalSeconds / (currentSection.endTime - currentSection.beginTime).TotalSeconds * 100).ToString();//计算进度
             int p = preProgress.IndexOf('.');
             string finalProgress = preProgress.Substring(0, p + 2);//保留小数点一位
@@ -180,7 +196,9 @@ namespace TimeCore
             }
             finalProgress += "%";
             currentSection.progress = finalProgress;
-            Console.WriteLine("BeginTime={0},EndTime={1},name={2},progress={3},ExtraString={4}", currentSection.beginTime, currentSection.endTime, currentSection.name, currentSection.progress, currentSection.extraString);
+
+            Console.WriteLine("BeginTime={0},EndTime={1},name={2},progress={3},ExtraString={4}", currentSection.beginTime.ToShortTimeString(), currentSection.endTime.ToShortTimeString(), currentSection.name, currentSection.progress, currentSection.extraString);
+
         }
 
         public TimeSection Section { get => currentSection; set => currentSection = value; }
