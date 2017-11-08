@@ -39,7 +39,7 @@ namespace TimeMix
         {
             //   frmTime.TopMost = true;
             //GetColor();
-            core= new Core(@"C: \User\File\Program\TimeMix\TimeMix\File\Data\Source\时间NEW.txt", @"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\课表NEW.txt",0);
+            core= new Core(@"C: \User\File\Program\TimeMix\TimeMixOld\File\Data\Source\时间NEW.txt", @"C:\User\File\Program\TimeMix\TimeMixOld\File\Data\Source\课表NEW.txt", 0);
 
         }
     }
