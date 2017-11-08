@@ -11,9 +11,7 @@ namespace TimeCore
     /// </summary>
     public struct TimeSection
     {
-        /// <summary>
-        /// 打印当前的节的数据
-        /// </summary>
+
         public void Print() {
             Console.WriteLine("BeginTime={0},EndTime={1},name={2},progress={3},ExtraString={4}", beginTime.ToShortTimeString(), endTime.ToShortTimeString(), name, progress, extraString);
         }
@@ -207,7 +205,7 @@ namespace TimeCore
             }
             finalProgress += "%";
             currentSection.progress = finalProgress;
-            
+
             currentSection.Print();
             
         }
