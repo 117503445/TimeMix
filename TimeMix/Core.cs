@@ -80,14 +80,17 @@ namespace TimeCore
         /// </summary>
         /// <param name="timePath">时间表文本路径</param>
         /// <param name="classTablePath">课表文本路径</param>
-        /// <param name="timeDifference">时间d</param>
-        public Core(string timePath, string classTablePath,int timeDifference)
+        /// <param name="deltaTime">时间差,长河时间=北京时间+时间差,允许负数</param>
+        public Core(string timePath, string classTablePath,double deltaTime)
         {
             string[] sourceTimeSections = File.ReadAllLines(timePath, Encoding.Default);
             string[] sourceClassTableSections = File.ReadAllLines(classTablePath, Encoding.Default);
 
             TimeSection[] timeSections = new TimeSection[sourceTimeSections.Length];
             ClassTableSection[] classTableSections = new ClassTableSection[sourceClassTableSections.Length];
+
+            DateTime changHeTime = DateTime.Now.AddSeconds(deltaTime);//长河时间
+
             for (int i = 0; i < sourceClassTableSections.Length; i++)
             {
                 string[] FirstCut = sourceClassTableSections[i].Split(';');
@@ -171,9 +174,9 @@ namespace TimeCore
             {
                 //Console.WriteLine();
                 //Console.WriteLine(sections[i].beginTime);
-                //Console.WriteLine((sections[i].beginTime.CompareTo(DateTime.Now)));
+                //Console.WriteLine((sections[i].beginTime.CompareTo(changHeTime)));
                 //Console.WriteLine();
-                if (timeSections[i].beginTime.CompareTo(DateTime.Now) <= 0)
+                if (timeSections[i].beginTime.CompareTo(changHeTime) <= 0)
                 {
                     //现在更晚一点   
                     currentSection = timeSections[i];
@@ -192,11 +195,11 @@ namespace TimeCore
             }
             else
             {
-                currentSection.endTime = DateTime.Now.Date.AddDays(1);//设置结束时间为第二天00:00
+                currentSection.endTime = changHeTime.Date.AddDays(1);//设置结束时间为第二天00:00
             }
             
 
-            string preProgress = ((DateTime.Now - currentSection.beginTime).TotalSeconds / (currentSection.endTime - currentSection.beginTime).TotalSeconds * 100).ToString();//计算进度
+            string preProgress = ((changHeTime - currentSection.beginTime).TotalSeconds / (currentSection.endTime - currentSection.beginTime).TotalSeconds * 100).ToString();//计算进度
             int p = preProgress.IndexOf('.');
             string finalProgress = preProgress.Substring(0, p + 2);//保留小数点一位
             if (p == 1)
