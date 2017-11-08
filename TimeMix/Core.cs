@@ -11,6 +11,12 @@ namespace TimeCore
     /// </summary>
     public struct TimeSection
     {
+
+        public void Print() {
+            Console.WriteLine("BeginTime={0},EndTime={1},name={2},progress={3},ExtraString={4}", beginTime.ToShortTimeString(), endTime.ToShortTimeString(), name, progress, extraString);
+        }
+
+
         /// <summary>
         /// 开始时间
         /// </summary>
@@ -106,10 +112,12 @@ namespace TimeCore
                     }
                 }
             }//解析课表
+
             //foreach (var item in scheduleSections)
             //{
             //    Console.WriteLine(item.sourceName+"  "+item.Replacedname+"  "+item.week);
             //}
+
             for (int i = 0; i < sourceTimeSections.Length; i++)
             {
                 string[] FirstCut = sourceTimeSections[i].Split(';');
@@ -151,6 +159,7 @@ namespace TimeCore
                     }
                 }
             }//解析时间表
+
              //foreach (var item in sections)
              //{
              //    Console.WriteLine("开始时间_{0},名称_{1},额外信息_{2}",item.beginTime.ToShortTimeString(),item.name,item.extraString);
@@ -183,7 +192,7 @@ namespace TimeCore
             }
             else
             {
-                currentSection.endTime = DateTime.Now.Date.AddDays(1);
+                currentSection.endTime = DateTime.Now.Date.AddDays(1);//设置结束时间为第二天00:00
             }
             
 
@@ -196,9 +205,9 @@ namespace TimeCore
             }
             finalProgress += "%";
             currentSection.progress = finalProgress;
-
-            Console.WriteLine("BeginTime={0},EndTime={1},name={2},progress={3},ExtraString={4}", currentSection.beginTime.ToShortTimeString(), currentSection.endTime.ToShortTimeString(), currentSection.name, currentSection.progress, currentSection.extraString);
-
+            Console.WriteLine(8765432);
+            currentSection.Print();
+            
         }
 
         public TimeSection Section { get => currentSection; set => currentSection = value; }
