@@ -87,6 +87,28 @@ namespace TimeCore
             string[] sourceClassTableSections = File.ReadAllLines(classTablePath, Encoding.Default);
 
             TimeSection[] timeSections = new TimeSection[sourceTimeSections.Length];
+
+
+            for (int i = 0; i < sourceClassTableSections.Length; i++)
+            {
+                string[] FirstCut = sourceClassTableSections[i].Split(';');
+                for (int j = 0; j < FirstCut.Length; j++)
+                {
+                    string[] SecondCut = FirstCut[j].Split('=');
+                    for (int k = 0; k < SecondCut.Length; k++)
+                    {
+                        switch (SecondCut[0])
+                        {
+                            case "week":
+                                classTableSections[i].week = SecondCut[1];
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
+
             ClassTableSection[] classTableSections = new ClassTableSection[sourceClassTableSections.Length];
 
             DateTime changHeTime = DateTime.Now.AddSeconds(deltaTime);//长河时间
@@ -214,6 +236,16 @@ namespace TimeCore
         }
 
         public TimeSection Section { get => currentSection; set => currentSection = value; }
+        /// <summary>
+        /// 检查是否时今天
+        /// </summary>
+        /// <param name="week">例:"周一"</param>
+        /// <returns></returns>
+        public bool IsToday(string week) {
+            string today = DateTime.Now.ToShortDateString();
 
+
+        }
     }
+
 }

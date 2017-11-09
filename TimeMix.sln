@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeChanger", "TimeChanger\TimeChanger.csproj", "{E4116302-1DF9-44C8-AD34-A2869C59C553}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeMixOld", "TimeMixOld\TimeMixOld.csproj", "{6D9CA4AC-8324-4979-B453-61A273A0AC3F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeMix", "TimeMix\TimeMix.csproj", "{5422C589-AA3F-43B0-9A66-5AED584F61DF}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{E4116302-1DF9-44C8-AD34-A2869C59C553}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4116302-1DF9-44C8-AD34-A2869C59C553}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4116302-1DF9-44C8-AD34-A2869C59C553}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6D9CA4AC-8324-4979-B453-61A273A0AC3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6D9CA4AC-8324-4979-B453-61A273A0AC3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6D9CA4AC-8324-4979-B453-61A273A0AC3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6D9CA4AC-8324-4979-B453-61A273A0AC3F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5422C589-AA3F-43B0-9A66-5AED584F61DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5422C589-AA3F-43B0-9A66-5AED584F61DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5422C589-AA3F-43B0-9A66-5AED584F61DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
