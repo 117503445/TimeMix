@@ -29,10 +29,11 @@ namespace TimeMix
             DispatcherTimer timer = new DispatcherTimer();
             {
                 timer.IsEnabled = true;
-                timer.Interval = TimeSpan.FromSeconds(1);
+                timer.Interval = TimeSpan.FromSeconds(10);
             }
+            TimeCore.Core core = new TimeCore.Core(@"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\时间NEW.txt", @"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\课表NEW.txt", deltaTime: 0);
 
-            timer.Tick += Timer_Tick;
+            // timer.Tick += Timer_Tick;
         }
 
         private void Timer_Tick(object sender, EventArgs e)

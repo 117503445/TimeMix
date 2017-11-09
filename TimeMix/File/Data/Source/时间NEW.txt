@@ -3,8 +3,8 @@ week=周一;beginTime=6:00;name=早晨2;extraString=;
 week=周一;beginTime=9:00;name=class1;extraString=replace;
 week=周一;beginTime=10:00;name=早晨4;extraString=;
 week=周一;beginTime=15:00;name=早晨5;extraString=;
-week=日常;beginTime=0:00;name=早读前;extraString=;
-week=日常;beginTime=6:00;name=早晨2;extraString=;
-week=日常;beginTime=9:00;name=class1;extraString=replace;
-week=日常;beginTime=10:00;name=早晨4;extraString=;
-week=日常;beginTime=15:00;name=早晨5;extraString=;
+week=日常;beginTime=0:00;name=日早读前;extraString=;
+week=日常;beginTime=6:00;name=日早晨2;extraString=;
+week=日常;beginTime=9:00;name=class1;extraString=replace;日
+week=日常;beginTime=10:00;name=日早晨4;extraString=;
+week=日常;beginTime=15:00;name=日早晨5;extraString=;
