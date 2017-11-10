@@ -85,12 +85,51 @@ namespace TimeCore
         /// <param name="deltaTime">时间差,长河时间=北京时间+时间差,允许负数</param>
         public Core(string timePath, string classTablePath, double deltaTime)
         {
+            DateTime changHeTime = DateTime.Now.AddSeconds(deltaTime);//长河时间
+
             string[] sourceTimeSections = File.ReadAllLines(timePath, Encoding.Default);
             string[] sourceClassTableSections = File.ReadAllLines(classTablePath, Encoding.Default);
 
-            TimeSection[] timeSections = new TimeSection[sourceTimeSections.Length];
 
-            List<string> TodayTimeSections = new List<string>();
+            string weekstr = changHeTime.DayOfWeek.ToString();
+            switch (weekstr)
+            {
+                case "Monday": weekstr = "周一"; break;
+                case "Tuesday": weekstr = "周二"; break;
+                case "Wednesday": weekstr = "周三"; break;
+                case "Thursday": weekstr = "周四"; break;
+                case "Friday": weekstr = "周五"; break;
+                case "Saturday": weekstr = "周六"; break;
+                case "Sunday": weekstr = "周日"; break;
+            }
+
+            List<string> todayClassTable = new List<string>();
+            for (int i = 0; i < sourceClassTableSections.Length; i++)
+            {
+                string[] FirstCut = sourceClassTableSections[i].Split(';');
+                for (int j = 0; j < FirstCut.Length; j++)
+                {
+                    string[] SecondCut = FirstCut[j].Split('=');
+
+                    switch (SecondCut[0])
+                    {
+                        case "week":
+                            if (SecondCut[1] == weekstr)
+                            {
+                                todayClassTable.Add(sourceClassTableSections[i]);
+                            }
+
+                            break;
+                        default:
+                            break;
+
+                    }
+                }
+            }//筛选课表,以后使用LINQ表达式!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        
+
+            List<string> todayTimeSections = new List<string>();
             for (int i = 0; i < sourceTimeSections.Length; i++)
             {
                 string[] FirstCut = sourceTimeSections[i].Split(';');
@@ -103,7 +142,7 @@ namespace TimeCore
                         case "week":
                             if (IsToday(SecondCut[1]))
                             {
-                                TodayTimeSections.Add(sourceTimeSections[i]);
+                                todayTimeSections.Add(sourceTimeSections[i]);
                             }
                             break;
                         default:
@@ -111,15 +150,15 @@ namespace TimeCore
                     }
 
                 }
-            }//筛选课表,以后使用LINQ表达式!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            }//筛选时间表,以后使用LINQ表达式!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-            ClassTableSection[] classTableSections = new ClassTableSection[TodayTimeSections.Count];
+            ClassTableSection[] classTableSections = new ClassTableSection[todayClassTable.Count];
+            TimeSection[] timeSections = new TimeSection[todayTimeSections.Count];
 
-            DateTime changHeTime = DateTime.Now.AddSeconds(deltaTime);//长河时间
 
-            for (int i = 0; i < sourceClassTableSections.Length; i++)
+            for (int i = 0; i < todayClassTable.Count; i++)
             {
-                string[] FirstCut = sourceClassTableSections[i].Split(';');
+                string[] FirstCut = todayClassTable[i].Split(';');
                 for (int j = 0; j < FirstCut.Length; j++)
                 {
                     string[] SecondCut = FirstCut[j].Split('=');
@@ -148,9 +187,9 @@ namespace TimeCore
             //    Console.WriteLine(item.sourceName+"  "+item.Replacedname+"  "+item.week);
             //}
 
-            for (int i = 0; i < TodayTimeSections.Count; i++)
+            for (int i = 0; i < todayTimeSections.Count; i++)
             {
-                string[] FirstCut = TodayTimeSections[i].Split(';');
+                string[] FirstCut = todayTimeSections[i].Split(';');
                 for (int j = 0; j < FirstCut.Length; j++)
                 {
                     string[] SecondCut = FirstCut[j].Split('=');
@@ -174,7 +213,7 @@ namespace TimeCore
 
                                     foreach (var item in classTableSections)
                                     {
-                                        if (item.week == timeSections[i].week & item.sourceName == timeSections[i].name)
+                                        if (item.sourceName == timeSections[i].name)
                                         {
                                             timeSections[i].name = item.Replacedname;
                                         }
@@ -247,6 +286,8 @@ namespace TimeCore
         /// 返回当前的节
         /// </summary>
         public TimeSection Section { get => currentSection; set => currentSection = value; }
+
+
         /// <summary>
         /// 检查是否是今天
         /// </summary>
@@ -271,6 +312,15 @@ namespace TimeCore
             {
                 return false;
             }
+        }
+        /// <summary>
+        /// 返回某一天的课程表
+        /// </summary>
+        /// <returns></returns>
+        public string[] GetClassTable()
+        {
+
+            return new string[4];
         }
     }
 
