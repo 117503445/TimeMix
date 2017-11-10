@@ -11,10 +11,12 @@ namespace TimeCore
     /// </summary>
     public struct TimeSection
     {
-
-        public void Print() {
-            Console.WriteLine("BeginTime={0},EndTime={1},name={2},progress={3},ExtraString={4}", beginTime.ToShortTimeString(), endTime.ToShortTimeString(), name, progress, extraString);
+        public override string ToString()
+        {
+            string s = string.Format("BeginTime={0},EndTime={1},name={2},progress={3},ExtraString={4}", beginTime.ToShortTimeString(), endTime.ToShortTimeString(), name, progress, extraString);
+            return s;
         }
+
 
 
         /// <summary>
@@ -81,14 +83,14 @@ namespace TimeCore
         /// <param name="timePath">时间表文本路径</param>
         /// <param name="classTablePath">课表文本路径</param>
         /// <param name="deltaTime">时间差,长河时间=北京时间+时间差,允许负数</param>
-        public Core(string timePath, string classTablePath,double deltaTime)
+        public Core(string timePath, string classTablePath, double deltaTime)
         {
             string[] sourceTimeSections = File.ReadAllLines(timePath, Encoding.Default);
             string[] sourceClassTableSections = File.ReadAllLines(classTablePath, Encoding.Default);
 
             TimeSection[] timeSections = new TimeSection[sourceTimeSections.Length];
 
-            List<string> preTodayTimeSections = new List<string>();     
+            List<string> TodayTimeSections = new List<string>();
             for (int i = 0; i < sourceTimeSections.Length; i++)
             {
                 string[] FirstCut = sourceTimeSections[i].Split(';');
@@ -96,22 +98,22 @@ namespace TimeCore
                 {
                     string[] SecondCut = FirstCut[j].Split('=');
 
-                        switch (SecondCut[0])
-                        {
-                            case "week":
-                                if (IsToday(SecondCut[1]))
-                                {
-                                    preTodayTimeSections.Add(sourceTimeSections[i]);
-                                }
-                                break;
-                            default:
-                                break;
-                        }
-                    
-                }
-            }//筛选课表
+                    switch (SecondCut[0])
+                    {
+                        case "week":
+                            if (IsToday(SecondCut[1]))
+                            {
+                                TodayTimeSections.Add(sourceTimeSections[i]);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
 
-            ClassTableSection[] classTableSections = new ClassTableSection[preTodayTimeSections.Count];
+                }
+            }//筛选课表,以后使用LINQ表达式!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            ClassTableSection[] classTableSections = new ClassTableSection[TodayTimeSections.Count];
 
             DateTime changHeTime = DateTime.Now.AddSeconds(deltaTime);//长河时间
 
@@ -121,7 +123,8 @@ namespace TimeCore
                 for (int j = 0; j < FirstCut.Length; j++)
                 {
                     string[] SecondCut = FirstCut[j].Split('=');
-                    for (int k = 0; k < SecondCut.Length; k++) {
+                    for (int k = 0; k < SecondCut.Length; k++)
+                    {
                         switch (SecondCut[0])
                         {
                             case "week":
@@ -145,9 +148,9 @@ namespace TimeCore
             //    Console.WriteLine(item.sourceName+"  "+item.Replacedname+"  "+item.week);
             //}
 
-            for (int i = 0; i < preTodayTimeSections.Count; i++)
+            for (int i = 0; i < TodayTimeSections.Count; i++)
             {
-                string[] FirstCut = preTodayTimeSections[i].Split(';');
+                string[] FirstCut = TodayTimeSections[i].Split(';');
                 for (int j = 0; j < FirstCut.Length; j++)
                 {
                     string[] SecondCut = FirstCut[j].Split('=');
@@ -168,10 +171,10 @@ namespace TimeCore
                                 timeSections[i].extraString = SecondCut[1];
                                 if (timeSections[i].extraString.Contains("replace"))
                                 {
-                                    
+
                                     foreach (var item in classTableSections)
                                     {
-                                        if (item.week==timeSections[i].week&item.sourceName==timeSections[i].name)
+                                        if (item.week == timeSections[i].week & item.sourceName == timeSections[i].name)
                                         {
                                             timeSections[i].name = item.Replacedname;
                                         }
@@ -187,10 +190,10 @@ namespace TimeCore
                 }
             }//解析时间表
 
-             //foreach (var item in sections)
-             //{
-             //    Console.WriteLine("开始时间_{0},名称_{1},额外信息_{2}",item.beginTime.ToShortTimeString(),item.name,item.extraString);
-             //}
+            //foreach (var item in sections)
+            //{
+            //    Console.WriteLine("开始时间_{0},名称_{1},额外信息_{2}",item.beginTime.ToShortTimeString(),item.name,item.extraString);
+            //}
 
             //若干年后一定要再写记录为0,1的情况!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -221,7 +224,7 @@ namespace TimeCore
             {
                 currentSection.endTime = changHeTime.Date.AddDays(1);//设置结束时间为第二天00:00
             }
-            
+
 
             string preProgress = ((changHeTime - currentSection.beginTime).TotalSeconds / (currentSection.endTime - currentSection.beginTime).TotalSeconds * 100).ToString();//计算进度
             int p = preProgress.IndexOf('.');
@@ -237,17 +240,19 @@ namespace TimeCore
             //{
             //    Console.WriteLine(item);
             //}
-    currentSection.Print();
-            
-        }
 
+
+        }
+        /// <summary>
+        /// 返回当前的节
+        /// </summary>
         public TimeSection Section { get => currentSection; set => currentSection = value; }
         /// <summary>
         /// 检查是否是今天
         /// </summary>
         /// <param name="week">例:"周一"</param>
         /// <returns></returns>
-        public bool IsToday(string week)
+        protected bool IsToday(string week)
         {
             string today = DateTime.Now.DayOfWeek.ToString();
             if (today == "Monday")
