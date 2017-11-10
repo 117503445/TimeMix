@@ -232,11 +232,12 @@ namespace TimeCore
             }
             finalProgress += "%";
             currentSection.progress = finalProgress;
-            foreach (var item in preTodayTimeSections)
-            {
-                Console.WriteLine(item);
-            }
-    //        currentSection.Print();
+
+            //foreach (var item in preTodayTimeSections)
+            //{
+            //    Console.WriteLine(item);
+            //}
+    currentSection.Print();
             
         }
 
