@@ -28,5 +28,10 @@ namespace TimeMix
         {
             DragMove();
         }
+        public void Changedata(TimeSection timeSection) {
+            LblClass.Content = timeSection.name;
+            LblTime.Content = timeSection.beginTime.ToShortTimeString() + "___" + timeSection.endTime.ToShortTimeString();
+            LblProgress.Content = timeSection.progress;
+        }
     }
 }

@@ -5,21 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeMix"
         mc:Ignorable="d"
-        Title="Hello" Height="85.271" Width="120" WindowStyle="None" FontWeight="ExtraBlack" FontSize="18" MouseLeftButtonDown="Window_MouseLeftButtonDown" FontStretch="UltraExpanded">
+        Title="Hello" Height="76.604" Width="120" WindowStyle="None" FontWeight="ExtraBlack" FontSize="18" MouseLeftButtonDown="Window_MouseLeftButtonDown" Topmost="True" Background="#02FFFFFF" AllowsTransparency="True">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="39*"/>
-            <RowDefinition Height="38*"/>
+            <RowDefinition Height="29*"/>
+            <RowDefinition Height="48*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="65*"/>
-            <ColumnDefinition Width="47*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="LblClass" Content="语文" HorizontalContentAlignment="Center" Padding="0" FontSize="28"/>
+        <Label x:Name="LblClass" Content="眼保健操" HorizontalContentAlignment="Center" Padding="0" FontSize="20"/>
         <StackPanel Grid.Row="1">
             <Label x:Name="LblTime" Content="10:05-10:10" FontSize="10" Padding="0"></Label>
             <Label x:Name="LblProgress" Content="4.3%" Padding="0"/>
         </StackPanel>
-        <Image Source="C:\Users\117503445\Desktop\1.png" Grid.Column="1" HorizontalAlignment="Left" Height="77" VerticalAlignment="Top" Width="47" Grid.RowSpan="2"/>
     </Grid>
 </Window>

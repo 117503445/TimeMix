@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-namespace TimeCore
+namespace TimeMix
 {
     /// <summary>
     /// 时间节,包含开始时间,结束时间,名称,进度,额外字符信息
