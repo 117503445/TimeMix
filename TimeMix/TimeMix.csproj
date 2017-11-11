@@ -55,6 +55,19 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Compile Include="ClassTableWindow.xaml.cs">
+      <DependentUpon>ClassTableWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TimeTableWindow.xaml.cs">
+      <DependentUpon>TimeTableWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TimeWindow.xaml.cs">
+      <DependentUpon>TimeWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ClassTableWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -68,6 +81,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="TimeTableWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TimeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -96,30 +117,30 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="File\Data\Source\时间NEW.txt">
+    <None Include="File\Data\Source\时间NEW.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="File\Data\Source\时间夏季%28不延时%29.txt">
+    </None>
+    <None Include="File\Data\Source\时间夏季%28不延时%29.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="File\Data\Source\时间夏季%28延时%29.txt">
+    </None>
+    <None Include="File\Data\Source\时间夏季%28延时%29.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="File\Data\Source\时间春秋季%28不延时%29.txt">
+    </None>
+    <None Include="File\Data\Source\时间春秋季%28不延时%29.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="File\Data\Source\时间春秋季%28延时%29.txt">
+    </None>
+    <None Include="File\Data\Source\时间春秋季%28延时%29.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="File\Data\Source\课表5班.txt">
+    </None>
+    <None Include="File\Data\Source\课表5班.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="File\Data\Source\课表5班周六.txt">
+    </None>
+    <None Include="File\Data\Source\课表5班周六.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="File\Data\Source\课表NEW.txt">
+    </None>
+    <None Include="File\Data\Source\课表NEW.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

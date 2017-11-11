@@ -182,9 +182,20 @@ namespace TimeChanger
             return dt;
         }
 
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            Topmost = true;
+        }
 
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Topmost = false;
+        }
 
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,22 +27,49 @@ namespace TimeMix
         public MainWindow()
         {
             InitializeComponent();
+
+            TimeWindow timeWindow = new TimeWindow();
+            //timeWindow.Show();
+
+            ClassTableWindow classTableWindow = new ClassTableWindow();
+            //  classTableWindow.Show();
+
+            TimeTableWindow timeTableWindow = new TimeTableWindow();
+            timeTableWindow.Show();
             DispatcherTimer timer = new DispatcherTimer();
             {
                 timer.IsEnabled = true;
                 timer.Interval = TimeSpan.FromSeconds(1);
+               // timer.Tick += Timer_Tick;
             }
+
             //TimeCore.Core core = new TimeCore.Core(@"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\时间NEW.txt", @"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\课表NEW.txt", deltaTime: 0);
 
-            timer.Tick += Timer_Tick;
+
+            Hide();
+
+
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            TimeCore.Core core = new TimeCore.Core(@"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\时间NEW.txt", @"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\课表NEW.txt", deltaTime: 0);
+
+            string pathTime = Environment.CurrentDirectory+@"\File\Data\Source\时间NEW.txt";
+            string pathClass = Environment.CurrentDirectory + @"\File\Data\Source\课表NEW.txt";
+            TimeCore.Core core = new TimeCore.Core(pathTime,pathClass, deltaTime: 0);
             Console.WriteLine(core.Section.ToString());
         }
 
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            //double dWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
+            //double dHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
+            //Left = dWidth - 10;
+        }
 
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }

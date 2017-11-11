@@ -102,7 +102,7 @@ namespace TimeCore
                 case "Saturday": weekstr = "周六"; break;
                 case "Sunday": weekstr = "周日"; break;
             }
-
+          // Console.WriteLine(weekstr);
             List<string> todayClassTable = new List<string>();
             for (int i = 0; i < sourceClassTableSections.Length; i++)
             {
@@ -127,8 +127,11 @@ namespace TimeCore
                 }
             }//筛选课表,以后使用LINQ表达式!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-        
 
+            //foreach (var item in todayClassTable)
+            //{
+            //    Console.WriteLine(item.ToString());
+            //}
             List<string> todayTimeSections = new List<string>();
             for (int i = 0; i < sourceTimeSections.Length; i++)
             {
@@ -182,9 +185,9 @@ namespace TimeCore
                 }
             }//解析课表
 
-            //foreach (var item in scheduleSections)
+            //foreach (var item in classTableSections)
             //{
-            //    Console.WriteLine(item.sourceName+"  "+item.Replacedname+"  "+item.week);
+            //    Console.WriteLine(item.sourceName + "  " + item.Replacedname + "  " + item.week);
             //}
 
             for (int i = 0; i < todayTimeSections.Count; i++)
@@ -193,8 +196,7 @@ namespace TimeCore
                 for (int j = 0; j < FirstCut.Length; j++)
                 {
                     string[] SecondCut = FirstCut[j].Split('=');
-                    for (int k = 0; k < SecondCut.Length; k++)
-                    {
+
                         switch (SecondCut[0])
                         {
                             case "beginTime":
@@ -210,7 +212,6 @@ namespace TimeCore
                                 timeSections[i].extraString = SecondCut[1];
                                 if (timeSections[i].extraString.Contains("replace"))
                                 {
-
                                     foreach (var item in classTableSections)
                                     {
                                         if (item.sourceName == timeSections[i].name)
@@ -225,7 +226,7 @@ namespace TimeCore
                                 break;
                         }
                         timeSections[i].available = true;
-                    }
+                    
                 }
             }//解析时间表
 

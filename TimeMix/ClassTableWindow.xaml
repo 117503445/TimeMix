@@ -1,0 +1,22 @@
+﻿<Window x:Class="TimeMix.ClassTableWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimeMix"
+        mc:Ignorable="d"
+        Title="ClassWindow" Height="237" Width="57" WindowStyle="None" FontWeight="ExtraBlack" FontSize="18">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <Label x:Name="Lbl1" Content="语文" HorizontalContentAlignment="Center" MouseLeftButtonDown="Lbl_MouseLeftButtonDown" Padding="1"/>
+            <Label x:Name="Lbl2" Content="语文" HorizontalContentAlignment="Center" MouseLeftButtonDown="Lbl_MouseLeftButtonDown" Padding="1"/>
+            <Label x:Name="Lbl3" Content="语文" HorizontalContentAlignment="Center" MouseLeftButtonDown="Lbl_MouseLeftButtonDown" Padding="1"/>
+            <Label x:Name="Lbl4" Content="语文" HorizontalContentAlignment="Center" MouseLeftButtonDown="Lbl_MouseLeftButtonDown" Padding="1"/>
+            <Label x:Name="Lbl5" Content="语文" HorizontalContentAlignment="Center" MouseLeftButtonDown="Lbl_MouseLeftButtonDown" Padding="1"/>
+            <Label x:Name="Lbl6" Content="语文" HorizontalContentAlignment="Center" MouseLeftButtonDown="Lbl_MouseLeftButtonDown" Padding="1"/>
+            <Label x:Name="Lbl7" Content="语文" HorizontalContentAlignment="Center" MouseLeftButtonDown="Lbl_MouseLeftButtonDown" Padding="1"/>
+            <Label x:Name="Lbl8" Content="语文" HorizontalContentAlignment="Center" MouseLeftButtonDown="Lbl_MouseLeftButtonDown" Padding="1"/>
+            <Label x:Name="Lbl9" Content="语文" HorizontalContentAlignment="Center" MouseLeftButtonDown="Lbl_MouseLeftButtonDown" Padding="1"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -7,12 +7,15 @@
         mc:Ignorable="d"
         Title="TimeChanger" Height="350" Width="525" FontSize="20">
     <Grid>
-        <Button x:Name="BtnChange" Content="Change" VerticalAlignment="Top" Margin="10,141,0,0" HorizontalAlignment="Left" Width="80" Click="BtnChange_Click" Height="35" FontSize="20"/>
+        <Button x:Name="BtnChange" Content="Change" VerticalAlignment="Top" Margin="10,137,0,0" HorizontalAlignment="Left" Width="80" Click="BtnChange_Click" Height="35" FontSize="20"/>
         <TextBlock x:Name="TbSystemTimeShow" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="100,10,0,272" Width="219" FontSize="20" Text="SystemTime"/>
-        <TextBox x:Name="TxtMyTime" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="219" Margin="100,141,0,0" FontSize="20"/>
+        <TextBox x:Name="TxtMyTime" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="219" Margin="100,137,0,0" FontSize="20"/>
         <TextBlock x:Name="TbSystemTime" HorizontalAlignment="Left" TextWrapping="Wrap" Text="系统时间" VerticalAlignment="Top" Margin="10,10,0,0" FontSize="20"/>
         <TextBlock x:Name="TbNetworkTime" HorizontalAlignment="Left" TextWrapping="Wrap" Text="网络时间" VerticalAlignment="Top" Margin="10,70,0,0" FontSize="20"/>
         <TextBlock x:Name="TbNetworkTimeShow" HorizontalAlignment="Left" TextWrapping="Wrap" Text="NetworkTime" VerticalAlignment="Top" Margin="100,70,0,0" FontSize="20" RenderTransformOrigin="1.375,0.68" Width="219" Height="38" MouseUp="TbNetworkTimeShow_MouseUp"/>
+        <CheckBox x:Name="CheckBox" Content="置顶" HorizontalAlignment="Left" Height="27" Margin="10,244,0,0" VerticalAlignment="Top" Width="80" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+        <Button x:Name="BtnAdd" Content="增加" VerticalAlignment="Top" Margin="10,186,0,0" HorizontalAlignment="Left" Width="80" Click="BtnAdd_Click" Height="35" FontSize="20"/>
+        <TextBox x:Name="TxtAddTime" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Margin="100,186,0,0" FontSize="20"/>
 
     </Grid>
 </Window>
