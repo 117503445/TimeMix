@@ -5,6 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeMix"
         mc:Ignorable="d"
-        Title="MainWindow" Height="318" Width="517" WindowStyle="None" Activated="Window_Activated" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+        Title="MainWindow" Height="318" Width="517" WindowStyle="ThreeDBorderWindow" Activated="Window_Activated" MouseLeftButtonDown="Window_MouseLeftButtonDown" Closed="Window_Closed">
     <Grid/>
 </Window>

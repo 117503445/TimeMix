@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeMix"
         mc:Ignorable="d"
-        Title="TimeWindow" Height="78.636" Width="163.364" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" Background="#02FFFFFF" Topmost="True">
+        Title="TimeWindow" Height="78.636" Width="163.364" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown" Background="#02FFFFFF" Topmost="True" ResizeMode="NoResize" ShowInTaskbar="False">
     <Grid>
         <Label x:Name="LblBig" Content="12:00" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="50"/>
         <Label x:Name="LblSmall" Content="23" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="126,44,0,0" FontSize="20"/>

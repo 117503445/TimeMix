@@ -35,7 +35,7 @@ namespace TimeMix
             timeWindow.Show();
 
             classTableWindow = new ClassTableWindow();
-            //  classTableWindow.Show();
+            classTableWindow.Show();
 
             timeTableWindow = new TimeTableWindow();
            // timeTableWindow.Show();
@@ -51,7 +51,7 @@ namespace TimeMix
             //TimeCore.Core core = new TimeCore.Core(@"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\时间NEW.txt", @"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\课表NEW.txt", deltaTime: 0);
 
 
-            Hide();
+          //  Hide();
 
 
         }
@@ -65,8 +65,13 @@ namespace TimeMix
             //Console.WriteLine(core.Section.ToString());
             timeWindow.ChangeTime();
             timeWindow.ChangeColor();
+            //timeWindow.Topmost = true;
 
             timeTableWindow.Changedata(core.Section);
+
+            classTableWindow.ChangeColor();
+            classTableWindow.ChangeClass(core.TodayClassTable);
+         //   classTableWindow.Topmost = true;
         }
 
         private void Window_Activated(object sender, EventArgs e)
@@ -79,6 +84,11 @@ namespace TimeMix
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
     }
 }

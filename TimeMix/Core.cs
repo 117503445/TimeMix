@@ -189,7 +189,7 @@ namespace TimeMix
             //{
             //    Console.WriteLine(item.sourceName + "  " + item.Replacedname + "  " + item.week);
             //}
-
+            List<string> classList = new List<string>();
             for (int i = 0; i < todayTimeSections.Count; i++)
             {
                 string[] FirstCut = todayTimeSections[i].Split(';');
@@ -217,6 +217,7 @@ namespace TimeMix
                                         if (item.sourceName == timeSections[i].name)
                                         {
                                             timeSections[i].name = item.Replacedname;
+                                        classList.Add(item.Replacedname);
                                         }
                                     }
                                 }
@@ -276,6 +277,11 @@ namespace TimeMix
             finalProgress += "%";
             currentSection.progress = finalProgress;
 
+
+            for (int i = 0; i < 9; i++)//填充课表
+            {
+                this.todayClassTable[i] = classList[i];
+            }
             //foreach (var item in preTodayTimeSections)
             //{
             //    Console.WriteLine(item);
@@ -287,6 +293,7 @@ namespace TimeMix
         /// 返回当前的节
         /// </summary>
         public TimeSection Section { get => currentSection; set => currentSection = value; }
+        public string[] TodayClassTable { get => todayClassTable;  }
 
 
         /// <summary>
@@ -315,14 +322,11 @@ namespace TimeMix
             }
         }
         /// <summary>
-        /// 返回某一天的课程表
+        /// 返回今天的课程表
         /// </summary>
         /// <returns></returns>
-        public string[] GetClassTable()
-        {
 
-            return new string[4];
-        }
+        private string[] todayClassTable=new string[9];
     }
 
 }
