@@ -27,6 +27,7 @@ namespace TimeMix
         public TimeWindow timeWindow;
         public ClassTableWindow classTableWindow;
         public TimeTableWindow timeTableWindow;
+        public ManageWindow manageWindow;
         public MainWindow()
         {
             InitializeComponent();
@@ -38,7 +39,17 @@ namespace TimeMix
             classTableWindow.Show();
 
             timeTableWindow = new TimeTableWindow();
-           // timeTableWindow.Show();
+            // timeTableWindow.Show();
+
+            manageWindow = new ManageWindow();
+
+            manageWindow.SetVisibleClassTable += SetVisibleClassTableWindow;
+
+
+            manageWindow.SetVisibleMainWindow += SetVisibleTimeWindow;
+
+            manageWindow.SetVisibleTimeWindow += SetVisibleTimeWindow;
+            manageWindow.Show();
 
             DispatcherTimer timer1000 = new DispatcherTimer();
             {
@@ -51,7 +62,7 @@ namespace TimeMix
             //TimeCore.Core core = new TimeCore.Core(@"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\时间NEW.txt", @"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\课表NEW.txt", deltaTime: 0);
 
 
-          //  Hide();
+            //  Hide();
 
 
         }
@@ -71,14 +82,14 @@ namespace TimeMix
 
             classTableWindow.ChangeColor();
             classTableWindow.ChangeClass(core.TodayClassTable);
-         //   classTableWindow.Topmost = true;
+            classTableWindow.Topmost = true;
         }
 
         private void Window_Activated(object sender, EventArgs e)
         {
-            //double dWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
-            //double dHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
-            //Left = dWidth - 10;
+            manageWindow.ChkClassTableWindow.IsChecked = classTableWindow.IsVisible;
+            manageWindow.ChkTimeWindow.IsChecked = timeWindow.IsVisible;
+            manageWindow.ChkMainWindow.IsChecked = IsVisible;
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -90,5 +101,42 @@ namespace TimeMix
         {
             System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
+        private void SetVisibleTimeWindow(bool IsVisible)
+        {
+            if (IsVisible)
+            {
+                timeWindow.Show();
+            }
+            else
+            {
+                timeWindow.Hide();
+            }
+
+        }
+
+        private void SetVisibleClassTableWindow(bool IsVisible)
+        {
+            if (IsVisible)
+            {
+                classTableWindow.Show();
+            }
+            else
+            {
+                classTableWindow.Hide();
+            }
+        }
+        private void SetVisibleMainWindow(bool IsVisible)
+        {
+            if (IsVisible)
+            {
+                Show();
+            }
+            else
+            {
+                Hide();
+            }
+        }
+
+
     }
 }

@@ -59,6 +59,9 @@
     <Compile Include="ClassTableWindow.xaml.cs">
       <DependentUpon>ClassTableWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ManageWindow.xaml.cs">
+      <DependentUpon>ManageWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TimeTableWindow.xaml.cs">
       <DependentUpon>TimeTableWindow.xaml</DependentUpon>
     </Compile>
@@ -82,6 +85,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ManageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TimeTableWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
