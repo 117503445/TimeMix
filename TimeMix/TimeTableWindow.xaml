@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeMix"
         mc:Ignorable="d"
-        Title="Hello" Height="76.604" Width="120" WindowStyle="None" FontWeight="ExtraBlack" FontSize="18" MouseLeftButtonDown="Window_MouseLeftButtonDown" Topmost="True" Background="#02FFFFFF" AllowsTransparency="True">
+        Title="Hello" Height="78.9" Width="163" WindowStyle="None" FontWeight="ExtraBlack" FontSize="18" MouseLeftButtonDown="Window_MouseLeftButtonDown" Topmost="True" Background="#02FFFFFF" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="29*"/>
@@ -17,8 +17,8 @@
         </Grid.ColumnDefinitions>
         <Label x:Name="LblClass" Content="眼保健操" HorizontalContentAlignment="Center" Padding="0" FontSize="20"/>
         <StackPanel Grid.Row="1">
-            <Label x:Name="LblTime" Content="10:05-10:10" FontSize="10" Padding="0"></Label>
-            <Label x:Name="LblProgress" Content="4.3%" Padding="0"/>
+            <Label x:Name="LblTime" Content="10:05-10:10" FontSize="18" Padding="0"></Label>
+            <Label x:Name="LblProgress" Content="4.3%" Padding="0" Height="20"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -9,7 +9,9 @@
     <Grid>
         <TabControl>
             <TabItem Header="常用">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <CheckBox x:Name="ChkAutoStart" Content="开机自启(X)" HorizontalAlignment="Left" Margin="18,36,0,0" VerticalAlignment="Top"/>
+                </Grid>
             </TabItem>
             <TabItem Header="文件操作">
                 <Grid Background="#FFE5E5E5">

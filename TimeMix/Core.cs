@@ -13,8 +13,7 @@ namespace TimeMix
     {
         public override string ToString()
         {
-            string s = string.Format("BeginTime={0},EndTime={1},name={2},progress={3},ExtraString={4}", beginTime.ToShortTimeString(), endTime.ToShortTimeString(), name, progress, extraString);
-            return s;
+           return string.Format("BeginTime={0},EndTime={1},name={2},progress={3},ExtraString={4}", beginTime.ToShortTimeString(), endTime.ToShortTimeString(), name, progress, extraString);
         }
 
 

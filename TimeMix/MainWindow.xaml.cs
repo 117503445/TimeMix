@@ -33,20 +33,21 @@ namespace TimeMix
             InitializeComponent();
 
             timeWindow = new TimeWindow();
-            timeWindow.Show();
+          //  timeWindow.Show();
 
             classTableWindow = new ClassTableWindow();
-            classTableWindow.Show();
+           // classTableWindow.Show();
 
             timeTableWindow = new TimeTableWindow();
-            //timeTableWindow.Show();
+           // timeTableWindow.Show();
 
-            manageWindow = new ManageWindow();
+            manageWindow = new ManageWindow(this);
             manageWindow.Show();
 
-            manageWindow.SetVisibleClassTable += SetVisibleClassTableWindow;
-            manageWindow.SetVisibleMainWindow += SetVisibleMainWindow;
-            manageWindow.SetVisibleTimeWindow += SetVisibleTimeWindow;
+            manageWindow.SetVisible +=SetVisible ;
+
+
+              Hide();
 
 
             DispatcherTimer timer1000 = new DispatcherTimer();
@@ -79,7 +80,7 @@ namespace TimeMix
             //TimeCore.Core core = new TimeCore.Core(@"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\时间NEW.txt", @"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\课表NEW.txt", deltaTime: 0);
 
 
-            //  Hide();
+           
 
 
         }
@@ -99,6 +100,7 @@ namespace TimeMix
             //timeWindow.Topmost = true;
 
             timeTableWindow.Changedata(core.Section);
+            timeTableWindow.ChangeColor();
 
             classTableWindow.ChangeColor();
             classTableWindow.ChangeClass(core.TodayClassTable);
@@ -155,7 +157,16 @@ namespace TimeMix
                 Hide();
             }
         }
-
+        private void SetVisible(Window window,bool isVisible) {
+            if (isVisible)
+            {
+                window.Show();
+            }
+            else
+            {
+                window.Hide();
+            }
+        }
 
     }
 }

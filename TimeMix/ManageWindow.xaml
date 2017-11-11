@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeMix"
         mc:Ignorable="d"
-        Title="ManageWindow" Height="300" Width="300" Closed="Window_Closed">
+        Title="ManageWindow" Height="300" Width="300" Closed="Window_Closed" MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Grid>
         <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="临时赶工的切换窗体,突然发现我会委托了!" VerticalAlignment="Top" Width="247"/>
         <CheckBox x:Name="ChkTimeWindow" Content="TimeWindow" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,39,0,0" Click="ChkTimeWindow_Click"/>
         <CheckBox x:Name="ChkClassTableWindow" Content="ClassTableWindow" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,59,0,0" Click="ChkClassTableWindow_Click"/>
         <CheckBox x:Name="ChkMainWindow" Content="MainWindow" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,79,0,0" Click="ChkMainWindow_Click" />
+        <CheckBox x:Name="ChkTimeTableWindow" Content="TimeTableWindow" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,99,0,0" Click="ChkTimeTableWindow_Click" />
     </Grid>
 </Window>

@@ -19,34 +19,44 @@ namespace TimeMix
     /// </summary>
     public partial class ManageWindow : Window
     {
-        public delegate void ManageHandler(bool IsVisible);
-        public event ManageHandler SetVisibleClassTable;
-        public event ManageHandler SetVisibleTimeWindow;
-        public event ManageHandler SetVisibleMainWindow;
-
-        public ManageWindow()
+        public delegate void ManageHandler(Window window,bool IsVisible);
+        public event ManageHandler SetVisible;
+        MainWindow mainWindow;
+        
+        public ManageWindow(MainWindow window)
         {
             InitializeComponent();
+            mainWindow = window;
         }
 
         private void ChkMainWindow_Click(object sender, RoutedEventArgs e)
         {
-            SetVisibleMainWindow((bool)ChkMainWindow.IsChecked);
+            SetVisible(mainWindow,(bool)ChkMainWindow.IsChecked);
         }
 
         private void ChkClassTableWindow_Click(object sender, RoutedEventArgs e)
         {
-            SetVisibleClassTable((bool)ChkClassTableWindow.IsChecked);
+            SetVisible(mainWindow.classTableWindow,(bool)ChkClassTableWindow.IsChecked);
         }
 
         private void ChkTimeWindow_Click(object sender, RoutedEventArgs e)
         {
-            SetVisibleTimeWindow((bool)ChkTimeWindow.IsChecked);
+            SetVisible(mainWindow.timeWindow,(bool)ChkTimeWindow.IsChecked);
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
             System.Diagnostics.Process.GetCurrentProcess().Kill();
+        }
+
+        private void ChkTimeTableWindow_Click(object sender, RoutedEventArgs e)
+        {
+            SetVisible(mainWindow.timeTableWindow, (bool)ChkTimeTableWindow.IsChecked);
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }
