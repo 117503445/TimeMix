@@ -29,6 +29,22 @@ namespace TimeMix
 
         private void Lbl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            if (Left < 0)
+            {
+                Left = 0;
+            }
+            if (Top < 0)
+            {
+                Top = 0;
+            }
+            if (Left + Width > SystemParameters.PrimaryScreenWidth)
+            {
+                Left = SystemParameters.PrimaryScreenWidth - Width;
+            }
+            if (Top + Height > SystemParameters.PrimaryScreenHeight)
+            {
+                Top = SystemParameters.PrimaryScreenHeight - Height;
+            }
             DragMove();
         }
 

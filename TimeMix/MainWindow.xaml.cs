@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -39,17 +39,15 @@ namespace TimeMix
             classTableWindow.Show();
 
             timeTableWindow = new TimeTableWindow();
-            // timeTableWindow.Show();
+            //timeTableWindow.Show();
 
             manageWindow = new ManageWindow();
+            manageWindow.Show();
 
             manageWindow.SetVisibleClassTable += SetVisibleClassTableWindow;
-
-
-            manageWindow.SetVisibleMainWindow += SetVisibleTimeWindow;
-
+            manageWindow.SetVisibleMainWindow += SetVisibleMainWindow;
             manageWindow.SetVisibleTimeWindow += SetVisibleTimeWindow;
-            manageWindow.Show();
+
 
             DispatcherTimer timer1000 = new DispatcherTimer();
             {
@@ -58,7 +56,26 @@ namespace TimeMix
                 timer1000.Tick += Timer1000_Tick;
             }
 
-
+            System.IO.DirectoryInfo dir = new DirectoryInfo(pathSource);
+            if (dir.Exists)
+            {
+                FileInfo[] fiList = dir.GetFiles();
+                List<string> timeList = new List<string>();
+                List<string> classList = new List<string>();
+                foreach (var item in fiList)
+                {
+                    if (item.Name.Substring(0,2)=="时间")
+                    {
+                        timeList.Add(item.Name);
+                    }
+                    if (item.Name.Substring(0, 2) == "课表")
+                    {
+                        classList.Add(item.Name);
+                    }
+                }
+                CboTime.ItemsSource =timeList;
+                CboClass.ItemsSource = classList;
+            }
             //TimeCore.Core core = new TimeCore.Core(@"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\时间NEW.txt", @"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\课表NEW.txt", deltaTime: 0);
 
 
@@ -66,12 +83,15 @@ namespace TimeMix
 
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        string pathSource = Environment.CurrentDirectory + @"\File\Data\Source";
         private void Timer1000_Tick(object sender, EventArgs e)
         {
 
-            string pathTime = Environment.CurrentDirectory + @"\File\Data\Source\时间NEW.txt";
-            string pathClass = Environment.CurrentDirectory + @"\File\Data\Source\课表NEW.txt";
+            string pathTime = pathSource + @"\时间NEW.txt";
+            string pathClass = pathSource + @"\课表NEW.txt";
             Core core = new Core(pathTime, pathClass, deltaTime: 0);
             //Console.WriteLine(core.Section.ToString());
             timeWindow.ChangeTime();
@@ -96,7 +116,6 @@ namespace TimeMix
         {
             DragMove();
         }
-
         private void Window_Closed(object sender, EventArgs e)
         {
             System.Diagnostics.Process.GetCurrentProcess().Kill();
