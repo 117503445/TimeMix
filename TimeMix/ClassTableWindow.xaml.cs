@@ -29,23 +29,7 @@ namespace TimeMix
 
         private void Lbl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (Left < 0)
-            {
-                Left = 0;
-            }
-            if (Top < 0)
-            {
-                Top = 0;
-            }
-            if (Left + Width > SystemParameters.PrimaryScreenWidth)
-            {
-                Left = SystemParameters.PrimaryScreenWidth - Width;
-            }
-            if (Top + Height > SystemParameters.PrimaryScreenHeight)
-            {
-                Top = SystemParameters.PrimaryScreenHeight - Height;
-            }
-            DragMove();
+          
         }
 
         public void ChangeColor()
@@ -79,6 +63,32 @@ namespace TimeMix
             {
                 labels[i].Content = classTable[i];
                 
+            }
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+            DragMove();
+        }
+
+        private void Window_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (Left < 0)
+            {
+                Left = 0;
+            }
+            if (Top < 0)
+            {
+                Top = 0;
+            }
+            if (Left + Width > SystemParameters.PrimaryScreenWidth)
+            {
+                Left = SystemParameters.PrimaryScreenWidth - Width;
+            }
+            if (Top + Height > SystemParameters.PrimaryScreenHeight)
+            {
+                Top = SystemParameters.PrimaryScreenHeight - Height;
             }
         }
     }
