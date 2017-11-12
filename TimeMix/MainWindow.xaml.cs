@@ -33,21 +33,21 @@ namespace TimeMix
             InitializeComponent();
 
             timeWindow = new TimeWindow();
-          //  timeWindow.Show();
+            //  timeWindow.Show();
 
             classTableWindow = new ClassTableWindow();
-           // classTableWindow.Show();
+            // classTableWindow.Show();
 
             timeTableWindow = new TimeTableWindow();
-           // timeTableWindow.Show();
+            // timeTableWindow.Show();
 
             manageWindow = new ManageWindow(this);
             manageWindow.Show();
 
-            manageWindow.SetVisible +=SetVisible ;
+            manageWindow.SetVisible += SetVisible;
 
 
-              Hide();
+            Hide();
 
 
             DispatcherTimer timer1000 = new DispatcherTimer();
@@ -65,7 +65,7 @@ namespace TimeMix
                 List<string> classList = new List<string>();
                 foreach (var item in fiList)
                 {
-                    if (item.Name.Substring(0,2)=="时间")
+                    if (item.Name.Substring(0, 2) == "时间")
                     {
                         timeList.Add(item.Name);
                     }
@@ -74,13 +74,15 @@ namespace TimeMix
                         classList.Add(item.Name);
                     }
                 }
-                CboTime.ItemsSource =timeList;
+                CboTime.ItemsSource = timeList;
                 CboClass.ItemsSource = classList;
             }
             //TimeCore.Core core = new TimeCore.Core(@"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\时间NEW.txt", @"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\课表NEW.txt", deltaTime: 0);
 
 
-           
+            CboTime.SelectedItem = Settings.Default.nameTime;
+            CboClass.SelectedItem = Settings.Default.nameClass;
+
 
 
         }
@@ -118,10 +120,7 @@ namespace TimeMix
         {
             DragMove();
         }
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.GetCurrentProcess().Kill();
-        }
+
         private void SetVisibleTimeWindow(bool IsVisible)
         {
             if (IsVisible)
@@ -157,7 +156,8 @@ namespace TimeMix
                 Hide();
             }
         }
-        private void SetVisible(Window window,bool isVisible) {
+        private void SetVisible(Window window, bool isVisible)
+        {
             if (isVisible)
             {
                 window.Show();
@@ -168,5 +168,22 @@ namespace TimeMix
             }
         }
 
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
+
+        }
+
+        private void CboTime_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Settings.Default.nameTime = CboTime.SelectedItem.ToString();
+            Settings.Default.Save();
+        }
+
+        private void CboClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Settings.Default.nameClass = CboClass.SelectedItem.ToString();
+            Settings.Default.Save();
+        }
     }
 }

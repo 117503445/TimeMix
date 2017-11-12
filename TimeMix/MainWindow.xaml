@@ -16,9 +16,9 @@
             <TabItem Header="文件操作">
                 <Grid Background="#FFE5E5E5">
                     <Label Content="时间表" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="CboTime" VerticalAlignment="Top" Margin="61,36,242,0"/>
+                    <ComboBox x:Name="CboTime" VerticalAlignment="Top" Margin="61,36,242,0" SelectionChanged="CboTime_SelectionChanged"/>
                     <Label Content="课表" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="CboClass" VerticalAlignment="Top" Margin="61,70,242,0"/>
+                    <ComboBox x:Name="CboClass" VerticalAlignment="Top" Margin="61,70,242,0" SelectionChanged="CboClass_SelectionChanged"/>
                 </Grid>
             </TabItem>
             <TabItem Header="时间选项">
