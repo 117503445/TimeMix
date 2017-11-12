@@ -8,7 +8,7 @@
         Title="TimeWindow" Height="78" Width="163" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown"  Background="#02FFFFFF" Topmost="True" ResizeMode="NoResize" ShowInTaskbar="False">
     <Grid>
         <Label x:Name="LblBig" Content="12:00" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="50"/>
-        <Label x:Name="LblSmall" Content="23" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="102,41,0,0" FontSize="20"/>
+        <Label x:Name="LblSmall" Content="23" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="122,43,0,0" FontSize="20"/>
 
     </Grid>
 </Window>
