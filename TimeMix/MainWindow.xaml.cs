@@ -89,14 +89,14 @@ namespace TimeMix
             CboClass.SelectedItem = Settings.Default.nameClass;
 
             Tbdpi.Text = Settings.Default.dpi.ToString();
-
+            TbDeltaTime.Text = Settings.Default.deltaTime.ToString();
         }
 
         private void Timer500_Tick(object sender, EventArgs e)
         {
             string pathTime = pathSource + @"\时间NEW.txt";
             string pathClass = pathSource + @"\课表NEW.txt";
-            Core core = new Core(pathTime, pathClass, deltaTime: 0);
+            Core core = new Core(pathTime, pathClass, Public.ChangHetime());
             timeWindow.ChangeTime();
 
         }
@@ -111,7 +111,7 @@ namespace TimeMix
 
             string pathTime = pathSource + @"\时间NEW.txt";
             string pathClass = pathSource + @"\课表NEW.txt";
-            Core core = new Core(pathTime, pathClass, deltaTime: 0);
+            Core core = new Core(pathTime, pathClass, Public.ChangHetime());
             //Console.WriteLine(core.Section.ToString());
 
             timeWindow.ChangeColor();
@@ -209,6 +209,16 @@ namespace TimeMix
                 return;
             }
             Settings.Default.dpi = double.Parse(Tbdpi.Text.ToString());
+            Settings.Default.Save();
+        }
+
+        private void TbDeltaTime_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (TbDeltaTime.Text == "")
+            {
+                return;
+            }
+            Settings.Default.deltaTime = int.Parse(TbDeltaTime.Text.ToString());
             Settings.Default.Save();
         }
     }

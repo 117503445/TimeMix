@@ -82,9 +82,9 @@ namespace TimeMix
         /// <param name="timePath">时间表文本路径</param>
         /// <param name="classTablePath">课表文本路径</param>
         /// <param name="deltaTime">时间差,长河时间=北京时间+时间差,允许负数</param>
-        public Core(string timePath, string classTablePath, double deltaTime)
+        public Core(string timePath, string classTablePath, DateTime changHeTime)
         {
-            DateTime changHeTime = DateTime.Now.AddSeconds(deltaTime);//长河时间
+
 
             string[] sourceTimeSections = File.ReadAllLines(timePath, Encoding.Default);
             string[] sourceClassTableSections = File.ReadAllLines(classTablePath, Encoding.Default);

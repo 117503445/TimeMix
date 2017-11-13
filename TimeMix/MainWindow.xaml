@@ -28,6 +28,8 @@
                 <Grid Background="#FFE5E5E5">
                     <TextBox x:Name="Tbdpi" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="54,10,0,0" TextChanged="Tbdpi_TextChanged"/>
                     <Label Content="DPI" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,8,0,0"/>
+                    <Label Content="时间差" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,38,0,0"/>
+                    <TextBox x:Name="TbDeltaTime" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="54,40,0,0" TextChanged="TbDeltaTime_TextChanged"/>
                 </Grid>
             </TabItem>
             <TabItem Header="操作中心">
