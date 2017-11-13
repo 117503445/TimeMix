@@ -204,22 +204,31 @@ namespace TimeMix
 
         private void Tbdpi_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (Tbdpi.Text=="")
+            try
             {
-                return;
+                Settings.Default.dpi = double.Parse(Tbdpi.Text.ToString());
+                Settings.Default.Save();
             }
-            Settings.Default.dpi = double.Parse(Tbdpi.Text.ToString());
-            Settings.Default.Save();
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            
         }
 
         private void TbDeltaTime_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (TbDeltaTime.Text == "")
+            try
             {
-                return;
+                Settings.Default.deltaTime = int.Parse(TbDeltaTime.Text.ToString());
+                Settings.Default.Save();
             }
-            Settings.Default.deltaTime = int.Parse(TbDeltaTime.Text.ToString());
-            Settings.Default.Save();
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex);
+            }
+
         }
     }
 }
