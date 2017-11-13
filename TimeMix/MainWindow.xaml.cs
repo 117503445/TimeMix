@@ -218,6 +218,7 @@ namespace TimeMix
 
         private void TbDeltaTime_TextChanged(object sender, TextChangedEventArgs e)
         {
+
             try
             {
                 Settings.Default.deltaTime = int.Parse(TbDeltaTime.Text.ToString());

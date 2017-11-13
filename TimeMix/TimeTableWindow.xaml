@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeMix"
         mc:Ignorable="d"
-        Title="Hello" Height="78.9" Width="163" WindowStyle="None" FontWeight="ExtraBlack" FontSize="18" MouseLeftButtonDown="Window_MouseLeftButtonDown" Topmost="True" Background="#02FFFFFF" AllowsTransparency="True" ResizeMode="NoResize">
+        Title="Hello" Height="78.9" Width="163" WindowStyle="None" FontWeight="ExtraBlack" FontSize="18" MouseLeftButtonDown="Window_MouseLeftButtonDown" Topmost="True" Background="#02FFFFFF" AllowsTransparency="True" ResizeMode="NoResize" ShowInTaskbar="False">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="29*"/>
