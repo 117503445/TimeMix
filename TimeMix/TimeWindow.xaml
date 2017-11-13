@@ -7,8 +7,12 @@
         mc:Ignorable="d"
         Title="TimeWindow" Height="78" Width="163" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown"  Background="#02FFFFFF" Topmost="True" ResizeMode="NoResize" ShowInTaskbar="False">
     <Grid>
-        <Label x:Name="LblBig" Content="12:00" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="50"/>
-        <Label x:Name="LblSmall" Content="23" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="122,43,0,0" FontSize="20"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="137*"/>
+            <ColumnDefinition Width="26*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="LblBig" Content="12:00" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="50" Padding="2" Margin="3,3,0,0" Height="68" Width="133" Grid.ColumnSpan="1"/>
+        <Label x:Name="LblSmall" Content="23" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,51,0,0" FontSize="20" Padding="0" Height="26" Width="26" Grid.Column="1"/>
 
     </Grid>
 </Window>

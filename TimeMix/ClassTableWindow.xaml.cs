@@ -38,7 +38,7 @@ namespace TimeMix
             var bitmap = new Bitmap(1, 1);
             using (Graphics g = Graphics.FromImage(bitmap))
             {
-                g.CopyFromScreen(rc.X, rc.Y, 0, 0, rc.Size, CopyPixelOperation.SourceCopy);
+                g.CopyFromScreen((int)(rc.X * Settings.Default.dpi), (int)(rc.Y * Settings.Default.dpi), 0, 0, rc.Size, CopyPixelOperation.SourceCopy);
             }
             System.Drawing.Color color = bitmap.GetPixel(0, 0);
 

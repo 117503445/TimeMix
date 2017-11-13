@@ -25,7 +25,10 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
             <TabItem Header="高级设置">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="Tbdpi" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="54,10,0,0" TextChanged="Tbdpi_TextChanged"/>
+                    <Label Content="DPI" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,8,0,0"/>
+                </Grid>
             </TabItem>
             <TabItem Header="操作中心">
                 <Grid Background="#FFE5E5E5"/>

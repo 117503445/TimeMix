@@ -56,7 +56,12 @@ namespace TimeMix
                 timer1000.Interval = TimeSpan.FromSeconds(1);
                 timer1000.Tick += Timer1000_Tick;
             }
-
+            DispatcherTimer timer500 = new DispatcherTimer();
+            {
+               timer500. IsEnabled = true;
+                timer500.Interval = TimeSpan.FromMilliseconds(500);
+                timer500.Tick += Timer500_Tick;
+            }
             System.IO.DirectoryInfo dir = new DirectoryInfo(pathSource);
             if (dir.Exists)
             {
@@ -83,13 +88,24 @@ namespace TimeMix
             CboTime.SelectedItem = Settings.Default.nameTime;
             CboClass.SelectedItem = Settings.Default.nameClass;
 
-
+            Tbdpi.Text = Settings.Default.dpi.ToString();
 
         }
+
+        private void Timer500_Tick(object sender, EventArgs e)
+        {
+            string pathTime = pathSource + @"\时间NEW.txt";
+            string pathClass = pathSource + @"\课表NEW.txt";
+            Core core = new Core(pathTime, pathClass, deltaTime: 0);
+            timeWindow.ChangeTime();
+
+        }
+
         /// <summary>
         /// 
         /// </summary>
         string pathSource = Environment.CurrentDirectory + @"\File\Data\Source";
+
         private void Timer1000_Tick(object sender, EventArgs e)
         {
 
@@ -97,7 +113,7 @@ namespace TimeMix
             string pathClass = pathSource + @"\课表NEW.txt";
             Core core = new Core(pathTime, pathClass, deltaTime: 0);
             //Console.WriteLine(core.Section.ToString());
-            timeWindow.ChangeTime();
+
             timeWindow.ChangeColor();
             //timeWindow.Topmost = true;
 
@@ -183,6 +199,16 @@ namespace TimeMix
         private void CboClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Settings.Default.nameClass = CboClass.SelectedItem.ToString();
+            Settings.Default.Save();
+        }
+
+        private void Tbdpi_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Tbdpi.Text=="")
+            {
+                return;
+            }
+            Settings.Default.dpi = double.Parse(Tbdpi.Text.ToString());
             Settings.Default.Save();
         }
     }

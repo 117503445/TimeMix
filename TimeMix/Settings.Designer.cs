@@ -46,5 +46,17 @@ namespace TimeMix {
                 this["nameTime"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public double dpi {
+            get {
+                return ((double)(this["dpi"]));
+            }
+            set {
+                this["dpi"] = value;
+            }
+        }
     }
 }
