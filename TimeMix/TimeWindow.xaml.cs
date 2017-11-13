@@ -25,13 +25,18 @@ namespace TimeMix
         /// </summary>
         public void ChangeTime()
         {
-            LblBig.Content = Public.ChangHetime().ToShortTimeString();
-            string s = Public.ChangHetime().Second.ToString();
-            if (s.Length==1)
+            string s1= Public.ChangHetime().ToShortTimeString();
+            if (s1.Length==4)
             {
-                s = "0" + s;
+                s1 = "0" + s1;
             }
-            LblSmall.Content = s;
+            LblBig.Content = s1;
+            string s2 = Public.ChangHetime().Second.ToString();
+            if (s2.Length==1)
+            {
+                s2 = "0" + s2;
+            }
+            LblSmall.Content = s2;
         }
 
         public TimeWindow()
