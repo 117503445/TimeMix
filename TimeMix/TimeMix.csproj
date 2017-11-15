@@ -59,6 +59,7 @@
     <Compile Include="ClassTableWindow.xaml.cs">
       <DependentUpon>ClassTableWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Logger.cs" />
     <Compile Include="ManageWindow.xaml.cs">
       <DependentUpon>ManageWindow.xaml</DependentUpon>
     </Compile>

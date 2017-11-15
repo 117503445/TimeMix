@@ -56,11 +56,11 @@ namespace TimeMix
                 timer1000.Interval = TimeSpan.FromSeconds(1);
                 timer1000.Tick += Timer1000_Tick;
             }
-            DispatcherTimer timer500 = new DispatcherTimer();
+            DispatcherTimer timer100 = new DispatcherTimer();
             {
-               timer500. IsEnabled = true;
-                timer500.Interval = TimeSpan.FromMilliseconds(500);
-                timer500.Tick += Timer500_Tick;
+               timer100. IsEnabled = true;
+                timer100.Interval = TimeSpan.FromMilliseconds(100);
+                timer100.Tick += Timer100_Tick;
             }
             System.IO.DirectoryInfo dir = new DirectoryInfo(pathSource);
             if (dir.Exists)
@@ -92,13 +92,9 @@ namespace TimeMix
             TbDeltaTime.Text = Settings.Default.deltaTime.ToString();
         }
 
-        private void Timer500_Tick(object sender, EventArgs e)
+        private void Timer100_Tick(object sender, EventArgs e)
         {
-            string pathTime = pathSource + @"\时间NEW.txt";
-            string pathClass = pathSource + @"\课表NEW.txt";
-            Core core = new Core(pathTime, pathClass, Public.ChangHetime());
             timeWindow.ChangeTime();
-
         }
 
         /// <summary>
@@ -111,6 +107,7 @@ namespace TimeMix
 
             string pathTime = pathSource + @"\时间NEW.txt";
             string pathClass = pathSource + @"\课表NEW.txt";
+
             Core core = new Core(pathTime, pathClass, Public.ChangHetime());
             //Console.WriteLine(core.Section.ToString());
 
