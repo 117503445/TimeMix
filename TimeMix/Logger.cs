@@ -8,8 +8,8 @@ namespace TimeMix
 {
     public static class Logger
     {
-        public static void Wrie(Exception ex) {
-
+        public static void Write(Exception ex) {
+            Console.WriteLine(ex.ToString());
         }
     }
 }

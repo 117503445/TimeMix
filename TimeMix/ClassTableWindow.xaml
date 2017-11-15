@@ -8,15 +8,15 @@
         Title="ClassWindow" Height="227" Width="44" WindowStyle="None" FontWeight="ExtraBlack" FontSize="18" AllowsTransparency="True" Background="#02FFFFFF" ResizeMode="NoResize" ShowInTaskbar="False" MouseLeftButtonDown="Window_MouseLeftButtonDown" MouseLeftButtonUp="Window_MouseLeftButtonUp">
     <Grid>
         <StackPanel Orientation="Vertical">
-            <Label x:Name="Lbl1" Content="语文" HorizontalContentAlignment="Center" Padding="1"/>
-            <Label x:Name="Lbl2" Content="语文" HorizontalContentAlignment="Center"  Padding="1"/>
-            <Label x:Name="Lbl3" Content="语文" HorizontalContentAlignment="Center"  Padding="1"/>
-            <Label x:Name="Lbl4" Content="语文" HorizontalContentAlignment="Center"  Padding="1"/>
-            <Label x:Name="Lbl5" Content="语文" HorizontalContentAlignment="Center"  Padding="1"/>
-            <Label x:Name="Lbl6" Content="语文" HorizontalContentAlignment="Center" Padding="1"/>
-            <Label x:Name="Lbl7" Content="语文" HorizontalContentAlignment="Center"  Padding="1"/>
-            <Label x:Name="Lbl8" Content="语文" HorizontalContentAlignment="Center"  Padding="1"/>
-            <Label x:Name="Lbl9" Content="语文" HorizontalContentAlignment="Center"  Padding="1"/>
+            <Label x:Name="Lbl1" Content="如果" HorizontalContentAlignment="Center" Padding="1"/>
+            <Label x:Name="Lbl2" Content="看到" HorizontalContentAlignment="Center"  Padding="1"/>
+            <Label x:Name="Lbl3" Content="了我" HorizontalContentAlignment="Center"  Padding="1"/>
+            <Label x:Name="Lbl4" Content="去找" HorizontalContentAlignment="Center"  Padding="1"/>
+            <Label x:Name="Lbl5" Content="电教" HorizontalContentAlignment="Center"  Padding="1"/>
+            <Label x:Name="Lbl6" Content="委员" HorizontalContentAlignment="Center" Padding="1"/>
+            <Label x:Name="Lbl7" Content="给他" HorizontalContentAlignment="Center"  Padding="1"/>
+            <Label x:Name="Lbl8" Content="看看" HorizontalContentAlignment="Center"  Padding="1"/>
+            <Label x:Name="Lbl9" Content="日志" HorizontalContentAlignment="Center"  Padding="1"/>
         </StackPanel>
     </Grid>
 </Window>

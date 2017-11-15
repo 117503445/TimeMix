@@ -107,19 +107,30 @@ namespace TimeMix
 
             string pathTime = pathSource + @"\时间NEW.txt";
             string pathClass = pathSource + @"\课表NEW.txt";
+            timeTableWindow.ChangeColor();
+            timeWindow.ChangeColor();
+            classTableWindow.ChangeColor();
+            classTableWindow.Topmost = true;
 
-            Core core = new Core(pathTime, pathClass, Public.ChangHetime());
+            try
+            {
+                Core.Update(pathTime, pathClass, Public.ChangHetime());
+            }
+            catch (Exception ex)
+            {
+                Logger.Write(ex);
+                return;
+            }
+
             //Console.WriteLine(core.Section.ToString());
 
-            timeWindow.ChangeColor();
+
             //timeWindow.Topmost = true;
 
-            timeTableWindow.Changedata(core.Section);
-            timeTableWindow.ChangeColor();
+            timeTableWindow.Changedata(Core.Section);
 
-            classTableWindow.ChangeColor();
-            classTableWindow.ChangeClass(core.TodayClassTable);
-            classTableWindow.Topmost = true;
+            classTableWindow.ChangeClass(Core.TodayClassTable);
+
         }
 
         private void Window_Activated(object sender, EventArgs e)

@@ -66,23 +66,23 @@ namespace TimeMix
         public string Replacedname;
 
     }
-    public class Core
+    public static class Core
     {
         /// <summary>
         /// 当前的节
         /// </summary>
-        TimeSection currentSection;
+        static TimeSection  currentSection;
         /// <summary>
         /// 下一个节
         /// </summary>
-        TimeSection nextSection;
+        static TimeSection nextSection;
         /// <summary>
         /// 
         /// </summary>
         /// <param name="timePath">时间表文本路径</param>
         /// <param name="classTablePath">课表文本路径</param>
         /// <param name="deltaTime">时间差,长河时间=北京时间+时间差,允许负数</param>
-        public Core(string timePath, string classTablePath, DateTime changHeTime)
+        public static void Update(string timePath, string classTablePath, DateTime changHeTime)
         {
 
 
@@ -142,7 +142,7 @@ namespace TimeMix
                     switch (SecondCut[0])
                     {
                         case "week":
-                            if (IsToday(SecondCut[1]))
+                            if (Core.IsToday(SecondCut[1]))
                             {
                                 todayTimeSections.Add(sourceTimeSections[i]);
                             }
@@ -279,7 +279,7 @@ namespace TimeMix
 
             for (int i = 0; i < 9; i++)//填充课表
             {
-                this.todayClassTable[i] = classList[i];
+                Core.todayClassTable[i] = classList[i];
             }
             //foreach (var item in preTodayTimeSections)
             //{
@@ -291,8 +291,8 @@ namespace TimeMix
         /// <summary>
         /// 返回当前的节
         /// </summary>
-        public TimeSection Section { get => currentSection; set => currentSection = value; }
-        public string[] TodayClassTable { get => todayClassTable;  }
+        public static TimeSection Section { get => currentSection; set => currentSection = value; }
+        public static  string[] TodayClassTable { get => Core.todayClassTable;  }
 
 
         /// <summary>
@@ -300,7 +300,7 @@ namespace TimeMix
         /// </summary>
         /// <param name="week">例:"周一"</param>
         /// <returns></returns>
-        protected bool IsToday(string week)
+         static bool IsToday(string week)
         {
             string today = DateTime.Now.DayOfWeek.ToString();
             if (today == "Monday")
@@ -325,7 +325,7 @@ namespace TimeMix
         /// </summary>
         /// <returns></returns>
 
-        private string[] todayClassTable=new string[9];
+        private static string[] todayClassTable=new string[9];
     }
 
 }

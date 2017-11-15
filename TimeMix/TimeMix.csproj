@@ -139,24 +139,6 @@
     <None Include="File\Data\Source\时间NEW.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="File\Data\Source\时间夏季%28不延时%29.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="File\Data\Source\时间夏季%28延时%29.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="File\Data\Source\时间春秋季%28不延时%29.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="File\Data\Source\时间春秋季%28延时%29.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="File\Data\Source\课表5班.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="File\Data\Source\课表5班周六.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="File\Data\Source\课表NEW.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
