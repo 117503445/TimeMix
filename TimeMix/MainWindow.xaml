@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeMix"
         mc:Ignorable="d"
-        Title="MainWindow" Height="318" Width="517" WindowStyle="ThreeDBorderWindow" Activated="Window_Activated" MouseLeftButtonDown="Window_MouseLeftButtonDown" Closed="Window_Closed">
+        Title="MainWindow" Height="318" Width="517" WindowStyle="ThreeDBorderWindow" Activated="Window_Activated" MouseLeftButtonDown="Window_MouseLeftButtonDown" Closed="Window_Closed" Closing="Window_Closing">
     <Grid>
         <TabControl>
             <TabItem Header="课表">

@@ -58,11 +58,11 @@ namespace TimeMix
             }
             DispatcherTimer timer100 = new DispatcherTimer();
             {
-               timer100. IsEnabled = true;
+                timer100.IsEnabled = true;
                 timer100.Interval = TimeSpan.FromMilliseconds(100);
                 timer100.Tick += Timer100_Tick;
             }
-            System.IO.DirectoryInfo dir = new DirectoryInfo(pathSource);
+            DirectoryInfo dir = new DirectoryInfo(pathSource);
             if (dir.Exists)
             {
                 FileInfo[] fiList = dir.GetFiles();
@@ -105,8 +105,6 @@ namespace TimeMix
         private void Timer1000_Tick(object sender, EventArgs e)
         {
 
-            string pathTime = pathSource + @"\时间NEW.txt";
-            string pathClass = pathSource + @"\课表NEW.txt";
             timeTableWindow.ChangeColor();
             timeWindow.ChangeColor();
             classTableWindow.ChangeColor();
@@ -114,6 +112,8 @@ namespace TimeMix
 
             try
             {
+                string pathTime = pathSource + @"\" + CboTime.SelectedItem.ToString();
+                string pathClass = pathSource + @"\" + CboClass.SelectedItem.ToString();
                 Core.Update(pathTime, pathClass, Public.ChangHetime());
             }
             catch (Exception ex)
@@ -221,7 +221,7 @@ namespace TimeMix
             {
                 Console.WriteLine(ex);
             }
-            
+
         }
 
         private void TbDeltaTime_TextChanged(object sender, TextChangedEventArgs e)
@@ -238,6 +238,13 @@ namespace TimeMix
                 Console.WriteLine(ex);
             }
 
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Hide();
+            manageWindow.ChkMainWindow.IsChecked = false;
+            e.Cancel = true;
         }
     }
 }
