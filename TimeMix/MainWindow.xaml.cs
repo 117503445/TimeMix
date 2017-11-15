@@ -104,12 +104,10 @@ namespace TimeMix
 
         private void Timer1000_Tick(object sender, EventArgs e)
         {
-
             timeTableWindow.ChangeColor();
             timeWindow.ChangeColor();
             classTableWindow.ChangeColor();
             classTableWindow.Topmost = true;
-
             try
             {
                 string pathTime = pathSource + @"\" + CboTime.SelectedItem.ToString();
@@ -121,16 +119,10 @@ namespace TimeMix
                 Logger.Write(ex);
                 return;
             }
-
             //Console.WriteLine(core.Section.ToString());
-
-
             //timeWindow.Topmost = true;
-
             timeTableWindow.Changedata(Core.Section);
-
             classTableWindow.ChangeClass(Core.TodayClassTable);
-
         }
 
         private void Window_Activated(object sender, EventArgs e)
@@ -155,7 +147,6 @@ namespace TimeMix
             {
                 timeWindow.Hide();
             }
-
         }
 
         private void SetVisibleClassTableWindow(bool IsVisible)
@@ -226,7 +217,6 @@ namespace TimeMix
 
         private void TbDeltaTime_TextChanged(object sender, TextChangedEventArgs e)
         {
-
             try
             {
                 Settings.Default.deltaTime = int.Parse(TbDeltaTime.Text.ToString());
@@ -234,7 +224,6 @@ namespace TimeMix
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex);
             }
 

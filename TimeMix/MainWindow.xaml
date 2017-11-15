@@ -12,6 +12,7 @@
                 <Grid Background="#FFE5E5E5">
                     <Label Content="课表" HorizontalAlignment="Left" Margin="16,20,0,0" VerticalAlignment="Top"/>
                     <ComboBox x:Name="CboClass" VerticalAlignment="Top" Margin="67,24,236,0" SelectionChanged="CboClass_SelectionChanged"/>
+                    <CheckBox x:Name="CboAutoHide" Content="上课隐藏(X)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,59,0,0"/>
                 </Grid>
             </TabItem>
             <TabItem Header="时间表">
