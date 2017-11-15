@@ -137,40 +137,7 @@ namespace TimeMix
             DragMove();
         }
 
-        private void SetVisibleTimeWindow(bool IsVisible)
-        {
-            if (IsVisible)
-            {
-                timeWindow.Show();
-            }
-            else
-            {
-                timeWindow.Hide();
-            }
-        }
 
-        private void SetVisibleClassTableWindow(bool IsVisible)
-        {
-            if (IsVisible)
-            {
-                classTableWindow.Show();
-            }
-            else
-            {
-                classTableWindow.Hide();
-            }
-        }
-        private void SetVisibleMainWindow(bool IsVisible)
-        {
-            if (IsVisible)
-            {
-                Show();
-            }
-            else
-            {
-                Hide();
-            }
-        }
         private void SetVisible(Window window, bool isVisible)
         {
             if (isVisible)

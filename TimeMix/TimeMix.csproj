@@ -144,7 +144,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="File\Data\Log\Log.txt" />
+    <Resource Include="File\Log\Log.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
