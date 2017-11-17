@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeMix"
         mc:Ignorable="d"
-        Title="ManageWindow" Height="300" Width="48.857" Closed="Window_Closed"  WindowStyle="None" ResizeMode="NoResize">
+        Title="ManageWindow" Height="207.429" Width="302.572" Closed="Window_Closed"   ResizeMode="NoResize">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="临时赶工的切换窗体,突然发现我会委托了!" VerticalAlignment="Top" Width="247" Margin="21,126,0,0"/>
-        <CheckBox x:Name="ChkTimeWindow" Content="TimeWindow" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,154,0,0" Click="ChkTimeWindow_Click"/>
-        <CheckBox x:Name="ChkClassTableWindow" Content="ClassTableWindow" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,174,0,0" Click="ChkClassTableWindow_Click"/>
-        <CheckBox x:Name="ChkMainWindow" Content="MainWindow" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,194,0,0" Click="ChkMainWindow_Click" />
-        <CheckBox x:Name="ChkTimeTableWindow" Content="TimeTableWindow" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,214,0,0" Click="ChkTimeTableWindow_Click" />
+        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="临时赶工的切换窗体,突然发现我会委托了!" VerticalAlignment="Top" Width="247" Margin="10,24,0,0"/>
+        <CheckBox x:Name="ChkTimeWindow" Content="TimeWindow" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,52,0,0" Click="ChkTimeWindow_Click"/>
+        <CheckBox x:Name="ChkClassTableWindow" Content="ClassTableWindow" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,72,0,0" Click="ChkClassTableWindow_Click"/>
+        <CheckBox x:Name="ChkMainWindow" Content="MainWindow" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,92,0,0" Click="ChkMainWindow_Click" />
+        <CheckBox x:Name="ChkTimeTableWindow" Content="TimeTableWindow" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,112,0,0" Click="ChkTimeTableWindow_Click" />
+        <Image HorizontalAlignment="Left" Height="58" VerticalAlignment="Top" Width="49"/>
     </Grid>
 </Window>

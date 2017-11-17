@@ -28,6 +28,7 @@ namespace TimeMix
         public ClassTableWindow classTableWindow;
         public TimeTableWindow timeTableWindow;
         public ManageWindow manageWindow;
+        public SwitchWindow switchWindow;
         public MainWindow()
         {
             InitializeComponent();
@@ -42,7 +43,10 @@ namespace TimeMix
             // timeTableWindow.Show();
 
             manageWindow = new ManageWindow(this);
-            manageWindow.Show();
+            //manageWindow.Show();
+
+            switchWindow = new SwitchWindow();
+            switchWindow.Show();
 
             manageWindow.SetVisible += SetVisible;
 

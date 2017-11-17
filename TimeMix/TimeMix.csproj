@@ -69,6 +69,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="SwitchWindow.xaml.cs">
+      <DependentUpon>SwitchWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TimeTableWindow.xaml.cs">
       <DependentUpon>TimeTableWindow.xaml</DependentUpon>
     </Compile>
@@ -93,6 +96,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ManageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SwitchWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,6 +154,21 @@
     <Resource Include="File\Log\Log.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Switch\Time.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Switch\ClassTable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Switch\TimeTable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Switch\Other.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Switch\Setting.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

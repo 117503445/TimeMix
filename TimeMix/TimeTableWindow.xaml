@@ -17,7 +17,7 @@
         </Grid.ColumnDefinitions>
         <Label x:Name="LblClass" Content="读取错误" HorizontalContentAlignment="Center" Padding="0" FontSize="20"/>
         <StackPanel Grid.Row="1">
-            <Label x:Name="LblTime" Content="10:05-10:10" FontSize="18" Padding="0"></Label>
+            <Label x:Name="LblTime" Content="10:05-10:10" FontSize="18" Padding="0"/>
             <Label x:Name="LblProgress" Content="4.3%" Padding="0" Height="20"/>
         </StackPanel>
     </Grid>
