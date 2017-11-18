@@ -27,7 +27,7 @@ namespace TimeMix
         public TimeWindow timeWindow;
         public ClassTableWindow classTableWindow;
         public TimeTableWindow timeTableWindow;
-        public ManageWindow manageWindow;
+
         public SwitchWindow switchWindow;
         public MainWindow()
         {
@@ -42,13 +42,12 @@ namespace TimeMix
             timeTableWindow = new TimeTableWindow();
             // timeTableWindow.Show();
 
-            manageWindow = new ManageWindow(this);
-            //manageWindow.Show();
 
-            switchWindow = new SwitchWindow();
+
+            switchWindow = new SwitchWindow(this);
             switchWindow.Show();
 
-            manageWindow.SetVisible += SetVisible;
+
 
 
             Hide();
@@ -131,9 +130,7 @@ namespace TimeMix
 
         private void Window_Activated(object sender, EventArgs e)
         {
-            manageWindow.ChkClassTableWindow.IsChecked = classTableWindow.IsVisible;
-            manageWindow.ChkTimeWindow.IsChecked = timeWindow.IsVisible;
-            manageWindow.ChkMainWindow.IsChecked = IsVisible;
+
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -142,17 +139,7 @@ namespace TimeMix
         }
 
 
-        private void SetVisible(Window window, bool isVisible)
-        {
-            if (isVisible)
-            {
-                window.Show();
-            }
-            else
-            {
-                window.Hide();
-            }
-        }
+
 
         private void Window_Closed(object sender, EventArgs e)
         {
@@ -203,7 +190,7 @@ namespace TimeMix
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Hide();
-            manageWindow.ChkMainWindow.IsChecked = false;
+            switchWindow.SetVisible(3);
             e.Cancel = true;
         }
     }

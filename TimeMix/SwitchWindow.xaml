@@ -5,14 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeMix"
         mc:Ignorable="d"
-        Title="SwitchWindow" Height="200" Width="40" Closed="Window_Closed" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="NoResize">
+        Title="SwitchWindow" Height="240" Width="40" Closed="Window_Closed" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="NoResize" MouseEnter="Window_MouseEnter" MouseLeave="Window_MouseLeave" Topmost="True">
     <Grid>
         <StackPanel>
-            <Image HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Source="/Resources/Switch/Time.png"/>
-            <Image HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Source="/Resources/Switch/ClassTable.png"/>
-            <Image HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Source="/Resources/Switch/TimeTable.png"/>
-            <Image HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Source="/Resources/Switch/Setting.png" />
-            <Image HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Source="/Resources/Switch/Other.png"/>
+            <Image x:Name="ImgTime" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Source="/Resources/Switch/Close/Time.png" MouseDown="Image_MouseDown"/>
+            <Image x:Name="ImgClassTable" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Source="/Resources/Switch/Close/ClassTable.png" MouseDown="Image_MouseDown"/>
+            <Image x:Name="ImgTimeTable" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Source="/Resources/Switch/Close/TimeTable.png" MouseDown="Image_MouseDown"/>
+            <Image x:Name="ImgSetting" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Source="/Resources/Switch/Close/Setting.png"  MouseDown="Image_MouseDown"/>
+            <Image x:Name="ImgOther" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Source="/Resources/Switch/Close/Other.png" MouseDown="Image_MouseDown"/>
+            <Image x:Name="ImgClose" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Source="/Resources/Switch/Close/Close.png" MouseDown="Image_MouseDown"/>
         </StackPanel>
     </Grid>
 </Window>

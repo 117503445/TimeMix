@@ -60,9 +60,6 @@
       <DependentUpon>ClassTableWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Logger.cs" />
-    <Compile Include="ManageWindow.xaml.cs">
-      <DependentUpon>ManageWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Public.cs" />
     <Compile Include="Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -95,10 +92,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ManageWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="SwitchWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -156,19 +149,31 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Switch\Time.png" />
+    <Resource Include="Resources\Switch\Close\Time.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Switch\ClassTable.png" />
+    <Resource Include="Resources\Switch\Close\ClassTable.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Switch\TimeTable.png" />
+    <Resource Include="Resources\Switch\Close\TimeTable.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Switch\Other.png" />
+    <Resource Include="Resources\Switch\Close\Other.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Switch\Setting.png" />
+    <Resource Include="Resources\Switch\Close\Setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Switch\Close\Close.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Switch\Open\ClassTable.png" />
+    <Resource Include="Resources\Switch\Open\Close.png" />
+    <Resource Include="Resources\Switch\Open\Other.png" />
+    <Resource Include="Resources\Switch\Open\Setting.png" />
+    <Resource Include="Resources\Switch\Open\Time.png" />
+    <Resource Include="Resources\Switch\Open\TimeTable.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
