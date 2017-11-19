@@ -144,11 +144,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="File\Log\Log.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Switch\Close\Time.png" />
   </ItemGroup>
   <ItemGroup>
@@ -166,7 +161,9 @@
   <ItemGroup>
     <Resource Include="Resources\Switch\Close\Close.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="File\Log\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Switch\Open\ClassTable.png" />
     <Resource Include="Resources\Switch\Open\Close.png" />
