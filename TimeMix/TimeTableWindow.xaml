@@ -6,19 +6,28 @@
         xmlns:local="clr-namespace:TimeMix"
         mc:Ignorable="d"
         Title="Hello" Height="78" Width="156" WindowStyle="None" FontWeight="ExtraBlack" FontSize="18" MouseLeftButtonDown="Window_MouseLeftButtonDown" Topmost="True" Background="#02FFFFFF" AllowsTransparency="True" ResizeMode="NoResize" ShowInTaskbar="False">
-    <Grid>
+    <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="29*"/>
             <RowDefinition Height="48*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="7*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="119*"/>
+            <ColumnDefinition Width="37*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="LblClass" Content="读取错误" HorizontalContentAlignment="Center" Padding="0" FontSize="20"/>
-        <StackPanel Grid.Row="1">
-            <Label x:Name="LblTime" Content="10:05-10:10" FontSize="18" Padding="0"/>
-            <Label x:Name="LblProgress" Content="4.3%" Padding="0" Height="20"/>
-        </StackPanel>
+        <Label x:Name="LblClass" Content="读取错误" HorizontalContentAlignment="Center" Padding="0" FontSize="20" Margin="0,0,0,0.333"/>
+        <Grid Margin="0,29,0,0" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="63*"/>
+                <ColumnDefinition Width="46*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Margin="0,0,0.333,-0.333">
+                <Label x:Name="LblBeginTime" Content="10:05" FontSize="18" Padding="0"/>
+                <Label x:Name="LblEndTime" Content="10:10" Padding="0" Height="20"/>
+            </StackPanel>
+            <Label x:Name="LblProgress" Content="4.3%" Padding="0" HorizontalContentAlignment="Center" Grid.ColumnSpan="2" Margin="63,10,0.333,18.667"/>
+        </Grid>
+
     </Grid>
 </Window>

@@ -20,9 +20,12 @@ namespace TimeMix
     /// </summary>
     public partial class TimeTableWindow : Window
     {
+        Label[] Labels;
         public TimeTableWindow()
         {
             InitializeComponent();
+            Labels = new Label[] { LblClass, LblBeginTime, LblEndTime, LblProgress };
+
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -45,12 +48,15 @@ namespace TimeMix
                 Top = SystemParameters.PrimaryScreenHeight - Height;
             }
         }
-        public void Changedata(TimeSection timeSection) {
+        public void Changedata(TimeSection timeSection)
+        {
             LblClass.Content = timeSection.name;
-            LblTime.Content = timeSection.beginTime.ToShortTimeString() + "___" + timeSection.endTime.ToShortTimeString();
+            LblBeginTime.Content = timeSection.beginTime.ToShortTimeString();
+            LblEndTime.Content = timeSection.endTime.ToShortTimeString();
             LblProgress.Content = timeSection.progress;
         }
-        public void ChangeColor() {
+        public void ChangeColor()
+        {
             System.Drawing.Rectangle rc = new System.Drawing.Rectangle((int)Left, (int)Top, (int)SystemParameters.PrimaryScreenWidth, (int)System.Windows.SystemParameters.PrimaryScreenHeight);
             var bitmap = new Bitmap(1, 1);
             using (Graphics g = Graphics.FromImage(bitmap))
@@ -59,18 +65,21 @@ namespace TimeMix
             }
             System.Drawing.Color color = bitmap.GetPixel(0, 0);
 
-            if (color.R + color.G + color.B > 384)//浅色
+
+            foreach (var item in Labels)
             {
-                LblClass.Foreground = new SolidColorBrush(Colors.Black);
-                LblProgress.Foreground = new SolidColorBrush(Colors.Black);
-                LblTime.Foreground = new SolidColorBrush(Colors.Black);
-            }
-            else
-            {
-                LblClass.Foreground = new SolidColorBrush(Colors.White);
-                LblProgress.Foreground = new SolidColorBrush(Colors.White);
-                LblTime.Foreground = new SolidColorBrush(Colors.White);
+
+                    if (color.R + color.G + color.B > 384)//浅色
+                    {
+                        item.Foreground = new SolidColorBrush(Colors.Black);
+                    }
+                    else
+                    {
+                        item.Foreground = new SolidColorBrush(Colors.White);
+                    }
+                }
+
             }
         }
     }
-}
+
