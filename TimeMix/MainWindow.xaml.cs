@@ -103,7 +103,7 @@ namespace TimeMix
         }
 
         /// <summary>
-        /// 
+        /// 资源路径
         /// </summary>
         string pathSource = Environment.CurrentDirectory + @"\File\Data\Source";
 
@@ -113,10 +113,11 @@ namespace TimeMix
             timeWindow.ChangeColor();
             classTableWindow.ChangeColor();
             classTableWindow.Topmost = true;
+
+            string pathTime = pathSource + @"\" + CboTime.SelectedItem.ToString();
+            string pathClass = pathSource + @"\" + CboClass.SelectedItem.ToString();
             try
             {
-                string pathTime = pathSource + @"\" + CboTime.SelectedItem.ToString();
-                string pathClass = pathSource + @"\" + CboClass.SelectedItem.ToString();
                 Core.Update(pathTime, pathClass, Public.ChangHetime());
             }
             catch (Exception ex)

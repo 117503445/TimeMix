@@ -161,9 +161,7 @@
   <ItemGroup>
     <Resource Include="Resources\Switch\Close\Close.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="File\Log\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Switch\Open\ClassTable.png" />
     <Resource Include="Resources\Switch\Open\Close.png" />
@@ -171,6 +169,11 @@
     <Resource Include="Resources\Switch\Open\Setting.png" />
     <Resource Include="Resources\Switch\Open\Time.png" />
     <Resource Include="Resources\Switch\Open\TimeTable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="File\Log\Log.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
