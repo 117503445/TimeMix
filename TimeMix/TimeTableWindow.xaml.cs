@@ -68,7 +68,6 @@ namespace TimeMix
 
             foreach (var item in Labels)
             {
-
                     if (color.R + color.G + color.B > 384)//浅色
                     {
                         item.Foreground = new SolidColorBrush(Colors.Black);
@@ -78,7 +77,6 @@ namespace TimeMix
                         item.Foreground = new SolidColorBrush(Colors.White);
                     }
                 }
-
             }
         }
     }

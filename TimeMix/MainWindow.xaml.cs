@@ -42,16 +42,10 @@ namespace TimeMix
             timeTableWindow = new TimeTableWindow();
             // timeTableWindow.Show();
 
-
-
             switchWindow = new SwitchWindow(this);
             switchWindow.Show();
 
-
-
-
             Hide();
-
 
             DispatcherTimer timer1000 = new DispatcherTimer();
             {
@@ -84,6 +78,14 @@ namespace TimeMix
                 }
                 CboTime.ItemsSource = timeList;
                 CboClass.ItemsSource = classList;
+                if (CboTime.SelectedItem==null)
+                {
+                    CboTime.SelectedIndex = 0;
+                }
+                if (CboClass.SelectedItem==null)
+                {
+                    CboClass.SelectedIndex = 0;
+                }
             }
             //TimeCore.Core core = new TimeCore.Core(@"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\时间NEW.txt", @"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\课表NEW.txt", deltaTime: 0);
 
@@ -138,13 +140,17 @@ namespace TimeMix
             DragMove();
         }
 
-
-
-
         private void Window_Closed(object sender, EventArgs e)
         {
             System.Diagnostics.Process.GetCurrentProcess().Kill();
 
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Hide();
+            switchWindow.SetVisible(3);
+            e.Cancel = true;
         }
 
         private void CboTime_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -187,11 +193,6 @@ namespace TimeMix
 
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            Hide();
-            switchWindow.SetVisible(3);
-            e.Cancel = true;
-        }
+
     }
 }
