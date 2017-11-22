@@ -13,10 +13,8 @@ namespace TimeMix
     {
         public override string ToString()
         {
-           return string.Format("BeginTime={0},EndTime={1},name={2},progress={3},ExtraString={4}", beginTime.ToShortTimeString(), endTime.ToShortTimeString(), name, progress, extraString);
+            return string.Format("BeginTime={0};EndTime={1};name={2};progress={3};ExtraString={4}", beginTime.ToShortTimeString(), endTime.ToShortTimeString(), name, progress, extraString);
         }
-
-
 
         /// <summary>
         /// 开始时间
@@ -71,7 +69,7 @@ namespace TimeMix
         /// <summary>
         /// 当前的节
         /// </summary>
-        static TimeSection  currentSection;
+        static TimeSection currentSection;
         /// <summary>
         /// 下一个节
         /// </summary>
@@ -90,19 +88,21 @@ namespace TimeMix
             string[] sourceClassTableSections = File.ReadAllLines(classTablePath, Encoding.Default);
 
 
-            string weekstr = changHeTime.DayOfWeek.ToString();
-            switch (weekstr)
+            string todayWeekStr = changHeTime.DayOfWeek.ToString();
+            string tomorrowWeekStr = "";
+            switch (todayWeekStr)
             {
-                case "Monday": weekstr = "周一"; break;
-                case "Tuesday": weekstr = "周二"; break;
-                case "Wednesday": weekstr = "周三"; break;
-                case "Thursday": weekstr = "周四"; break;
-                case "Friday": weekstr = "周五"; break;
-                case "Saturday": weekstr = "周六"; break;
-                case "Sunday": weekstr = "周日"; break;
+                case "Monday": todayWeekStr = "周一"; tomorrowWeekStr = "周二"; break;
+                case "Tuesday": todayWeekStr = "周二"; tomorrowWeekStr = "周三"; break;
+                case "Wednesday": todayWeekStr = "周三"; tomorrowWeekStr = "周四"; break;
+                case "Thursday": todayWeekStr = "周四"; tomorrowWeekStr = "周五"; break;
+                case "Friday": todayWeekStr = "周五"; tomorrowWeekStr = "周六"; break;
+                case "Saturday": todayWeekStr = "周六"; tomorrowWeekStr = "周日"; break;
+                case "Sunday": todayWeekStr = "周日"; tomorrowWeekStr = "周一"; break;
             }
-          // Console.WriteLine(weekstr);
+            // Console.WriteLine(weekstr);
             List<string> todayClassTable = new List<string>();
+            List<string> tomorrowClassTable = new List<string>();
             for (int i = 0; i < sourceClassTableSections.Length; i++)
             {
                 string[] FirstCut = sourceClassTableSections[i].Split(';');
@@ -113,9 +113,13 @@ namespace TimeMix
                     switch (SecondCut[0])
                     {
                         case "week":
-                            if (SecondCut[1] == weekstr)
+                            if (SecondCut[1] == todayWeekStr)
                             {
                                 todayClassTable.Add(sourceClassTableSections[i]);
+                            }
+                            else if (SecondCut[1] == tomorrowWeekStr)
+                            {
+                                tomorrowClassTable.Add(sourceClassTableSections[i]);
                             }
 
                             break;
@@ -142,7 +146,7 @@ namespace TimeMix
                     switch (SecondCut[0])
                     {
                         case "week":
-                            if (Core.IsToday(SecondCut[1]))
+                            if (IsToday(SecondCut[1]))
                             {
                                 todayTimeSections.Add(sourceTimeSections[i]);
                             }
@@ -188,7 +192,7 @@ namespace TimeMix
             //{
             //    Console.WriteLine(item.sourceName + "  " + item.Replacedname + "  " + item.week);
             //}
-            List<string> classList = new List<string>();
+            List<string> todayClassList = new List<string>();
             for (int i = 0; i < todayTimeSections.Count; i++)
             {
                 string[] FirstCut = todayTimeSections[i].Split(';');
@@ -196,40 +200,52 @@ namespace TimeMix
                 {
                     string[] SecondCut = FirstCut[j].Split('=');
 
-                        switch (SecondCut[0])
-                        {
-                            case "beginTime":
-                                timeSections[i].beginTime = Convert.ToDateTime(SecondCut[1]);
-                                break;
-                            case "name":
-                                timeSections[i].name = SecondCut[1];
-                                break;
-                            case "week":
-                                timeSections[i].week = SecondCut[1];
-                                break;
-                            case "extraString":
-                                timeSections[i].extraString = SecondCut[1];
-                                if (timeSections[i].extraString.Contains("replace"))
+                    switch (SecondCut[0])
+                    {
+                        case "beginTime":
+                            timeSections[i].beginTime = Convert.ToDateTime(SecondCut[1]);
+                            break;
+                        case "name":
+                            timeSections[i].name = SecondCut[1];
+                            break;
+                        case "week":
+                            timeSections[i].week = SecondCut[1];
+                            break;
+                        case "extraString":
+                            timeSections[i].extraString = SecondCut[1];
+                            if (timeSections[i].extraString.Contains("replace"))
+                            {
+                                foreach (var item in classTableSections)
                                 {
-                                    foreach (var item in classTableSections)
+                                    if (item.sourceName == timeSections[i].name)
                                     {
-                                        if (item.sourceName == timeSections[i].name)
-                                        {
-                                            timeSections[i].name = item.Replacedname;
-                                        classList.Add(item.Replacedname);
-                                        }
+                                        timeSections[i].name = item.Replacedname;
+                                        todayClassList.Add(item.Replacedname);
                                     }
                                 }
-                                break;
-                            case (default):
-                                Console.WriteLine("无法解析");//以后写入logger!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                                break;
-                        }
-                        timeSections[i].available = true;
-                    
+                            }
+                            break;
+                        case (default):
+                            Console.WriteLine("无法解析");//以后写入logger!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                            break;
+                    }
+                    timeSections[i].available = true;
+
                 }
             }//解析时间表
-
+            List<string> tempTomorrowClassTable = new List<string>();
+            for (int i = 0; i < tomorrowClassTable.Count; i++)
+            {
+                string[] fisrtCut = tomorrowClassTable[i].Split(';');
+                for (int j = 0; j < fisrtCut.Length; j++)
+                {
+                    string[] secondCut = fisrtCut[j].Split('=');
+                    if (secondCut[0] == "Replacedname")
+                    {
+                        tempTomorrowClassTable.Add(secondCut[1]);
+                    }
+                }
+            }
             //foreach (var item in sections)
             //{
             //    Console.WriteLine("开始时间_{0},名称_{1},额外信息_{2}",item.beginTime.ToShortTimeString(),item.name,item.extraString);
@@ -279,20 +295,26 @@ namespace TimeMix
 
             for (int i = 0; i < 9; i++)//填充课表
             {
-                Core.todayClassTable[i] = classList[i];
+                Core.todayClassTable[i] = todayClassList[i];
+                Core.tomorrowClassTable[i] = tempTomorrowClassTable[i];
             }
             //foreach (var item in preTodayTimeSections)
             //{
             //    Console.WriteLine(item);
             //}
 
+            //foreach (var item in tempTomorrowClassTable)
+            //{
+            //    Console.WriteLine(item);
+            //}
 
         }
         /// <summary>
         /// 返回当前的节
         /// </summary>
         public static TimeSection Section { get => currentSection; set => currentSection = value; }
-        public static  string[] TodayClassTable { get => Core.todayClassTable;  }
+        public static string[] TodayClassTable { get => todayClassTable; }
+        public static string[] TomorrowClassTable { get => tomorrowClassTable; }
 
 
         /// <summary>
@@ -300,7 +322,7 @@ namespace TimeMix
         /// </summary>
         /// <param name="week">例:"周一"</param>
         /// <returns></returns>
-         static bool IsToday(string week)
+        static bool IsToday(string week)
         {
             string today = DateTime.Now.DayOfWeek.ToString();
             if (today == "Monday")
@@ -323,9 +345,11 @@ namespace TimeMix
         /// <summary>
         /// 返回今天的课程表
         /// </summary>
-        /// <returns></returns>
-
-        private static string[] todayClassTable=new string[9];
+        private static string[] todayClassTable = new string[9];
+        /// <summary>
+        /// 返回明天的课程表
+        /// </summary>
+        private static string[] tomorrowClassTable = new string[9];
     }
 
 }

@@ -78,21 +78,21 @@ namespace TimeMix
                 }
                 CboTime.ItemsSource = timeList;
                 CboClass.ItemsSource = classList;
-                if (CboTime.SelectedItem==null)
-                {
-                    CboTime.SelectedIndex = 0;
-                }
-                if (CboClass.SelectedItem==null)
-                {
-                    CboClass.SelectedIndex = 0;
-                }
+
             }
             //TimeCore.Core core = new TimeCore.Core(@"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\时间NEW.txt", @"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\课表NEW.txt", deltaTime: 0);
 
 
             CboTime.SelectedItem = Settings.Default.nameTime;
             CboClass.SelectedItem = Settings.Default.nameClass;
-
+            if (CboTime.SelectedItem == null)
+            {
+                CboTime.SelectedIndex = 0;
+            }
+            if (CboClass.SelectedItem == null)
+            {
+                CboClass.SelectedIndex = 0;
+            }
             Tbdpi.Text = Settings.Default.dpi.ToString();
             TbDeltaTime.Text = Settings.Default.deltaTime.ToString();
         }

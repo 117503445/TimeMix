@@ -62,7 +62,6 @@ namespace TimeMix
             for (int i = 0; i < 9; i++)
             {
                 labels[i].Content = classTable[i];
-                
             }
         }
 
