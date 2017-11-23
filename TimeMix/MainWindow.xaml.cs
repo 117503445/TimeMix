@@ -27,8 +27,8 @@ namespace TimeMix
         public TimeWindow timeWindow;
         public ClassTableWindow classTableWindow;
         public TimeTableWindow timeTableWindow;
-
         public SwitchWindow switchWindow;
+
         public MainWindow()
         {
             InitializeComponent();

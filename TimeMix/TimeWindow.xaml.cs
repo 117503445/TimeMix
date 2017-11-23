@@ -47,14 +47,8 @@ namespace TimeMix
 
 
         public void ChangeColor() {
-            System.Drawing.Rectangle rc = new System.Drawing.Rectangle((int)Left, (int)Top, (int)SystemParameters.PrimaryScreenWidth, (int)System.Windows.SystemParameters.PrimaryScreenHeight);
-            var bitmap = new Bitmap(1, 1);
-            using (Graphics g = Graphics.FromImage(bitmap))
-            {
-                g.CopyFromScreen((int)(rc.X*Settings.Default.dpi), (int)(rc.Y*Settings.Default.dpi), 0, 0, rc.Size, CopyPixelOperation.SourceCopy);
-            }
-            System.Drawing.Color color = bitmap.GetPixel(0, 0);
-            if (color.R+color.G+color.B>384)//浅色
+
+            if (Public.InBlackStyle(this))//浅色
             {
                 LblBig.Foreground= new SolidColorBrush(Colors.Black);
                 LblSmall.Foreground = new SolidColorBrush(Colors.Black);
@@ -70,22 +64,7 @@ namespace TimeMix
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
-            if (Left < 0)
-            {
-                Left = 0;
-            }
-            if (Top < 0)
-            {
-                Top = 0;
-            }
-            if (Left + Width > SystemParameters.PrimaryScreenWidth)
-            {
-                Left = SystemParameters.PrimaryScreenWidth - Width;
-            }
-            if (Top + Height > SystemParameters.PrimaryScreenHeight)
-            {
-                Top = SystemParameters.PrimaryScreenHeight - Height;
-            }
+            Public.PreventOutOfScreen(this);
         }
     }
 }

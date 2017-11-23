@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeMix"
         mc:Ignorable="d"
-        Title="ClassWindow" Height="227" Width="44" WindowStyle="None" FontWeight="ExtraBlack" FontSize="18" AllowsTransparency="True" Background="#02FFFFFF" ResizeMode="NoResize" ShowInTaskbar="False" MouseLeftButtonDown="Window_MouseLeftButtonDown" MouseLeftButtonUp="Window_MouseLeftButtonUp">
+        Title="ClassWindow" Height="227" Width="44" WindowStyle="None" FontWeight="ExtraBlack" FontSize="18" AllowsTransparency="True" Background="#02FFFFFF" ResizeMode="NoResize" ShowInTaskbar="False" MouseLeftButtonDown="Window_MouseLeftButtonDown" >
     <Grid>
         <StackPanel Orientation="Vertical">
             <Label x:Name="Lbl1" Content="如果" HorizontalContentAlignment="Center" Padding="1"/>
