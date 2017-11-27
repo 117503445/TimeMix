@@ -3,352 +3,223 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using System.IO;
 namespace TimeMix
 {
-    /// <summary>
-    /// 时间节,包含开始时间,结束时间,名称,进度,额外字符信息
-    /// </summary>
-    public struct TimeSection
-    {
-        public override string ToString()
-        {
-            return string.Format("BeginTime={0};EndTime={1};name={2};progress={3};ExtraString={4}", beginTime.ToShortTimeString(), endTime.ToShortTimeString(), name, progress, extraString);
-        }
-        /// <summary>
-        /// 开始时间
-        /// </summary>
-        public DateTime beginTime;
-        /// <summary>
-        /// 结束时间
-        /// </summary>
-        public DateTime endTime;
-        /// <summary>
-        /// 名称
-        /// </summary>
-        public string name;
-        /// <summary>
-        /// 进度
-        /// </summary>
-        public string progress;
-        /// <summary>
-        /// 额外字符信息,用于表示是否引用课程表,是否隐藏课表等
-        /// </summary>
-        public string extraString;
-        /// <summary>
-        /// 周几,Like周一
-        /// </summary>
-        public string week;
-        /// <summary>
-        /// 是否被赋值了
-        /// </summary>
-        public bool available;
-    }
-    /// <summary>
-    /// 课表节,包含周几,名称
-    /// </summary>
-    public struct ClassTableSection
-    {
-        /// <summary>
-        /// 周几,Like周一
-        /// </summary>
-        public string week;
-        /// <summary>
-        /// 初始名称
-        /// </summary>
-        public string sourceName;
-        /// <summary>
-        /// 最终名称
-        /// </summary>
-        public string Replacedname;
-
-    }
     public static class Core
     {
-        /// <summary>
-        /// 当前的节
-        /// </summary>
-        static TimeSection currentSection;
-        /// <summary>
-        /// 下一个节
-        /// </summary>
-        static TimeSection nextSection;
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="timePath">时间表文本路径</param>
-        /// <param name="classTablePath">课表文本路径</param>
-        /// <param name="deltaTime">时间差,长河时间=北京时间+时间差,允许负数</param>
-        public static void Update(string timePath, string classTablePath, DateTime changHeTime)
+        public static void Update(string pathTime, string pathClass)
         {
+            Update(pathTime, pathClass, DateTime.Now);
+        }
+        /// <summary>
+        /// 更新
+        /// </summary>
+        /// <param name="pathTime">时间表路径,文件夹</param>
+        /// <param name="pathClass">课表路径,文件</param>
+        /// <param name="changHeTime">长河时间</param>
+        public static void Update(string pathTime, string pathClass, DateTime changHeTime)
+        {
+            //Console.WriteLine();
+            //Console.WriteLine("ChangHetime={0}", changHeTime);
 
-
-            string[] sourceTimeSections = File.ReadAllLines(timePath, Encoding.Default);
-            string[] sourceClassTableSections = File.ReadAllLines(classTablePath, Encoding.Default);
-
-
-            string todayWeekStr = changHeTime.DayOfWeek.ToString();
-            string tomorrowWeekStr = "";
-            switch (todayWeekStr)
+            for (int i = 0; i < timeSections.Length; i++)//初始化
             {
-                case "Monday": todayWeekStr = "周一"; tomorrowWeekStr = "周二"; break;
-                case "Tuesday": todayWeekStr = "周二"; tomorrowWeekStr = "周三"; break;
-                case "Wednesday": todayWeekStr = "周三"; tomorrowWeekStr = "周四"; break;
-                case "Thursday": todayWeekStr = "周四"; tomorrowWeekStr = "周五"; break;
-                case "Friday": todayWeekStr = "周五"; tomorrowWeekStr = "周六"; break;
-                case "Saturday": todayWeekStr = "周六"; tomorrowWeekStr = "周日"; break;
-                case "Sunday": todayWeekStr = "周日"; tomorrowWeekStr = "周一"; break;
+                timeSections[i] = new List<TimeSection>();
             }
-            // Console.WriteLine(weekstr);
-            List<string> todayClassTable = new List<string>();
-            List<string> tomorrowClassTable = new List<string>();
-            for (int i = 0; i < sourceClassTableSections.Length; i++)
+            for (int i = 0; i < classSection.GetLength(0); i++)
             {
-                string[] FirstCut = sourceClassTableSections[i].Split(';');
-                for (int j = 0; j < FirstCut.Length; j++)
+                for (int j = 0; j < classSection.GetLength(1); j++)
                 {
-                    string[] SecondCut = FirstCut[j].Split('=');
-
-                    switch (SecondCut[0])
-                    {
-                        case "week":
-                            if (SecondCut[1] == todayWeekStr)
-                            {
-                                todayClassTable.Add(sourceClassTableSections[i]);
-                            }
-                            else if (SecondCut[1] == tomorrowWeekStr)
-                            {
-                                tomorrowClassTable.Add(sourceClassTableSections[i]);
-                            }
-
-                            break;
-                        default:
-                            break;
-
-                    }
-                }
-            }//筛选课表,以后使用LINQ表达式!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-            //foreach (var item in todayClassTable)
-            //{
-            //    Console.WriteLine(item.ToString());
-            //}
-            List<string> todayTimeSections = new List<string>();
-            for (int i = 0; i < sourceTimeSections.Length; i++)
-            {
-                string[] FirstCut = sourceTimeSections[i].Split(';');
-                for (int j = 0; j < FirstCut.Length; j++)
-                {
-                    string[] SecondCut = FirstCut[j].Split('=');
-
-                    switch (SecondCut[0])
-                    {
-                        case "week":
-                            if (IsToday(SecondCut[1]))
-                            {
-                                todayTimeSections.Add(sourceTimeSections[i]);
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-
-                }
-            }//筛选时间表,以后使用LINQ表达式!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-            ClassTableSection[] classTableSections = new ClassTableSection[todayClassTable.Count];
-            TimeSection[] timeSections = new TimeSection[todayTimeSections.Count];
-
-
-            for (int i = 0; i < todayClassTable.Count; i++)
-            {
-                string[] FirstCut = todayClassTable[i].Split(';');
-                for (int j = 0; j < FirstCut.Length; j++)
-                {
-                    string[] SecondCut = FirstCut[j].Split('=');
-                    for (int k = 0; k < SecondCut.Length; k++)
-                    {
-                        switch (SecondCut[0])
-                        {
-                            case "week":
-                                classTableSections[i].week = SecondCut[1];
-                                break;
-                            case "sourceName":
-                                classTableSections[i].sourceName = SecondCut[1];
-                                break;
-                            case "Replacedname":
-                                classTableSections[i].Replacedname = SecondCut[1];
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                }
-            }//解析课表
-
-            //foreach (var item in classTableSections)
-            //{
-            //    Console.WriteLine(item.sourceName + "  " + item.Replacedname + "  " + item.week);
-            //}
-            List<string> todayClassList = new List<string>();
-            for (int i = 0; i < todayTimeSections.Count; i++)
-            {
-                string[] FirstCut = todayTimeSections[i].Split(';');
-                for (int j = 0; j < FirstCut.Length; j++)
-                {
-                    string[] SecondCut = FirstCut[j].Split('=');
-
-                    switch (SecondCut[0])
-                    {
-                        case "beginTime":
-                            timeSections[i].beginTime = Convert.ToDateTime(SecondCut[1]);
-                            break;
-                        case "name":
-                            timeSections[i].name = SecondCut[1];
-                            break;
-                        case "week":
-                            timeSections[i].week = SecondCut[1];
-                            break;
-                        case "extraString":
-                            timeSections[i].extraString = SecondCut[1];
-                            if (timeSections[i].extraString.Contains("replace"))
-                            {
-                                foreach (var item in classTableSections)
-                                {
-                                    if (item.sourceName == timeSections[i].name)
-                                    {
-                                        timeSections[i].name = item.Replacedname;
-                                        todayClassList.Add(item.Replacedname);
-                                    }
-                                }
-                            }
-                            break;
-                        case (default):
-                            Console.WriteLine("无法解析");//以后写入logger!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                            break;
-                    }
-                    timeSections[i].available = true;
-
-                }
-            }//解析时间表
-            List<string> tempTomorrowClassTable = new List<string>();
-            for (int i = 0; i < tomorrowClassTable.Count; i++)
-            {
-                string[] fisrtCut = tomorrowClassTable[i].Split(';');
-                for (int j = 0; j < fisrtCut.Length; j++)
-                {
-                    string[] secondCut = fisrtCut[j].Split('=');
-                    if (secondCut[0] == "Replacedname")
-                    {
-                        tempTomorrowClassTable.Add(secondCut[1]);
-                    }
+                    classSection[i, j] = new ClassSection();
                 }
             }
-            //foreach (var item in sections)
+
+            XElement ClassSection = XElement.Load(pathClass);//读取课表
+            foreach (var Sections in ClassSection.Elements())
+            {
+                foreach (var Section in Sections.Elements())
+                {
+                    ClassSection classsection = new ClassSection
+                    {
+                        Name = Section.Attribute("Name").Value
+                    };
+                    int week = int.Parse(Sections.Attribute("Week").Value);
+                    int @class = int.Parse(Section.Attribute("Class").Value);
+                    classSection[week, @class] = classsection;
+                    //        Console.WriteLine(classSection[week].Count);
+                    //        classSection[week][1] = classsection;
+                    //       classSection[int.Parse(Sections.Attribute("Week").Value)][@class] = classsection;
+                }
+            }
+
+            //for (int i = 0; i < classSection.GetLength(0); i++)
             //{
-            //    Console.WriteLine("开始时间_{0},名称_{1},额外信息_{2}",item.beginTime.ToShortTimeString(),item.name,item.extraString);
+            //    for (int j = 0; j < classSection.GetLength(1); j++)
+            //    {
+            //        Console.WriteLine("i={0},j={1},Name={2}", i, j, classSection[i, j].Name);
+            //    }
             //}
 
-            //若干年后一定要再写记录为0,1的情况!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            XElement TimeFile = XElement.Load(pathTime + "TimeFile.xml");//读取总起时间表,并解析时间段
+
+            foreach (var day in TimeFile.Elements())
+            {
+                foreach (var File in day.Elements())
+                {
+                    LoadTimeSections(int.Parse(day.Attribute("week").Value), pathTime + File.Value);
+                }
+            }
 
             for (int i = 0; i < timeSections.Length; i++)
             {
-                //Console.WriteLine();
-                //Console.WriteLine(sections[i].beginTime);
-                //Console.WriteLine((sections[i].beginTime.CompareTo(changHeTime)));
-                //Console.WriteLine();
-                if (timeSections[i].beginTime.CompareTo(changHeTime) <= 0)
+                for (int j = 0; j < timeSections[i].Count; j++)
                 {
-                    //现在更晚一点   
-                    currentSection = timeSections[i];
-                }
-                else
-                {
-                    nextSection = timeSections[i];
-                    break;
-                }
-            }//定位当前Section
-            //  Console.WriteLine("现在name={0},下一name={1}",currentSection.name,nextSection.name);
+                    #region 计算结束时间
+                    DateTime dt = DateTime.Now;
+                    DateTime st = timeSections[i][j].beginTime;
+                    timeSections[i][j].beginTime = new DateTime(dt.Year, dt.Month, dt.Day, st.Hour, st.Minute, st.Second);
+                    if (j < timeSections[i].Count - 1)
+                    {
+                        timeSections[i][j].endTime = timeSections[i][j + 1].beginTime;
+                    }
+                    else
+                    {
+                        timeSections[i][j].endTime = new DateTime(dt.Year, dt.Month, dt.Day).AddDays(1);//末尾,置为第二天00:00
+                    }
+                    #endregion
 
-            if (nextSection.available)//看上去快到最后一位了
-            {
-                currentSection.endTime = nextSection.beginTime;
-            }
-            else
-            {
-                currentSection.endTime = changHeTime.Date.AddDays(1);//设置结束时间为第二天00:00
+                    //Console.Write(timeSections[i][j].beginTime.ToString());
+                    //Console.Write(" ");
+                    //Console.WriteLine(timeSections[i][j].endTime.ToString());
+
+                    //Console.WriteLine(timeSections[i][j].ToString());
+                }
             }
 
+            int currentWeek = (int)DateTime.Now.DayOfWeek;
 
-            string preProgress = ((changHeTime - currentSection.beginTime).TotalSeconds / (currentSection.endTime - currentSection.beginTime).TotalSeconds * 100).ToString();//计算进度
-            int p = preProgress.IndexOf('.');
-            string finalProgress = preProgress.Substring(0, p + 2);//保留小数点一位
+            for (int i = 0; i < timeSections[currentWeek].Count; i++)
+            {
+                if (timeSections[currentWeek][i].beginTime.CompareTo(changHeTime) <= 0 & timeSections[currentWeek][i].endTime.CompareTo(changHeTime) > 0)
+                {
+                    currentTimeSection = timeSections[currentWeek][i];
+                }
+                //Console.WriteLine(timeSections[currentWeek][i].beginTime);
+                //Console.WriteLine(timeSections[currentWeek][i].endTime);
+                //Console.WriteLine();
+            }
+            //Console.WriteLine(currentTimeSection.beginTime);
+            //Console.WriteLine(currentTimeSection.endTime);
+            //Console.WriteLine();
+            string preProgress = ((changHeTime - currentTimeSection.beginTime).TotalSeconds / (currentTimeSection.endTime - currentTimeSection.beginTime).TotalSeconds * 100).ToString();//计算进度
+            progress = FormatProgress(preProgress);
+            //Console.WriteLine(CurrentTimeSection.ToString());
+            //Console.WriteLine(progress);
+
+        }
+        private static string FormatProgress(string progress)
+        {
+            int p = progress.IndexOf('.');
+            string finalProgress = progress;
+            if (p != -1)
+            {
+                finalProgress = progress.Substring(0, p + 2);//保留小数点一位
+            }
             if (p == 1)
             {
                 finalProgress = " " + finalProgress;
             }
+            if (p == -1)
+            {
+                finalProgress += ".0";
+            }
             finalProgress += "%";
-            currentSection.progress = finalProgress;
 
-
-            for (int i = 0; i < 9; i++)//填充课表
-            {
-                Core.todayClassTable[i] = todayClassList[i];
-                Core.tomorrowClassTable[i] = tempTomorrowClassTable[i];
-            }
-            //foreach (var item in preTodayTimeSections)
-            //{
-            //    Console.WriteLine(item);
-            //}
-
-            //foreach (var item in tempTomorrowClassTable)
-            //{
-            //    Console.WriteLine(item);
-            //}
+            return finalProgress;
 
         }
         /// <summary>
-        /// 返回当前的节
+        /// 填入时间段
         /// </summary>
-        public static TimeSection Section { get => currentSection; set => currentSection = value; }
-        public static string[] TodayClassTable { get => todayClassTable; }
-        public static string[] TomorrowClassTable { get => tomorrowClassTable; }
-
-
-        /// <summary>
-        /// 检查是否是今天
-        /// </summary>
-        /// <param name="week">例:"周一"</param>
-        /// <returns></returns>
-        static bool IsToday(string week)
+        /// <param name="week"></param>
+        /// <param name="xmlPath"></param>
+        private static void LoadTimeSections(int week, string xmlPath)
         {
-            string today = DateTime.Now.DayOfWeek.ToString();
-            if (today == "Monday")
+            XDocument day = XDocument.Load(xmlPath);
+            foreach (var TimeSection in day.Elements())
             {
-                today = "周一";
-            }
-            else
-            {
-                today = "日常";
-            }
-            if (today == week)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
+                foreach (var Section in TimeSection.Elements())
+                {
+                    TimeSection timeSection = new TimeSection
+                    {
+                        beginTime = Convert.ToDateTime(Section.Attribute("BeginTime").Value),
+                        name = Section.Attribute("Name").Value,
+                    };
+                    if (Section.Attribute("Class").Value != "")
+                    {
+                        timeSection.Class = int.Parse(Section.Attribute("Class").Value);
+                        timeSection.name = classSection[week, timeSection.Class].Name;
+                    }
+                    timeSections[week].Add(timeSection);
+                }
             }
         }
+        public static List<string> GetClass()
+        {
+            return GetClass((int)DateTime.Now.DayOfWeek);
+        }
+        public static List<string> GetClass(int week)
+        {
+            List<string> list = new List<string>();
+            for (int i = 0; i < 9; i++)
+            {
+                list.Add(classSection[week, i].Name);
+            }
+            return list;
+        }
+
+        private static List<TimeSection>[] timeSections = new List<TimeSection>[7];
+        private static ClassSection[,] classSection = new ClassSection[7, 9];
+        public class TimeSection
+        {
+            public override string ToString()
+            {
+                return string.Format("BeginTime={0};EndTime={1};name={2};Class={3}", beginTime.ToString(), endTime.ToString(), name, Class);
+            }
+            /// <summary>
+            /// 开始时间
+            /// </summary>
+            public DateTime beginTime;
+            /// <summary>
+            /// 结束时间
+            /// </summary>
+            public DateTime endTime;
+            /// <summary>
+            /// 名称
+            /// </summary>
+            public string name;
+            /// <summary>
+            /// 课程,
+            /// </summary>
+            public int Class;
+        }
+        public class ClassSection
+        {
+            /// <summary>
+            /// 名称
+            /// </summary>
+            public string Name;
+        }
         /// <summary>
-        /// 返回今天的课程表
+        /// 进度
         /// </summary>
-        private static string[] todayClassTable = new string[9];
-        /// <summary>
-        /// 返回明天的课程表
-        /// </summary>
-        private static string[] tomorrowClassTable = new string[9];
+        private static string progress;
+        public static string Progress { get => progress; set => progress = value; }
+        public static TimeSection CurrentTimeSection { get => currentTimeSection; set => currentTimeSection = value; }
+        private static TimeSection currentTimeSection;
     }
 
 }

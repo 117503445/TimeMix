@@ -50,7 +50,7 @@ namespace TimeMix
                 }
             }
         }
-        public void ChangeClass(string[] classTable) {
+        public void ChangeClass(List<string> classTable) {
 
             for (int i = 0; i < 9; i++)
             {

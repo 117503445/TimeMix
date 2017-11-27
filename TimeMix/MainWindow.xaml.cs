@@ -59,21 +59,26 @@ namespace TimeMix
                 timer100.Interval = TimeSpan.FromMilliseconds(100);
                 timer100.Tick += Timer100_Tick;
             }
-            DirectoryInfo dir = new DirectoryInfo(pathSource);
+            DirectoryInfo dir = new DirectoryInfo(pathData);
             if (dir.Exists)
             {
                 FileInfo[] fiList = dir.GetFiles();
+                DirectoryInfo[] dList = dir.GetDirectories();
                 List<string> timeList = new List<string>();
                 List<string> classList = new List<string>();
                 foreach (var item in fiList)
                 {
-                    if (item.Name.Substring(0, 2) == "时间")
-                    {
-                        timeList.Add(item.Name);
-                    }
-                    if (item.Name.Substring(0, 2) == "课表")
+                    if (item.Name.Length >=2 && item.Name.Substring(0, 2) == "课表")
                     {
                         classList.Add(item.Name);
+                    }
+                }
+
+                foreach (var item in dList)
+                {
+                    if (item.Name.Length>=2&& item.Name.Substring(0, 2) == "时间")
+                    {
+                        timeList.Add(item.Name);
                     }
                 }
                 CboTime.ItemsSource = timeList;
@@ -103,9 +108,9 @@ namespace TimeMix
         }
 
         /// <summary>
-        /// 资源路径
+        /// Environment.CurrentDirectory + @"\File\Data"
         /// </summary>
-        string pathSource = Environment.CurrentDirectory + @"\File\Data\Source";
+        readonly string pathData = Environment.CurrentDirectory + @"\File\Data";
 
         private void Timer1000_Tick(object sender, EventArgs e)
         {
@@ -114,8 +119,12 @@ namespace TimeMix
             classTableWindow.ChangeColor();
             classTableWindow.Topmost = true;
 
-            string pathTime = pathSource + @"\" + CboTime.SelectedItem.ToString();
-            string pathClass = pathSource + @"\" + CboClass.SelectedItem.ToString();
+            //string pathTime = pathSource + @"\" + CboTime.SelectedItem.ToString();
+            //string pathClass = pathSource + @"\" + CboClass.SelectedItem.ToString();
+            string pathTime = pathData +"/"+ CboTime.SelectedItem.ToString()+"/";
+            string pathClass = pathData + "/"+ CboClass.SelectedItem.ToString();
+
+#if !DEBUG
             try
             {
                 Core.Update(pathTime, pathClass, Public.ChangHetime());
@@ -125,10 +134,13 @@ namespace TimeMix
                 Logger.Write(ex);
                 return;
             }
-            //Console.WriteLine(core.Section.ToString());
+#else
+         Core.Update(pathTime, pathClass, Public.ChangHetime());
+#endif
             //timeWindow.Topmost = true;
-            timeTableWindow.Changedata(Core.Section);
-            classTableWindow.ChangeClass(Core.TodayClassTable);
+
+     timeTableWindow.Changedata(Core.CurrentTimeSection, Core.Progress);
+        classTableWindow.ChangeClass(Core.GetClass());
         }
 
         private void Window_Activated(object sender, EventArgs e)

@@ -136,14 +136,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="File\Data\Source\时间NEW.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="File\Data\Source\课表NEW.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Switch\Close\Time.png" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +163,21 @@
     <Resource Include="Resources\Switch\Open\TimeTable.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="File\Data\课表_305.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="File\Data\时间_冬季_约束\Daily.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="File\Data\时间_冬季_约束\Monday.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="File\Data\时间_冬季_约束\Public.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="File\Data\时间_冬季_约束\TimeFile.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="File\Log\Log.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

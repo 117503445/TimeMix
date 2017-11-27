@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TimeSection>
+  <Section BeginTime="9:28" Name="class3" Class="2" />
+  <Section BeginTime="10:10" Name="下课" Class="" />
+  <Section BeginTime="10:18" Name="眼保健操" Class="" />
+  <Section BeginTime="10:25" Name="class4" Class="3" />
+  <Section BeginTime="11:05" Name="下课" Class="" />
+  <Section BeginTime="11:13" Name="class5" Class="4" />
+  <Section BeginTime="12:05" Name="午餐" Class="" />
+  <Section BeginTime="12:30" Name="午休前" Class="" />
+  <Section BeginTime="12:45" Name="午间谈话" Class="" />
+  <Section BeginTime="13:00" Name="午休" Class="" />
+  <Section BeginTime="13:35" Name="下课" Class="" />
+  <Section BeginTime="13:43" Name="class6" Class="5" />
+  <Section BeginTime="14:25" Name="下课" Class="" />
+  <Section BeginTime="14:33" Name="class7" Class="6" />
+  <Section BeginTime="15:15" Name="下课" Class="" />
+  <Section BeginTime="15:25" Name="眼保健操" Class="" />
+  <Section BeginTime="15:28" Name="class8" Class="7" />
+  <Section BeginTime="16:10" Name="下课" Class="" />
+  <Section BeginTime="16:20" Name="class9" Class="8" />
+  <Section BeginTime="16:55" Name="下课" Class="" />
+  <Section BeginTime="17:30" Name="晚修前" Class="" />
+  <Section BeginTime="17:58" Name="晚自修1" Class="" />
+  <Section BeginTime="19:00" Name="下课" Class="" />
+  <Section BeginTime="19:08" Name="晚自修2" Class="" />
+  <Section BeginTime="20:10" Name="下课" Class="" />
+  <Section BeginTime="20:20" Name="眼保健操" Class="" />
+  <Section BeginTime="20:24" Name="晚自修3" Class="" />
+  <Section BeginTime="21:50" Name="下课" Class="" />
+  <Section BeginTime="22:20" Name="就寝" Class="" />
+</TimeSection>

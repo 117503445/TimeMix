@@ -33,12 +33,12 @@ namespace TimeMix
             DragMove();
             Public.PreventOutOfScreen(this);
         }
-        public void Changedata(TimeSection timeSection)
+        public void Changedata(Core.TimeSection timeSection,string progress)
         {
             LblClass.Content = timeSection.name;
             LblBeginTime.Content = timeSection.beginTime.ToShortTimeString();
             LblEndTime.Content = timeSection.endTime.ToShortTimeString();
-            LblProgress.Content = timeSection.progress;
+            LblProgress.Content = progress;
         }
         public void ChangeColor()
         {
