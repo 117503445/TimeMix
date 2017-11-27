@@ -15,7 +15,7 @@ namespace TimeMix
         static string pathLog = Environment.CurrentDirectory + @"\File\Log\Log.txt";
         public static void Write(Exception ex)
         {
-            string str =DateTime.Now.ToString()+";"+"ERROR" +";"+ex.ToString() + "\r\n";
+            string str =DateTime.Now.ToString()+";"+"ERROR" +";"+ex.Message + "\r\n";
             File.AppendAllText(pathLog, str);
             Console.WriteLine(ex.ToString());
         }

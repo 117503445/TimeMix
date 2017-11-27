@@ -15,7 +15,6 @@ namespace TimeMix
         {
             return string.Format("BeginTime={0};EndTime={1};name={2};progress={3};ExtraString={4}", beginTime.ToShortTimeString(), endTime.ToShortTimeString(), name, progress, extraString);
         }
-
         /// <summary>
         /// 开始时间
         /// </summary>
