@@ -111,6 +111,23 @@ namespace TimeMix
                 //Console.WriteLine(timeSections[currentWeek][i].endTime);
                 //Console.WriteLine();
             }
+
+            for (int i = 0; i < timeSections.Length; i++)//计算最后一节课的结束时间,辅助明日课表功能
+            {
+                foreach (var item in timeSections[i])
+                {
+                    if (item.Class == 8)
+                    {
+                        LastClassEndTime[i] = item.endTime;
+                    }
+                }
+            }            
+            //foreach (var item in lastClassEndTime)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
             //Console.WriteLine(currentTimeSection.beginTime);
             //Console.WriteLine(currentTimeSection.endTime);
             //Console.WriteLine();
@@ -119,7 +136,9 @@ namespace TimeMix
             //Console.WriteLine(CurrentTimeSection.ToString());
             //Console.WriteLine(progress);
 
+
         }
+
         private static string FormatProgress(string progress)
         {
             int p = progress.IndexOf('.');
@@ -219,7 +238,13 @@ namespace TimeMix
         private static string progress;
         public static string Progress { get => progress; set => progress = value; }
         public static TimeSection CurrentTimeSection { get => currentTimeSection; set => currentTimeSection = value; }
+        public static DateTime[] LastClassEndTime { get => lastClassEndTime; set => lastClassEndTime = value; }
+
         private static TimeSection currentTimeSection;
+        /// <summary>
+        /// 第九节课的结束时间
+        /// </summary>
+        private static DateTime[] lastClassEndTime = new DateTime[7];
     }
 
 }

@@ -70,5 +70,89 @@ namespace TimeMix {
                 this["deltaTime"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isClassTableWindowShowed {
+            get {
+                return ((bool)(this["isClassTableWindowShowed"]));
+            }
+            set {
+                this["isClassTableWindowShowed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isTimeTableWindowShowed {
+            get {
+                return ((bool)(this["isTimeTableWindowShowed"]));
+            }
+            set {
+                this["isTimeTableWindowShowed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isTimeWindowShowed {
+            get {
+                return ((bool)(this["isTimeWindowShowed"]));
+            }
+            set {
+                this["isTimeWindowShowed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0,0")]
+        public global::System.Windows.Point pClassTableWindow {
+            get {
+                return ((global::System.Windows.Point)(this["pClassTableWindow"]));
+            }
+            set {
+                this["pClassTableWindow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0,0")]
+        public global::System.Windows.Point pTimeTableWindow {
+            get {
+                return ((global::System.Windows.Point)(this["pTimeTableWindow"]));
+            }
+            set {
+                this["pTimeTableWindow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0,0")]
+        public global::System.Windows.Point pTimeWindow {
+            get {
+                return ((global::System.Windows.Point)(this["pTimeWindow"]));
+            }
+            set {
+                this["pTimeWindow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool isTomorrowClass {
+            get {
+                return ((bool)(this["isTomorrowClass"]));
+            }
+            set {
+                this["isTomorrowClass"] = value;
+            }
+        }
     }
 }

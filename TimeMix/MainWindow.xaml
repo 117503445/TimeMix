@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeMix"
         mc:Ignorable="d"
-        Title="MainWindow" Height="318" Width="517" WindowStyle="ThreeDBorderWindow" Activated="Window_Activated" MouseLeftButtonDown="Window_MouseLeftButtonDown" Closed="Window_Closed" Closing="Window_Closing">
+        Title="MainWindow" Height="318" Width="517" WindowStyle="ThreeDBorderWindow" MouseLeftButtonDown="Window_MouseLeftButtonDown" Closed="Window_Closed" Closing="Window_Closing">
     <Grid>
         <TabControl>
             <TabItem Header="课表">
@@ -13,7 +13,7 @@
                     <Label Content="课表" HorizontalAlignment="Left" Margin="16,20,0,0" VerticalAlignment="Top"/>
                     <ComboBox x:Name="CboClass" VerticalAlignment="Top" Margin="67,24,236,0" SelectionChanged="CboClass_SelectionChanged"/>
                     <CheckBox x:Name="ChkAutoHide" Content="上课隐藏(X)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,59,0,0"/>
-                    <CheckBox x:Name="ChkTomorrow" Content="明日课表(X)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,79,0,0"/>
+                    <CheckBox x:Name="ChkTomorrowClass" Content="明日课表" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,83,0,0" Height="23" Width="71" IsChecked="True" Click="ChkTomorrowClass_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="时间表">

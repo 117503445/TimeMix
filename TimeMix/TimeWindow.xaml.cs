@@ -25,14 +25,14 @@ namespace TimeMix
         /// </summary>
         public void ChangeTime()
         {
-            string s1= Public.ChangHetime().ToShortTimeString();
-            if (s1.Length==4)
+            string s1 = Public.ChangHetime().ToShortTimeString();
+            if (s1.Length == 4)
             {
                 s1 = "0" + s1;
             }
             LblBig.Content = s1;
             string s2 = Public.ChangHetime().Second.ToString();
-            if (s2.Length==1)
+            if (s2.Length == 1)
             {
                 s2 = "0" + s2;
             }
@@ -42,15 +42,18 @@ namespace TimeMix
         public TimeWindow()
         {
             InitializeComponent();
+
+
         }
 
 
 
-        public void ChangeColor() {
+        public void ChangeColor()
+        {
 
             if (Public.InBlackStyle(this))//浅色
             {
-                LblBig.Foreground= new SolidColorBrush(Colors.Black);
+                LblBig.Foreground = new SolidColorBrush(Colors.Black);
                 LblSmall.Foreground = new SolidColorBrush(Colors.Black);
             }
             else
@@ -65,6 +68,11 @@ namespace TimeMix
         {
             DragMove();
             Public.PreventOutOfScreen(this);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

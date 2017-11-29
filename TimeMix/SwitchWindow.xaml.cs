@@ -35,6 +35,25 @@ namespace TimeMix
             Top = (SystemParameters.PrimaryScreenHeight - Height) / 2;
             Left = SystemParameters.PrimaryScreenWidth - 1;
             timer.Tick += Timer_Tick;
+
+            if (Settings.Default.isTimeWindowShowed)
+            {
+                SetVisible(0);
+            }
+            Public.timeWindow.Left = Settings.Default.pTimeWindow.X;
+            Public.timeWindow.Top = Settings.Default.pTimeWindow.Y;
+            if (Settings.Default.isClassTableWindowShowed)
+            {
+                SetVisible(1);
+            }
+            Public.classTableWindow.Left = Settings.Default.pClassTableWindow.X;
+            Public.classTableWindow.Top = Settings.Default.pClassTableWindow.Y;
+            if (Settings.Default.isTimeTableWindowShowed)
+            {
+                SetVisible(2);
+            }
+            Public.timeTableWindow.Left= Settings.Default.pTimeTableWindow.X;
+            Public.timeTableWindow.Top = Settings.Default.pTimeTableWindow.Y;
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -45,7 +64,7 @@ namespace TimeMix
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.GetCurrentProcess().Kill();
+            Public.ExitProgram();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -71,7 +90,7 @@ namespace TimeMix
             switch (controlName)
             {
                 case "ImgTime":
-                    SetVisible( 0);
+                    SetVisible(0);
                     break;
                 case "ImgClassTable":
                     SetVisible(1);
@@ -86,7 +105,7 @@ namespace TimeMix
                     b[4] = !b[4];
                     break;
                 case "ImgClose":
-                    System.Diagnostics.Process.GetCurrentProcess().Kill();
+                    Public.ExitProgram();
                     break;
 
                 default:
@@ -97,21 +116,19 @@ namespace TimeMix
 
         public void SetVisible(int index)
         {
-
-
             switch (index)
             {
                 case 0:
                     if (b[index])//关闭操作
                     {
                         b[index] = false;
-                        mainWindow.timeWindow.Hide();
+                        Public.timeWindow.Hide();
                         ImgTime.Source = new BitmapImage(new Uri("/Resources/Switch/Close/Time.png", UriKind.RelativeOrAbsolute));
                     }
                     else//展开操作
                     {
                         b[index] = true;
-                        mainWindow.timeWindow.Show();
+                        Public.timeWindow.Show();
                         ImgTime.Source = new BitmapImage(new Uri("/Resources/Switch/Open/Time.png", UriKind.RelativeOrAbsolute));
                     }
                     break;
@@ -119,13 +136,13 @@ namespace TimeMix
                     if (b[index])//关闭操作
                     {
                         b[index] = false;
-                        mainWindow.classTableWindow.Hide();
+                        Public.classTableWindow.Hide();
                         ImgClassTable.Source = new BitmapImage(new Uri("/Resources/Switch/Close/ClassTable.png", UriKind.RelativeOrAbsolute));
                     }
                     else//展开操作
                     {
                         b[index] = true;
-                        mainWindow.classTableWindow.Show();
+                        Public.classTableWindow.Show();
                         ImgClassTable.Source = new BitmapImage(new Uri("/Resources/Switch/Open/ClassTable.png", UriKind.RelativeOrAbsolute));
                     }
                     break;
@@ -133,13 +150,13 @@ namespace TimeMix
                     if (b[index])//关闭操作
                     {
                         b[index] = false;
-                        mainWindow.timeTableWindow.Hide();
+                        Public.timeTableWindow.Hide();
                         ImgTimeTable.Source = new BitmapImage(new Uri("/Resources/Switch/Close/TimeTable.png", UriKind.RelativeOrAbsolute));
                     }
                     else//展开操作
                     {
                         b[index] = true;
-                        mainWindow.timeTableWindow.Show();
+                        Public.timeTableWindow.Show();
                         ImgTimeTable.Source = new BitmapImage(new Uri("/Resources/Switch/Open/TimeTable.png", UriKind.RelativeOrAbsolute));
                     }
                     break;

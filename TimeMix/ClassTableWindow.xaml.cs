@@ -24,7 +24,9 @@ namespace TimeMix
         public ClassTableWindow()
         {
             InitializeComponent();
+
              labels =new Label[] { Lbl1, Lbl2, Lbl3, Lbl4, Lbl5,Lbl6,Lbl7,Lbl8,Lbl9};
+
     }
 
         private void Lbl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
