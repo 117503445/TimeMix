@@ -53,13 +53,44 @@ namespace TimeMix
         /// <returns></returns>
         public static bool InBlackStyle(Window window)
         {
-          Drawing.Rectangle rc = new System.Drawing.Rectangle((int)window.Left, (int)window.Top, (int)SystemParameters.PrimaryScreenWidth, (int)System.Windows.SystemParameters.PrimaryScreenHeight);
-            var bitmap = new Drawing. Bitmap(1, 1);
-            using (Drawing. Graphics g =Drawing. Graphics.FromImage(bitmap))
+            bool[] b = new bool[9];
+
+            b[0] = IsBlack(window,0,0);
+            b[1] = IsBlack(window,(int)window.Width/2,0);
+            b[2] = IsBlack(window,(int)window.Width,0);
+
+            b[3] = IsBlack(window,0,(int)window.Height/2);
+            b[4] = IsBlack(window, (int)window.Width / 2, (int)window.Height / 2);
+            b[5] = IsBlack(window, (int)window.Width, (int)window.Height / 2);
+
+            b[6] = IsBlack(window,0,(int)window.Height); 
+            b[7] = IsBlack(window, (int)window.Width / 2, (int)window.Height);
+            b[8] = IsBlack(window, (int)window.Width, (int)window.Height);
+
+
+            int count = 0;
+            foreach (var item in b)
+            {
+                if (item)
+                {
+                    count++;
+                }
+            }
+            return count > 4;
+        }
+        /// <summary>
+        /// true-黑色字体,false-白色字体
+        /// </summary>
+        /// <returns></returns>
+        private static bool IsBlack(Window window,int deltaX,int deltaY)
+        {
+            Drawing.Rectangle rc = new Drawing.Rectangle((int)window.Left+deltaX, (int)window.Top+deltaY, (int)SystemParameters.PrimaryScreenWidth, (int)SystemParameters.PrimaryScreenHeight);
+            var bitmap = new Drawing.Bitmap(1, 1);
+            using (Drawing.Graphics g = Drawing.Graphics.FromImage(bitmap))
             {
                 g.CopyFromScreen((int)(rc.X * Settings.Default.dpi), (int)(rc.Y * Settings.Default.dpi), 0, 0, rc.Size, Drawing.CopyPixelOperation.SourceCopy);
             }
-            System.Drawing.Color color = bitmap.GetPixel(0, 0);
+            Drawing.Color color = bitmap.GetPixel(0, 0);
             if (color.R + color.G + color.B > 384)
             {
                 return true;
@@ -78,9 +109,9 @@ namespace TimeMix
             Settings.Default.isTimeTableWindowShowed = timeTableWindow.IsVisible;
             Settings.Default.isTimeWindowShowed = timeWindow.IsVisible;
 
-            if (!Double.IsNaN(timeWindow.Left)&&!Double.IsNaN(timeWindow.Top))
+            if (!Double.IsNaN(timeWindow.Left) && !Double.IsNaN(timeWindow.Top))
             {
-            Settings.Default.pTimeWindow = new Point(timeWindow.Left, timeWindow.Top);
+                Settings.Default.pTimeWindow = new Point(timeWindow.Left, timeWindow.Top);
             }
             if (!Double.IsNaN(classTableWindow.Left) && !Double.IsNaN(classTableWindow.Top))
             {

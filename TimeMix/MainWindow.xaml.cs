@@ -41,6 +41,12 @@ namespace TimeMix
             Public.switchWindow = new SwitchWindow(this);
             Public.switchWindow.Show();
             Hide();
+            DispatcherTimer timer10000 = new DispatcherTimer();
+            {
+                timer10000.IsEnabled = true;
+                timer10000.Interval = TimeSpan.FromSeconds(10);
+                timer10000.Tick += Timer10000_Tick;
+            }
 
             DispatcherTimer timer1000 = new DispatcherTimer();
             {
@@ -100,6 +106,13 @@ namespace TimeMix
 
         }
 
+        private void Timer10000_Tick(object sender, EventArgs e)
+        {
+            Public.timeTableWindow.ChangeColor();
+            Public.timeWindow.ChangeColor();
+            Public.classTableWindow.ChangeColor();
+        }
+
         private void Timer100_Tick(object sender, EventArgs e)
         {
             Public.timeWindow.ChangeTime();
@@ -112,13 +125,9 @@ namespace TimeMix
 
         private void Timer1000_Tick(object sender, EventArgs e)
         {
-            Public.timeTableWindow.ChangeColor();
-            Public.timeWindow.ChangeColor();
-            Public.classTableWindow.ChangeColor();
+
             Public.classTableWindow.Topmost = true;
 
-            //string pathTime = pathSource + @"\" + CboTime.SelectedItem.ToString();
-            //string pathClass = pathSource + @"\" + CboClass.SelectedItem.ToString();
             string pathTime = pathData + "/" + CboTime.SelectedItem.ToString() + "/";
             string pathClass = pathData + "/" + CboClass.SelectedItem.ToString();
 
@@ -138,7 +147,7 @@ namespace TimeMix
             //timeWindow.Topmost = true;
 
             Public.timeTableWindow.Changedata(Core.CurrentTimeSection, Core.Progress);
-            if (Public.ChangHetime().CompareTo(Core.LastClassEndTime[1]) > 0&&Settings.Default.isTomorrowClass)
+            if (Public.ChangHetime().CompareTo(Core.LastClassEndTime[1]) > 0 && Settings.Default.isTomorrowClass)
             {
                 //明天课表
                 Public.classTableWindow.ChangeClass(Core.GetClass((int)Public.ChangHetime().AddDays(1).DayOfWeek));
