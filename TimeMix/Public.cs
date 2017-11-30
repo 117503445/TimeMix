@@ -19,7 +19,7 @@ namespace TimeMix
         /// 获取长河时间
         /// </summary>
         /// <returns></returns>
-        public static DateTime ChangHetime()
+        public static DateTime ChangHeTime()
         {
             return DateTime.Now.AddSeconds(Settings.Default.deltaTime);//长河时间
         }
@@ -53,19 +53,17 @@ namespace TimeMix
         /// <returns></returns>
         public static bool InBlackStyle(Window window)
         {
-            bool[] b = new bool[9];
+            if (!window.IsVisible)
+            {
+                return false;
+            }
+            bool[] b = new bool[3];
 
             b[0] = IsBlack(window,0,0);
-            b[1] = IsBlack(window,(int)window.Width/2,0);
-            b[2] = IsBlack(window,(int)window.Width,0);
 
-            b[3] = IsBlack(window,0,(int)window.Height/2);
-            b[4] = IsBlack(window, (int)window.Width / 2, (int)window.Height / 2);
-            b[5] = IsBlack(window, (int)window.Width, (int)window.Height / 2);
+            b[1] = IsBlack(window, (int)window.Width / 2, (int)window.Height / 2);
 
-            b[6] = IsBlack(window,0,(int)window.Height); 
-            b[7] = IsBlack(window, (int)window.Width / 2, (int)window.Height);
-            b[8] = IsBlack(window, (int)window.Width, (int)window.Height);
+            b[2] = IsBlack(window, (int)window.Width, (int)window.Height);
 
 
             int count = 0;
@@ -76,7 +74,7 @@ namespace TimeMix
                     count++;
                 }
             }
-            return count > 4;
+            return count > 1;
         }
         /// <summary>
         /// true-黑色字体,false-白色字体
@@ -91,6 +89,8 @@ namespace TimeMix
                 g.CopyFromScreen((int)(rc.X * Settings.Default.dpi), (int)(rc.Y * Settings.Default.dpi), 0, 0, rc.Size, Drawing.CopyPixelOperation.SourceCopy);
             }
             Drawing.Color color = bitmap.GetPixel(0, 0);
+            bitmap.Dispose();
+           
             if (color.R + color.G + color.B > 384)
             {
                 return true;

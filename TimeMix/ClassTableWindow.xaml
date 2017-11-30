@@ -5,18 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeMix"
         mc:Ignorable="d"
-        Title="ClassWindow" Height="227" Width="44" WindowStyle="None" FontWeight="ExtraBlack" FontSize="18" AllowsTransparency="True" Background="#02FFFFFF" ResizeMode="NoResize" ShowInTaskbar="False" MouseLeftButtonDown="Window_MouseLeftButtonDown" >
+        Title="ClassWindow" Height="130" Width="88" WindowStyle="None" FontWeight="ExtraBlack" FontSize="18" AllowsTransparency="True" Background="#02FFFFFF" ResizeMode="NoResize" ShowInTaskbar="False" MouseLeftButtonDown="Window_MouseLeftButtonDown" >
     <Grid>
-        <StackPanel Orientation="Vertical">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Column="0">
             <Label x:Name="Lbl1" Content="如果" HorizontalContentAlignment="Center" Padding="1"/>
             <Label x:Name="Lbl2" Content="看到" HorizontalContentAlignment="Center"  Padding="1"/>
             <Label x:Name="Lbl3" Content="了我" HorizontalContentAlignment="Center"  Padding="1"/>
             <Label x:Name="Lbl4" Content="去找" HorizontalContentAlignment="Center"  Padding="1"/>
             <Label x:Name="Lbl5" Content="电教" HorizontalContentAlignment="Center"  Padding="1"/>
+           
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Label x:Name="LblWeek" Content="周一" HorizontalContentAlignment="Center" Padding="1" FontSize="20"/>
             <Label x:Name="Lbl6" Content="委员" HorizontalContentAlignment="Center" Padding="1"/>
             <Label x:Name="Lbl7" Content="给他" HorizontalContentAlignment="Center"  Padding="1"/>
             <Label x:Name="Lbl8" Content="看看" HorizontalContentAlignment="Center"  Padding="1"/>
             <Label x:Name="Lbl9" Content="日志" HorizontalContentAlignment="Center"  Padding="1"/>
+
         </StackPanel>
     </Grid>
 </Window>

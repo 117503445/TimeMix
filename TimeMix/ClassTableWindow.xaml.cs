@@ -25,7 +25,7 @@ namespace TimeMix
         {
             InitializeComponent();
 
-             labels =new Label[] { Lbl1, Lbl2, Lbl3, Lbl4, Lbl5,Lbl6,Lbl7,Lbl8,Lbl9};
+             labels =new Label[] { Lbl1, Lbl2, Lbl3, Lbl4, Lbl5,Lbl6,Lbl7,Lbl8,Lbl9,LblWeek};
 
     }
 
@@ -36,7 +36,6 @@ namespace TimeMix
 
         public void ChangeColor()
         {
-
             if (Public.InBlackStyle(this))//浅色
             {
                 foreach (var item in labels)
@@ -53,13 +52,17 @@ namespace TimeMix
             }
         }
         public void ChangeClass(List<string> classTable) {
-
             for (int i = 0; i < 9; i++)
             {
                 labels[i].Content = classTable[i];
             }
         }
+        public void ChangeWeek(DayOfWeek dayOfWeek) {
+            string sWeek = "日一二三四五六";
+            string s = "周" + sWeek.Substring((int)dayOfWeek,1);
+            LblWeek.Content = s;
 
+        }
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
 

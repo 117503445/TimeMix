@@ -24,8 +24,6 @@ namespace TimeMix
     /// </summary>
     public partial class MainWindow : Window
     {
-
-
         public MainWindow()
         {
             InitializeComponent();
@@ -41,11 +39,11 @@ namespace TimeMix
             Public.switchWindow = new SwitchWindow(this);
             Public.switchWindow.Show();
             Hide();
-            DispatcherTimer timer10000 = new DispatcherTimer();
+            DispatcherTimer timer3000 = new DispatcherTimer();
             {
-                timer10000.IsEnabled = true;
-                timer10000.Interval = TimeSpan.FromSeconds(10);
-                timer10000.Tick += Timer10000_Tick;
+                timer3000.IsEnabled = true;
+                timer3000.Interval = TimeSpan.FromSeconds(3);
+                timer3000.Tick += Timer3000_Tick;
             }
 
             DispatcherTimer timer1000 = new DispatcherTimer();
@@ -101,12 +99,10 @@ namespace TimeMix
             }
             Tbdpi.Text = Settings.Default.dpi.ToString();
             TbDeltaTime.Text = Settings.Default.deltaTime.ToString();
-
             ChkTomorrowClass.IsChecked = Settings.Default.isTomorrowClass;
-
         }
 
-        private void Timer10000_Tick(object sender, EventArgs e)
+        private void Timer3000_Tick(object sender, EventArgs e)
         {
             Public.timeTableWindow.ChangeColor();
             Public.timeWindow.ChangeColor();
@@ -134,7 +130,7 @@ namespace TimeMix
 #if !DEBUG
             try
             {
-                Core.Update(pathTime, pathClass, Public.ChangHetime());
+                Core.Update(pathTime, pathClass, Public.ChangHeTime());
             }
             catch (Exception ex)
             {
@@ -142,20 +138,22 @@ namespace TimeMix
                 return;
             }
 #else
-            Core.Update(pathTime, pathClass, Public.ChangHetime());
+            Core.Update(pathTime, pathClass, Public.ChangHeTime());
 #endif
             //timeWindow.Topmost = true;
 
             Public.timeTableWindow.Changedata(Core.CurrentTimeSection, Core.Progress);
-            if (Public.ChangHetime().CompareTo(Core.LastClassEndTime[1]) > 0 && Settings.Default.isTomorrowClass)
+            if (Public.ChangHeTime().CompareTo(Core.LastClassEndTime[1]) > 0 && Settings.Default.isTomorrowClass)
             {
                 //明天课表
-                Public.classTableWindow.ChangeClass(Core.GetClass((int)Public.ChangHetime().AddDays(1).DayOfWeek));
+                Public.classTableWindow.ChangeClass(Core.GetClass((int)Public.ChangHeTime().AddDays(1).DayOfWeek));
+                Public.classTableWindow.ChangeWeek(Public.ChangHeTime().AddDays(1).DayOfWeek);
             }
             else
             {
                 //今天课表
                 Public.classTableWindow.ChangeClass(Core.GetClass());
+                Public.classTableWindow.ChangeWeek(Public.ChangHeTime().DayOfWeek);
             }
 
         }
