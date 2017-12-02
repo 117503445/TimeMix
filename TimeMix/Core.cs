@@ -9,6 +9,11 @@ namespace TimeMix
 {
     public static class Core
     {
+        /// <summary>
+        /// 更新
+        /// </summary>
+        /// <param name="pathTime">时间表路径,文件夹</param>
+        /// <param name="pathClass">课表路径,文件</param>
         public static void Update(string pathTime, string pathClass)
         {
             Update(pathTime, pathClass, DateTime.Now);
@@ -90,7 +95,10 @@ namespace TimeMix
                         timeSections[i][j].endTime = new DateTime(dt.Year, dt.Month, dt.Day).AddDays(1);//末尾,置为第二天00:00
                     }
                     #endregion
-
+                    if (timeSections[i][j].Class > 0)
+                    {
+                        classSection[i, timeSections[i][j].Class].EndTime = timeSections[i][j].endTime;
+                    }
                     //Console.Write(timeSections[i][j].beginTime.ToString());
                     //Console.Write(" ");
                     //Console.WriteLine(timeSections[i][j].endTime.ToString());
@@ -121,7 +129,7 @@ namespace TimeMix
                         LastClassEndTime[i] = item.endTime;
                     }
                 }
-            }            
+            }
             //foreach (var item in lastClassEndTime)
             //{
             //    Console.WriteLine(item);
@@ -182,20 +190,31 @@ namespace TimeMix
                         timeSection.Class = int.Parse(Section.Attribute("Class").Value);
                         timeSection.name = classSection[week, timeSection.Class].Name;
                     }
+                    else
+                    {
+                        timeSection.Class = -1;
+                    }
                     timeSections[week].Add(timeSection);
                 }
             }
         }
-        public static List<string> GetClass()
+        public static List<ClassSection> GetClass()
         {
             return GetClass((int)DateTime.Now.DayOfWeek);
         }
-        public static List<string> GetClass(int week)
+        public static List<ClassSection> GetClass(int week)
         {
-            List<string> list = new List<string>();
-            for (int i = 0; i < 9; i++)
+            //List<string> list = new List<string>();
+            //for (int i = 0; i < 9; i++)
+            //{
+            //    list.Add(classSection[week, i].Name);
+            //}
+            //return list;
+
+            List<ClassSection> list = new List<ClassSection>();
+            for (int i = 0; i < classSection.GetLength(1); i++)
             {
-                list.Add(classSection[week, i].Name);
+                list.Add(classSection[week,i]);
             }
             return list;
         }
@@ -231,6 +250,7 @@ namespace TimeMix
             /// 名称
             /// </summary>
             public string Name;
+            public DateTime EndTime;
         }
         /// <summary>
         /// 进度
@@ -238,6 +258,9 @@ namespace TimeMix
         private static string progress;
         public static string Progress { get => progress; set => progress = value; }
         public static TimeSection CurrentTimeSection { get => currentTimeSection; set => currentTimeSection = value; }
+        /// <summary>
+        /// 第九节课的结束时间
+        /// </summary>
         public static DateTime[] LastClassEndTime { get => lastClassEndTime; set => lastClassEndTime = value; }
 
         private static TimeSection currentTimeSection;

@@ -42,15 +42,12 @@ namespace TimeMix
         public TimeWindow()
         {
             InitializeComponent();
-
-
         }
 
 
 
         public void ChangeColor()
         {
-
             if (Public.InBlackStyle(this))//浅色
             {
                 LblBig.Foreground = new SolidColorBrush(Colors.Black);
@@ -61,7 +58,6 @@ namespace TimeMix
                 LblBig.Foreground = new SolidColorBrush(Colors.White);
                 LblSmall.Foreground = new SolidColorBrush(Colors.White);
             }
-
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -70,9 +66,10 @@ namespace TimeMix
             Public.PreventOutOfScreen(this);
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
         }
     }
 }

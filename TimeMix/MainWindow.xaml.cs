@@ -121,7 +121,7 @@ namespace TimeMix
 
         private void Timer1000_Tick(object sender, EventArgs e)
         {
-
+            TbChangeHeTime.Text = "长河时间 " + DateTime.Now.ToString();
             Public.classTableWindow.Topmost = true;
 
             string pathTime = pathData + "/" + CboTime.SelectedItem.ToString() + "/";
@@ -146,7 +146,7 @@ namespace TimeMix
             if (Public.ChangHeTime().CompareTo(Core.LastClassEndTime[1]) > 0 && Settings.Default.isTomorrowClass)
             {
                 //明天课表
-                Public.classTableWindow.ChangeClass(Core.GetClass((int)Public.ChangHeTime().AddDays(1).DayOfWeek));
+                Public.classTableWindow.ChangeClass(Core.GetClass((int)Public.ChangHeTime().AddDays(1).DayOfWeek), true);
                 Public.classTableWindow.ChangeWeek(Public.ChangHeTime().AddDays(1).DayOfWeek);
             }
             else
@@ -167,8 +167,6 @@ namespace TimeMix
         private void Window_Closed(object sender, EventArgs e)
         {
             Public.ExitProgram();
-
-
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -199,9 +197,8 @@ namespace TimeMix
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Logger.Write(ex);
             }
-
         }
 
         private void TbDeltaTime_TextChanged(object sender, TextChangedEventArgs e)
@@ -213,7 +210,7 @@ namespace TimeMix
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Logger.Write(ex);
             }
 
         }
@@ -221,6 +218,16 @@ namespace TimeMix
         private void ChkTomorrowClass_Click(object sender, RoutedEventArgs e)
         {
             Settings.Default.isTomorrowClass = (bool)ChkTomorrowClass.IsChecked;
+        }
+
+        private void BtnMinusTime_Click(object sender, RoutedEventArgs e)
+        {
+            TbDeltaTime.Text = (int.Parse(TbDeltaTime.Text) - 1).ToString();
+        }
+
+        private void BtnAddTime_Click(object sender, RoutedEventArgs e)
+        {
+            TbDeltaTime.Text = (int.Parse(TbDeltaTime.Text) + 1).ToString();
         }
     }
 }

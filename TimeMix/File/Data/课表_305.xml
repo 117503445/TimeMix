@@ -11,7 +11,7 @@
     <Section Class="7" Name="B3" />
     <Section Class="8" Name="自修" />
   </Sections>
-    <Sections Week="2">
+  <Sections Week="2">
     <Section Class="0" Name="数学" />
     <Section Class="1" Name="数学" />
     <Section Class="2" Name="语文" />
@@ -22,7 +22,7 @@
     <Section Class="7" Name="B3" />
     <Section Class="8" Name="体锻" />
   </Sections>
-    <Sections Week="3">
+  <Sections Week="3">
     <Section Class="0" Name="B1" />
     <Section Class="1" Name="B2" />
     <Section Class="2" Name="B3" />
@@ -33,7 +33,7 @@
     <Section Class="7" Name="自修" />
     <Section Class="8" Name="体锻" />
   </Sections>
-    <Sections Week="4">
+  <Sections Week="4">
     <Section Class="0" Name="语文" />
     <Section Class="1" Name="数学" />
     <Section Class="2" Name="B3" />
@@ -44,7 +44,29 @@
     <Section Class="7" Name="体育" />
     <Section Class="8" Name="自修" />
   </Sections>
-    <Sections Week="5">
+  <Sections Week="5">
+    <Section Class="0" Name="B3" />
+    <Section Class="1" Name="B1" />
+    <Section Class="2" Name="B2" />
+    <Section Class="3" Name="数学" />
+    <Section Class="4" Name="英语" />
+    <Section Class="5" Name="语文" />
+    <Section Class="6" Name="自修" />
+    <Section Class="7" Name="自修" />
+    <Section Class="8" Name="W" />
+  </Sections>
+  <Sections Week="6">
+    <Section Class="0" Name="6,0" />
+    <Section Class="1" Name="B1" />
+    <Section Class="2" Name="B2" />
+    <Section Class="3" Name="数学" />
+    <Section Class="4" Name="英语" />
+    <Section Class="5" Name="语文" />
+    <Section Class="6" Name="自修" />
+    <Section Class="7" Name="自修" />
+    <Section Class="8" Name="!" />
+  </Sections>
+  <Sections Week="0">
     <Section Class="0" Name="B3" />
     <Section Class="1" Name="B1" />
     <Section Class="2" Name="B2" />
