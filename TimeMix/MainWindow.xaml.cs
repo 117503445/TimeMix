@@ -121,7 +121,7 @@ namespace TimeMix
 
         private void Timer1000_Tick(object sender, EventArgs e)
         {
-            TbChangeHeTime.Text = "长河时间 " + DateTime.Now.ToString();
+            TbChangeHeTime.Text = "长河时间 " +Public.ChangHeTime().ToString();
             Public.classTableWindow.Topmost = true;
 
             string pathTime = pathData + "/" + CboTime.SelectedItem.ToString() + "/";
@@ -143,7 +143,8 @@ namespace TimeMix
             //timeWindow.Topmost = true;
 
             Public.timeTableWindow.Changedata(Core.CurrentTimeSection, Core.Progress);
-            if (Public.ChangHeTime().CompareTo(Core.LastClassEndTime[1]) > 0 && Settings.Default.isTomorrowClass)
+            int week =(int) Public.ChangHeTime().DayOfWeek;
+            if (Public.ChangHeTime().CompareTo(Core.LastClassEndTime[week]) > 0 && Settings.Default.isTomorrowClass)
             {
                 //明天课表
                 Public.classTableWindow.ChangeClass(Core.GetClass((int)Public.ChangHeTime().AddDays(1).DayOfWeek), true);
@@ -154,6 +155,7 @@ namespace TimeMix
                 //今天课表
                 Public.classTableWindow.ChangeClass(Core.GetClass());
                 Public.classTableWindow.ChangeWeek(Public.ChangHeTime().DayOfWeek);
+
             }
 
         }
@@ -228,6 +230,17 @@ namespace TimeMix
         private void BtnAddTime_Click(object sender, RoutedEventArgs e)
         {
             TbDeltaTime.Text = (int.Parse(TbDeltaTime.Text) + 1).ToString();
+        }
+
+
+        private void BtnData_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", AppDomain.CurrentDomain.BaseDirectory+ "File\\data");
+        }
+
+        private void BtnTimeMix_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", ".");
         }
     }
 }

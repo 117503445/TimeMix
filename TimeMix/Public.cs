@@ -59,7 +59,7 @@ namespace TimeMix
             }
             bool[] b = new bool[3];
 
-            b[0] = IsBlack(window,0,0);
+            b[0] = IsBlack(window, 0, 0);
 
             b[1] = IsBlack(window, (int)window.Width / 2, (int)window.Height / 2);
 
@@ -80,9 +80,9 @@ namespace TimeMix
         /// true-黑色字体,false-白色字体
         /// </summary>
         /// <returns></returns>
-        private static bool IsBlack(Window window,int deltaX,int deltaY)
+        private static bool IsBlack(Window window, int deltaX, int deltaY)
         {
-            Drawing.Rectangle rc = new Drawing.Rectangle((int)window.Left+deltaX, (int)window.Top+deltaY, (int)SystemParameters.PrimaryScreenWidth, (int)SystemParameters.PrimaryScreenHeight);
+            Drawing.Rectangle rc = new Drawing.Rectangle((int)window.Left + deltaX, (int)window.Top + deltaY, (int)SystemParameters.PrimaryScreenWidth, (int)SystemParameters.PrimaryScreenHeight);
             var bitmap = new Drawing.Bitmap(1, 1);
             using (Drawing.Graphics g = Drawing.Graphics.FromImage(bitmap))
             {
@@ -90,7 +90,7 @@ namespace TimeMix
             }
             Drawing.Color color = bitmap.GetPixel(0, 0);
             bitmap.Dispose();
-           
+
             if (color.R + color.G + color.B > 384)
             {
                 return true;
@@ -124,7 +124,7 @@ namespace TimeMix
 
 
             Settings.Default.Save();
-            System.Diagnostics.Process.GetCurrentProcess().Kill();
+            Application.Current.Shutdown();
         }
     }
 }

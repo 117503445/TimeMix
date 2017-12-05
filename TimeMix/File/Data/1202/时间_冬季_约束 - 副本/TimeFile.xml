@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Week>
+  <day week="0">
+    <File>Daily.xml</File>
+    <File>Public.xml</File>
+  </day>
+  <day week="1">
+    <File>Monday.xml</File>
+    <File>Public.xml</File>
+  </day>
+  <day week="2">
+    <File>Daily.xml</File>
+    <File>Public.xml</File>
+  </day>
+  <day week="3">
+    <File>Daily.xml</File>
+    <File>Public.xml</File>
+  </day>
+  <day week="4">
+    <File>Daily.xml</File>
+    <File>Public.xml</File>
+  </day>
+  <day week="5">
+    <File>Daily.xml</File>
+    <File>Public.xml</File>
+  </day>
+  <day week="6">
+    <File>Daily.xml</File>
+    <File>Public.xml</File>
+  </day>
+</Week>

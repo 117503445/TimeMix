@@ -95,7 +95,7 @@ namespace TimeMix
                         timeSections[i][j].endTime = new DateTime(dt.Year, dt.Month, dt.Day).AddDays(1);//末尾,置为第二天00:00
                     }
                     #endregion
-                    if (timeSections[i][j].Class > 0)
+                    if (timeSections[i][j].Class >= 0)
                     {
                         classSection[i, timeSections[i][j].Class].EndTime = timeSections[i][j].endTime;
                     }
@@ -124,7 +124,7 @@ namespace TimeMix
             {
                 foreach (var item in timeSections[i])
                 {
-                    if (item.Class == 8)
+                    if (item.Class!=-1)
                     {
                         LastClassEndTime[i] = item.endTime;
                     }
@@ -240,7 +240,7 @@ namespace TimeMix
             /// </summary>
             public string name;
             /// <summary>
-            /// 课程,
+            /// 课程,无课程为-1,index从0开始
             /// </summary>
             public int Class;
         }

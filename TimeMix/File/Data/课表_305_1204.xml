@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassSection>
+  <Sections Week="1">
+    <Section Class="0" Name="语文" />
+    <Section Class="1" Name="物理" />
+    <Section Class="2" Name="政治" />
+  </Sections>
+  <Sections Week="2">
+    <Section Class="0" Name="英语" />
+    <Section Class="1" Name="历史" />
+    <Section Class="2" Name="化学" />
+    <Section Class="3" Name="地理" />
+  </Sections>
+  <Sections Week="3">
+    <Section Class="0" Name="数学" />
+    <Section Class="1" Name="生物" />
+    <Section Class="2" Name="技术" />
+  </Sections>
+</ClassSection>

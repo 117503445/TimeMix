@@ -41,7 +41,8 @@
             <TabItem Header="开发者选项">
                 <Grid Background="#FFE5E5E5">
                     <TextBlock x:Name="TbChangeHeTime" HorizontalAlignment="Left" Height="25" Margin="24,23,0,0" TextWrapping="Wrap" Text="长河时间 2017/12/2 16:18:42" VerticalAlignment="Top" Width="209"/>
-
+                    <Button x:Name="BtnTimeMix" Content="TimeMix文件夹" Margin="24,48,356,183.333" Click="BtnTimeMix_Click"/>
+                    <Button x:Name="BtnData" Content="Data文件夹" Margin="24,86,356,145.333" Click="BtnData_Click"/>
                 </Grid>
 
             </TabItem>

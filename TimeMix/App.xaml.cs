@@ -29,5 +29,15 @@ namespace TimeMix
 
             base.OnStartup(e);
         }
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            Console.WriteLine("TimeMix Start:)");
+        }
+
+        private void Application_Exit(object sender, ExitEventArgs e)
+        {
+            Console.WriteLine("TimeMix Exit:(");
+        }
     }
 }
