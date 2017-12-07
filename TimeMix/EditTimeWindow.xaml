@@ -1,0 +1,24 @@
+﻿<Window x:Class="TimeMix.EditTimeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimeMix"
+        mc:Ignorable="d"
+        Title="EditTimeWindow" Height="594.266" Width="705" Closing="Window_Closing" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Grid AutomationProperties.IsOffscreenBehavior="FromClip" >
+        <TextBox x:Name="TbEdit" HorizontalAlignment="Left" Height="471" TextWrapping="Wrap" Text="TbEdit" VerticalAlignment="Top" Width="387" Margin="10,87,0,0" LostFocus="TbEdit_LostFocus"/>
+        <ComboBox x:Name="CboBigSelect" HorizontalAlignment="Left" VerticalAlignment="Top" Width="387" Margin="10,10,0,0" SelectionChanged="CboBigSelect_SelectionChanged"/>
+        <ComboBox x:Name="CboSmallSelect" HorizontalAlignment="Left" VerticalAlignment="Top" Width="387" Margin="10,45,0,0" SelectionChanged="CboSmallSelect_SelectionChanged"/>
+        <Canvas Margin="465,62,252,409">
+            <TextBlock  Text="时间" RenderTransformOrigin="1.188,0.989" Canvas.Left="10" Canvas.Top="10"></TextBlock>
+            <TextBox  x:Name="TbTime" Height="23" TextWrapping="Wrap" Width="120" Canvas.Left="39" Canvas.Top="9" KeyDown="TbTime_KeyDown"/>
+            <TextBlock Text="名称" RenderTransformOrigin="1.188,0.989" Canvas.Left="10" Canvas.Top="51"/>
+            <TextBox x:Name="TbName" Height="23" TextWrapping="Wrap" Width="120" Canvas.Left="39" Canvas.Top="50" KeyDown="TbName_KeyDown"/>
+
+        </Canvas>
+        <Button x:Name="BtnSave" Content="保存" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="465,17,0,0" Click="BtnSave_Click"/>
+
+
+    </Grid>
+</Window>

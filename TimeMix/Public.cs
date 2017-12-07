@@ -14,7 +14,7 @@ namespace TimeMix
         public static ClassTableWindow classTableWindow;
         public static TimeTableWindow timeTableWindow;
         public static SwitchWindow switchWindow;
-
+        public static EditTimeWindow editTimeWindow;
         /// <summary>
         /// 获取长河时间
         /// </summary>

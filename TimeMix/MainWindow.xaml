@@ -14,6 +14,7 @@
                     <ComboBox x:Name="CboClass" VerticalAlignment="Top" Margin="67,24,236,0" SelectionChanged="CboClass_SelectionChanged"/>
                     <CheckBox x:Name="ChkAutoHide" Content="上课隐藏(X)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,59,0,0"/>
                     <CheckBox x:Name="ChkTomorrowClass" Content="明日课表" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,83,0,0" Height="23" Width="71" IsChecked="True" Click="ChkTomorrowClass_Click"/>
+                    <Button x:Name="BtnOpenEditTime" Content="编辑课表" HorizontalAlignment="Left" Height="31" Margin="17,106,0,0" VerticalAlignment="Top" Width="130" Click="BtnOpenEditTime_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="时间表">
@@ -41,8 +42,8 @@
             <TabItem Header="开发者选项">
                 <Grid Background="#FFE5E5E5">
                     <TextBlock x:Name="TbChangeHeTime" HorizontalAlignment="Left" Height="25" Margin="24,23,0,0" TextWrapping="Wrap" Text="长河时间 2017/12/2 16:18:42" VerticalAlignment="Top" Width="209"/>
-                    <Button x:Name="BtnTimeMix" Content="TimeMix文件夹" Margin="24,48,356,183.333" Click="BtnTimeMix_Click"/>
-                    <Button x:Name="BtnData" Content="Data文件夹" Margin="24,86,356,145.333" Click="BtnData_Click"/>
+                    <Button x:Name="BtnTimeMix" Content="TimeMix文件夹" Margin="24,47,363,188.333" Click="BtnTimeMix_Click"/>
+                    <Button x:Name="BtnData" Content="Data文件夹" Margin="24,80,363,155.333" Click="BtnData_Click"/>
                 </Grid>
 
             </TabItem>

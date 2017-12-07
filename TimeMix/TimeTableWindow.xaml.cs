@@ -18,7 +18,7 @@ namespace TimeMix
     /// <summary>
     /// TimeTableWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class TimeTableWindow : Window
+    public partial class TimeTableWindow : Window,IFunctionWindow
     {
         Label[] Labels;
         public TimeTableWindow()

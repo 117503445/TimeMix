@@ -52,7 +52,7 @@ namespace TimeMix
             {
                 SetVisible(2);
             }
-            Public.timeTableWindow.Left= Settings.Default.pTimeTableWindow.X;
+            Public.timeTableWindow.Left = Settings.Default.pTimeTableWindow.X;
             Public.timeTableWindow.Top = Settings.Default.pTimeTableWindow.Y;
         }
 

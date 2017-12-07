@@ -38,6 +38,9 @@ namespace TimeMix
             // timeTableWindow.Show();
             Public.switchWindow = new SwitchWindow(this);
             Public.switchWindow.Show();
+
+            Public.editTimeWindow = new EditTimeWindow();
+
             Hide();
             DispatcherTimer timer3000 = new DispatcherTimer();
             {
@@ -241,6 +244,11 @@ namespace TimeMix
         private void BtnTimeMix_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", ".");
+        }
+
+        private void BtnOpenEditTime_Click(object sender, RoutedEventArgs e)
+        {
+            Public.editTimeWindow.Show();
         }
     }
 }

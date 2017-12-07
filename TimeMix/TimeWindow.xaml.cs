@@ -18,7 +18,7 @@ namespace TimeMix
     /// <summary>
     /// TimeWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class TimeWindow : Window
+    public partial class TimeWindow : Window,IFunctionWindow
     {
         /// <summary>
         /// 更新时间
