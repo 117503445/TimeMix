@@ -57,6 +57,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -77,12 +79,20 @@
     <Compile Include="ClassTableWindow.xaml.cs">
       <DependentUpon>ClassTableWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\TimeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="EditTimeWindow.xaml.cs">
       <DependentUpon>EditTimeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="IFunctionWindow.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Public.cs" />
+    <Compile Include="ScheduleWindow.xaml.cs">
+      <DependentUpon>ScheduleWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -118,6 +128,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ScheduleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SwitchWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -149,6 +163,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\TimeService\NetTime.wsdl" />
+    <None Include="Connected Services\TimeService\NetTime.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\TimeService\NetTime1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -200,6 +221,17 @@
     <Resource Include="Resources\Switch\Open\TimeTable.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="File\Schedule.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Connected Services\TimeService\NetTime.disco" />
+    <None Include="Connected Services\TimeService\configuration91.svcinfo" />
+    <None Include="Connected Services\TimeService\configuration.svcinfo" />
+    <None Include="Connected Services\TimeService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="File\Data\课表_305_1204.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -236,6 +268,12 @@
     <Content Include="File\Log\Log.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\TimeService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,14 @@
+﻿<Window x:Class="TimeMix.ScheduleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimeMix"
+        mc:Ignorable="d"
+        Title="ScheduleWindow" Height="170.667" Width="259.333" WindowStyle="None" AllowsTransparency="True" Background="#02FFFFFF" FontSize="26" MouseLeftButtonDown="Window_MouseLeftButtonDown" SizeToContent="WidthAndHeight" Topmost="True">
+    <StackPanel>
+        <TextBlock x:Name="Tb0"  Text="高考 150天"></TextBlock>
+        <TextBlock x:Name="Tb1"  Text="高考 150天"></TextBlock>
+        <TextBlock x:Name="Tb2"  Text="高考 150天"></TextBlock>
+    </StackPanel>
+</Window>

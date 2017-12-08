@@ -124,7 +124,7 @@ namespace TimeMix
             {
                 foreach (var item in timeSections[i])
                 {
-                    if (item.Class!=-1)
+                    if (item.Class != -1)
                     {
                         LastClassEndTime[i] = item.endTime;
                     }
@@ -214,7 +214,7 @@ namespace TimeMix
             List<ClassSection> list = new List<ClassSection>();
             for (int i = 0; i < classSection.GetLength(1); i++)
             {
-                list.Add(classSection[week,i]);
+                list.Add(classSection[week, i]);
             }
             return list;
         }

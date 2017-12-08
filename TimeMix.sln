@@ -1,11 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+VisualStudioVersion = 15.0.27130.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeChanger", "TimeChanger\TimeChanger.csproj", "{E4116302-1DF9-44C8-AD34-A2869C59C553}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeMix", "TimeMix\TimeMix.csproj", "{5422C589-AA3F-43B0-9A66-5AED584F61DF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BA345C3F-C176-4AD9-B093-5B340BE6BA62} = {BA345C3F-C176-4AD9-B093-5B340BE6BA62}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{BA345C3F-C176-4AD9-B093-5B340BE6BA62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +26,10 @@ Global
 		{5422C589-AA3F-43B0-9A66-5AED584F61DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5422C589-AA3F-43B0-9A66-5AED584F61DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5422C589-AA3F-43B0-9A66-5AED584F61DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA345C3F-C176-4AD9-B093-5B340BE6BA62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA345C3F-C176-4AD9-B093-5B340BE6BA62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA345C3F-C176-4AD9-B093-5B340BE6BA62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA345C3F-C176-4AD9-B093-5B340BE6BA62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

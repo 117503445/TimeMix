@@ -102,7 +102,7 @@ namespace TimeMix
                     SetVisible(3);
                     break;
                 case "ImgOther":
-                    b[4] = !b[4];
+                    SetVisible(4);
                     break;
                 case "ImgClose":
                     Public.ExitProgram();
@@ -172,6 +172,21 @@ namespace TimeMix
                         b[index] = true;
                         mainWindow.Show();
                         ImgSetting.Source = new BitmapImage(new Uri("/Resources/Switch/Open/Setting.png", UriKind.RelativeOrAbsolute));
+                    }
+                    break;
+
+                case 4:
+                    if (b[index])//关闭操作
+                    {
+                        b[index] = false;
+                        Public.ScheduleWindow.Hide();
+                        ImgOther.Source = new BitmapImage(new Uri("/Resources/Switch/Close/other.png", UriKind.RelativeOrAbsolute));
+                    }
+                    else//展开操作
+                    {
+                        b[index] = true;
+                        Public.ScheduleWindow.Show();
+                        ImgOther.Source = new BitmapImage(new Uri("/Resources/Switch/Open/other.png", UriKind.RelativeOrAbsolute));
                     }
                     break;
                 default:

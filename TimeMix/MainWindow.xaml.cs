@@ -40,6 +40,7 @@ namespace TimeMix
             Public.switchWindow.Show();
 
             Public.editTimeWindow = new EditTimeWindow();
+            Public.ScheduleWindow = new ScheduleWindow();
 
             Hide();
             DispatcherTimer timer3000 = new DispatcherTimer();
@@ -103,6 +104,19 @@ namespace TimeMix
             Tbdpi.Text = Settings.Default.dpi.ToString();
             TbDeltaTime.Text = Settings.Default.deltaTime.ToString();
             ChkTomorrowClass.IsChecked = Settings.Default.isTomorrowClass;
+
+
+            TimeService.NetTimeClient netTime = new TimeService.NetTimeClient();
+            try
+            {
+                Console.WriteLine(netTime.GetTime());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("连接失败");
+                Logger.Write(ex);
+            }
+
         }
 
         private void Timer3000_Tick(object sender, EventArgs e)
@@ -110,6 +124,7 @@ namespace TimeMix
             Public.timeTableWindow.ChangeColor();
             Public.timeWindow.ChangeColor();
             Public.classTableWindow.ChangeColor();
+            Public.ScheduleWindow.ChangeColor();
         }
 
         private void Timer100_Tick(object sender, EventArgs e)
@@ -124,7 +139,7 @@ namespace TimeMix
 
         private void Timer1000_Tick(object sender, EventArgs e)
         {
-            TbChangeHeTime.Text = "长河时间 " +Public.ChangHeTime().ToString();
+            TbChangeHeTime.Text = "长河时间 " + Public.ChangHeTime().ToString();
             Public.classTableWindow.Topmost = true;
 
             string pathTime = pathData + "/" + CboTime.SelectedItem.ToString() + "/";
@@ -146,7 +161,7 @@ namespace TimeMix
             //timeWindow.Topmost = true;
 
             Public.timeTableWindow.Changedata(Core.CurrentTimeSection, Core.Progress);
-            int week =(int) Public.ChangHeTime().DayOfWeek;
+            int week = (int)Public.ChangHeTime().DayOfWeek;
             if (Public.ChangHeTime().CompareTo(Core.LastClassEndTime[week]) > 0 && Settings.Default.isTomorrowClass)
             {
                 //明天课表
@@ -238,7 +253,7 @@ namespace TimeMix
 
         private void BtnData_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", AppDomain.CurrentDomain.BaseDirectory+ "File\\data");
+            System.Diagnostics.Process.Start("explorer.exe", AppDomain.CurrentDomain.BaseDirectory + "File\\data");
         }
 
         private void BtnTimeMix_Click(object sender, RoutedEventArgs e)
@@ -249,6 +264,11 @@ namespace TimeMix
         private void BtnOpenEditTime_Click(object sender, RoutedEventArgs e)
         {
             Public.editTimeWindow.Show();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
