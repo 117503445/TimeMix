@@ -26,14 +26,15 @@ namespace TimeMix
     {
         public MainWindow()
         {
-            InitializeComponent();
 
+            InitializeComponent();
+            int[] a = new int[5];
+            a[5] = 1;
             Public.timeWindow = new TimeWindow();
             //  timeWindow.Show();
 
             Public.classTableWindow = new ClassTableWindow();
             // classTableWindow.Show();
-
             Public.timeTableWindow = new TimeTableWindow();
             // timeTableWindow.Show();
             Public.switchWindow = new SwitchWindow(this);
@@ -116,7 +117,6 @@ namespace TimeMix
                 Console.WriteLine("连接失败");
                 Logger.Write(ex);
             }
-
         }
 
         private void Timer3000_Tick(object sender, EventArgs e)
