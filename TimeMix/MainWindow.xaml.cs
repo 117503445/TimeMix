@@ -28,8 +28,6 @@ namespace TimeMix
         {
 
             InitializeComponent();
-            int[] a = new int[5];
-            a[5] = 1;
             Public.timeWindow = new TimeWindow();
             //  timeWindow.Show();
 
