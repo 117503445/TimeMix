@@ -192,7 +192,7 @@
     <Resource Include="Resources\Switch\Close\TimeTable.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Switch\Close\Other.png" />
+    <Resource Include="Resources\Switch\Close\Schedule.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Switch\Close\Setting.png" />
@@ -215,7 +215,7 @@
   <ItemGroup>
     <Resource Include="Resources\Switch\Open\ClassTable.png" />
     <Resource Include="Resources\Switch\Open\Close.png" />
-    <Resource Include="Resources\Switch\Open\Other.png" />
+    <Resource Include="Resources\Switch\Open\Schedule.png" />
     <Resource Include="Resources\Switch\Open\Setting.png" />
     <Resource Include="Resources\Switch\Open\Time.png" />
     <Resource Include="Resources\Switch\Open\TimeTable.png" />

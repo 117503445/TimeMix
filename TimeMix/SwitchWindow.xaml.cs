@@ -22,12 +22,27 @@ namespace TimeMix
     {
         MainWindow mainWindow;
         bool[] b = new bool[5];
+
         DispatcherTimer timer = new DispatcherTimer
         {
             IsEnabled = true,
             Interval = TimeSpan.FromSeconds(3)
         };
+        class WindowCollection
+        {
+            public Window window;
+            public string PicName;
+            public Image image;
 
+
+            public WindowCollection(Window window, string picName, Image image)
+            {
+                this.window = window;
+                PicName = picName;
+                this.image = image;
+            }
+        }
+        List<WindowCollection> windows = new List<WindowCollection>();
         public SwitchWindow(MainWindow window)
         {
             InitializeComponent();
@@ -38,22 +53,35 @@ namespace TimeMix
 
             if (Settings.Default.isTimeWindowShowed)
             {
-                SetVisible(0);
+                //  SetVisible(0);
             }
             Public.timeWindow.Left = Settings.Default.pTimeWindow.X;
             Public.timeWindow.Top = Settings.Default.pTimeWindow.Y;
             if (Settings.Default.isClassTableWindowShowed)
             {
-                SetVisible(1);
+                //   SetVisible(1);
             }
             Public.classTableWindow.Left = Settings.Default.pClassTableWindow.X;
             Public.classTableWindow.Top = Settings.Default.pClassTableWindow.Y;
             if (Settings.Default.isTimeTableWindowShowed)
             {
-                SetVisible(2);
+                //SetVisible(2);
             }
             Public.timeTableWindow.Left = Settings.Default.pTimeTableWindow.X;
             Public.timeTableWindow.Top = Settings.Default.pTimeTableWindow.Y;
+
+            Loaded += SwitchWindow_Loaded;
+
+        }
+
+        private void SwitchWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.windows.Clear();
+            this.windows.Add(new WindowCollection(Public.timeWindow, "Time", Public.switchWindow.ImgTime));
+            this.windows.Add(new WindowCollection(Public.classTableWindow, "ClassTable", Public.switchWindow.ImgClassTable));
+            this.windows.Add(new WindowCollection(Public.timeTableWindow, "TimeTable", Public.switchWindow.ImgTimeTable));
+            this.windows.Add(new WindowCollection(Public.switchWindow.mainWindow, "Setting", Public.switchWindow.ImgSetting));
+            this.windows.Add(new WindowCollection(Public.ScheduleWindow, "Schedule", Public.switchWindow.ImgSchedule));
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -101,7 +129,7 @@ namespace TimeMix
                 case "ImgSetting":
                     SetVisible(3);
                     break;
-                case "ImgOther":
+                case "ImgSchedule":
                     SetVisible(4);
                     break;
                 case "ImgClose":
@@ -116,83 +144,31 @@ namespace TimeMix
 
         public void SetVisible(int index)
         {
-            switch (index)
+            string s = "";
+            if (b[index])
             {
-                case 0:
-                    if (b[index])//关闭操作
-                    {
-                        b[index] = false;
-                        Public.timeWindow.Hide();
-                        ImgTime.Source = new BitmapImage(new Uri("/Resources/Switch/Close/Time.png", UriKind.RelativeOrAbsolute));
-                    }
-                    else//展开操作
-                    {
-                        b[index] = true;
-                        Public.timeWindow.Show();
-                        ImgTime.Source = new BitmapImage(new Uri("/Resources/Switch/Open/Time.png", UriKind.RelativeOrAbsolute));
-                    }
-                    break;
-                case 1:
-                    if (b[index])//关闭操作
-                    {
-                        b[index] = false;
-                        Public.classTableWindow.Hide();
-                        ImgClassTable.Source = new BitmapImage(new Uri("/Resources/Switch/Close/ClassTable.png", UriKind.RelativeOrAbsolute));
-                    }
-                    else//展开操作
-                    {
-                        b[index] = true;
-                        Public.classTableWindow.Show();
-                        ImgClassTable.Source = new BitmapImage(new Uri("/Resources/Switch/Open/ClassTable.png", UriKind.RelativeOrAbsolute));
-                    }
-                    break;
-                case 2:
-                    if (b[index])//关闭操作
-                    {
-                        b[index] = false;
-                        Public.timeTableWindow.Hide();
-                        ImgTimeTable.Source = new BitmapImage(new Uri("/Resources/Switch/Close/TimeTable.png", UriKind.RelativeOrAbsolute));
-                    }
-                    else//展开操作
-                    {
-                        b[index] = true;
-                        Public.timeTableWindow.Show();
-                        ImgTimeTable.Source = new BitmapImage(new Uri("/Resources/Switch/Open/TimeTable.png", UriKind.RelativeOrAbsolute));
-                    }
-                    break;
-                case 3:
-                    if (b[index])//关闭操作
-                    {
-                        b[index] = false;
-                        mainWindow.Hide();
-                        ImgSetting.Source = new BitmapImage(new Uri("/Resources/Switch/Close/Setting.png", UriKind.RelativeOrAbsolute));
-                    }
-                    else//展开操作
-                    {
-                        b[index] = true;
-                        mainWindow.Show();
-                        ImgSetting.Source = new BitmapImage(new Uri("/Resources/Switch/Open/Setting.png", UriKind.RelativeOrAbsolute));
-                    }
-                    break;
 
-                case 4:
-                    if (b[index])//关闭操作
-                    {
-                        b[index] = false;
-                        Public.ScheduleWindow.Hide();
-                        ImgOther.Source = new BitmapImage(new Uri("/Resources/Switch/Close/other.png", UriKind.RelativeOrAbsolute));
-                    }
-                    else//展开操作
-                    {
-                        b[index] = true;
-                        Public.ScheduleWindow.Show();
-                        ImgOther.Source = new BitmapImage(new Uri("/Resources/Switch/Open/other.png", UriKind.RelativeOrAbsolute));
-                    }
-                    break;
-                default:
-                    break;
+                windows[index].window.Hide();
+                s = "/Resources/Switch/Close/" + windows[index].PicName + ".png";
+
             }
+            else
+            {
+                windows[index].window.Show();
+                s = "/Resources/Switch/Open/" + windows[index].PicName + ".png";
+
+            }
+            b[index] = !b[index];
+            windows[index].image.Source = new BitmapImage(new Uri(s, UriKind.RelativeOrAbsolute));
+
+            return;
+
         }
 
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+
+        }
     }
 }

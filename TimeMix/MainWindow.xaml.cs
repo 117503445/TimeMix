@@ -35,11 +35,13 @@ namespace TimeMix
             // classTableWindow.Show();
             Public.timeTableWindow = new TimeTableWindow();
             // timeTableWindow.Show();
-            Public.switchWindow = new SwitchWindow(this);
-            Public.switchWindow.Show();
+
 
             Public.editTimeWindow = new EditTimeWindow();
             Public.ScheduleWindow = new ScheduleWindow();
+
+            Public.switchWindow = new SwitchWindow(this);
+            Public.switchWindow.Show();
 
             Hide();
             DispatcherTimer timer3000 = new DispatcherTimer();

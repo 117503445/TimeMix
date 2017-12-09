@@ -29,7 +29,7 @@ namespace TimeMix
             TextBlock[2] = Tb2;
             foreach (var item in TextBlock)
             {
-                item.Text = "";
+             //   item.Text = "";
                 item.Visibility = Visibility.Visible;
             }
             XElement x = XElement.Load(Environment.CurrentDirectory + "/File/Schedule.xml");
@@ -47,10 +47,10 @@ namespace TimeMix
             }
             foreach (var item in TextBlock)
             {
-                if (item.Text == "")
-                {
-                    item.Visibility = Visibility.Collapsed;
-                }
+                //if (item.Text == "")
+                //{
+                //    item.Visibility = Visibility.Collapsed;
+                //}
             }
         }
 
