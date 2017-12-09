@@ -123,9 +123,9 @@ namespace TimeMix
                 Settings.Default.pTimeTableWindow = new Point(timeTableWindow.Left, timeTableWindow.Top);
             }
 
-
             Settings.Default.Save();
-            Application.Current.Shutdown();
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
+
         }
     }
 }

@@ -21,8 +21,6 @@ namespace TimeMix
     public partial class SwitchWindow : Window
     {
         MainWindow mainWindow;
-        bool[] b = new bool[5];
-
         DispatcherTimer timer = new DispatcherTimer
         {
             IsEnabled = true,
@@ -30,10 +28,18 @@ namespace TimeMix
         };
         class WindowCollection
         {
+            /// <summary>
+            /// 窗体
+            /// </summary>
             public Window window;
+            /// <summary>
+            /// 图片资源名称
+            /// </summary>
             public string PicName;
+            /// <summary>
+            /// 对应图片
+            /// </summary>
             public Image image;
-
 
             public WindowCollection(Window window, string picName, Image image)
             {
@@ -46,29 +52,19 @@ namespace TimeMix
         public SwitchWindow(MainWindow window)
         {
             InitializeComponent();
+
+            windows.Clear();
+
+
+
+
+
+
             mainWindow = window;
             Top = (SystemParameters.PrimaryScreenHeight - Height) / 2;
             Left = SystemParameters.PrimaryScreenWidth - 1;
             timer.Tick += Timer_Tick;
 
-            if (Settings.Default.isTimeWindowShowed)
-            {
-                //  SetVisible(0);
-            }
-            Public.timeWindow.Left = Settings.Default.pTimeWindow.X;
-            Public.timeWindow.Top = Settings.Default.pTimeWindow.Y;
-            if (Settings.Default.isClassTableWindowShowed)
-            {
-                //   SetVisible(1);
-            }
-            Public.classTableWindow.Left = Settings.Default.pClassTableWindow.X;
-            Public.classTableWindow.Top = Settings.Default.pClassTableWindow.Y;
-            if (Settings.Default.isTimeTableWindowShowed)
-            {
-                //SetVisible(2);
-            }
-            Public.timeTableWindow.Left = Settings.Default.pTimeTableWindow.X;
-            Public.timeTableWindow.Top = Settings.Default.pTimeTableWindow.Y;
 
             Loaded += SwitchWindow_Loaded;
 
@@ -76,16 +72,36 @@ namespace TimeMix
 
         private void SwitchWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            this.windows.Clear();
-            this.windows.Add(new WindowCollection(Public.timeWindow, "Time", Public.switchWindow.ImgTime));
-            this.windows.Add(new WindowCollection(Public.classTableWindow, "ClassTable", Public.switchWindow.ImgClassTable));
-            this.windows.Add(new WindowCollection(Public.timeTableWindow, "TimeTable", Public.switchWindow.ImgTimeTable));
-            this.windows.Add(new WindowCollection(Public.switchWindow.mainWindow, "Setting", Public.switchWindow.ImgSetting));
-            this.windows.Add(new WindowCollection(Public.ScheduleWindow, "Schedule", Public.switchWindow.ImgSchedule));
+            windows.Add(new WindowCollection(Public.timeWindow, "Time", Public.switchWindow.ImgTime));
+            windows.Add(new WindowCollection(Public.classTableWindow, "ClassTable", Public.switchWindow.ImgClassTable));
+            windows.Add(new WindowCollection(Public.timeTableWindow, "TimeTable", Public.switchWindow.ImgTimeTable));
+            windows.Add(new WindowCollection(Public.switchWindow.mainWindow, "Setting", Public.switchWindow.ImgSetting));
+            windows.Add(new WindowCollection(Public.ScheduleWindow, "Schedule", Public.switchWindow.ImgSchedule));
+
+            if (Settings.Default.isTimeWindowShowed)
+            {
+                SetVisible(0, true);
+            }
+            Public.timeWindow.Left = Settings.Default.pTimeWindow.X;
+            Public.timeWindow.Top = Settings.Default.pTimeWindow.Y;
+            if (Settings.Default.isClassTableWindowShowed)
+            {
+                SetVisible(1, true);
+            }
+            Public.classTableWindow.Left = Settings.Default.pClassTableWindow.X;
+            Public.classTableWindow.Top = Settings.Default.pClassTableWindow.Y;
+            if (Settings.Default.isTimeTableWindowShowed)
+            {
+                SetVisible(2, true);
+            }
+            Public.timeTableWindow.Left = Settings.Default.pTimeTableWindow.X;
+            Public.timeTableWindow.Top = Settings.Default.pTimeTableWindow.Y;
+
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
+            //3s后归位
             timer.Stop();
             Left = SystemParameters.PrimaryScreenWidth - 1;
         }
@@ -95,14 +111,8 @@ namespace TimeMix
             Public.ExitProgram();
         }
 
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
         private void Window_MouseEnter(object sender, MouseEventArgs e)
         {
-
             timer.Stop();
             Left = SystemParameters.PrimaryScreenWidth - Width;
         }
@@ -114,61 +124,50 @@ namespace TimeMix
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            string controlName = ((Image)sender).Name;
-            switch (controlName)
+            foreach (var item in windows)
             {
-                case "ImgTime":
-                    SetVisible(0);
-                    break;
-                case "ImgClassTable":
-                    SetVisible(1);
-                    break;
-                case "ImgTimeTable":
-                    SetVisible(2);
-                    break;
-                case "ImgSetting":
-                    SetVisible(3);
-                    break;
-                case "ImgSchedule":
-                    SetVisible(4);
-                    break;
-                case "ImgClose":
-                    Public.ExitProgram();
-                    break;
-
-                default:
-                    break;
+                if ((Image)sender == item.image)
+                {
+                    string s = "";
+                    if (item.window.IsVisible)
+                    {
+                        item.window.Hide();
+                        s = "/Resources/Switch/Close/" + item.PicName + ".png";
+                    }
+                    else
+                    {
+                        item.window.Show();
+                        s = "/Resources/Switch/Open/" + item.PicName + ".png";
+                    }
+                    item.image.Source = new BitmapImage(new Uri(s, UriKind.RelativeOrAbsolute));
+                }
             }
-
         }
-
-        public void SetVisible(int index)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="show">是否展示</param>
+        public void SetVisible(int index,bool show)
         {
             string s = "";
-            if (b[index])
+            if (show)
             {
-
                 windows[index].window.Hide();
                 s = "/Resources/Switch/Close/" + windows[index].PicName + ".png";
-
             }
             else
             {
                 windows[index].window.Show();
                 s = "/Resources/Switch/Open/" + windows[index].PicName + ".png";
-
             }
-            b[index] = !b[index];
             windows[index].image.Source = new BitmapImage(new Uri(s, UriKind.RelativeOrAbsolute));
-
             return;
-
         }
 
-
-        private void Window_Activated(object sender, EventArgs e)
+        private void ImgClose_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            Public.ExitProgram();
         }
     }
 }

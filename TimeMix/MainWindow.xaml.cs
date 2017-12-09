@@ -28,6 +28,14 @@ namespace TimeMix
         {
 
             InitializeComponent();
+            
+            Loaded += MainWindow_Loaded;
+
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            Hide();
             Public.timeWindow = new TimeWindow();
             //  timeWindow.Show();
 
@@ -43,7 +51,7 @@ namespace TimeMix
             Public.switchWindow = new SwitchWindow(this);
             Public.switchWindow.Show();
 
-            Hide();
+
             DispatcherTimer timer3000 = new DispatcherTimer();
             {
                 timer3000.IsEnabled = true;
@@ -192,7 +200,7 @@ namespace TimeMix
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Hide();
-            Public.switchWindow.SetVisible(3);
+            Public.switchWindow.SetVisible(3, false);
             e.Cancel = true;
         }
 

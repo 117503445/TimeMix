@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeMix"
         mc:Ignorable="d"
-        Title="SwitchWindow" Height="240" Width="40" Closed="Window_Closed" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="NoResize" MouseEnter="Window_MouseEnter" MouseLeave="Window_MouseLeave" Topmost="True" ShowInTaskbar="False" Activated="Window_Activated" >
+        Title="SwitchWindow" Height="240" Width="40" Closed="Window_Closed" WindowStyle="None" ResizeMode="NoResize" MouseEnter="Window_MouseEnter" MouseLeave="Window_MouseLeave" Topmost="True" ShowInTaskbar="False" >
     <Grid>
         <StackPanel>
             <Image x:Name="ImgTime" x:FieldModifier="public" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Source="/Resources/Switch/Close/Time.png" MouseDown="Image_MouseDown"/>
@@ -13,7 +13,7 @@
             <Image x:Name="ImgTimeTable" x:FieldModifier="public" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Source="/Resources/Switch/Close/TimeTable.png" MouseDown="Image_MouseDown"/>
             <Image x:Name="ImgSetting" x:FieldModifier="public" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Source="/Resources/Switch/Close/Setting.png"  MouseDown="Image_MouseDown"/>
             <Image x:Name="ImgSchedule" x:FieldModifier="public" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Source="/Resources/Switch/Close/Schedule.png" MouseDown="Image_MouseDown"/>
-            <Image x:Name="ImgClose" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Source="/Resources/Switch/Close/Close.png" MouseDown="Image_MouseDown"/>
+            <Image x:Name="ImgClose" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Source="/Resources/Switch/Close/Close.png" MouseDown="ImgClose_MouseDown"/>
         </StackPanel>
     </Grid>
 </Window>
