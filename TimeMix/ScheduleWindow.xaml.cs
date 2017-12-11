@@ -36,13 +36,14 @@ namespace TimeMix
             int i = 0;
             foreach (var field in x.Elements())
             {
+                Console.Write(field);
                 if (i > 2)
                 {
                     break;
                 }
                 TextBlock[i].Text = field.Attribute("Name").Value;
                 DateTime d = Convert.ToDateTime(field.Attribute("Date").Value);
-                TextBlock[i].Text += "剩余" + (d.Day - DateTime.Now.Day) + "天";
+                TextBlock[i].Text += "剩余" + ((d - DateTime.Now).Days) + "天";
                 i++;
             }
             foreach (var item in TextBlock)
