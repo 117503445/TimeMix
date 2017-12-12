@@ -36,8 +36,18 @@ namespace TimeMix
         public void Changedata(Core.TimeSection timeSection,string progress)
         {
             LblClass.Content = timeSection.name;
-            LblBeginTime.Content = timeSection.beginTime.ToShortTimeString();
-            LblEndTime.Content = timeSection.endTime.ToShortTimeString();
+            string s1= timeSection.beginTime.ToShortTimeString();
+            if (s1.Length==4)
+            {
+                s1 = "  " + s1;
+            }
+            LblBeginTime.Content = s1;
+            string s2 = timeSection.endTime.ToShortTimeString();
+            if (s2.Length == 4)
+            {
+                s2 = "  " + s2;
+            }
+            LblEndTime.Content = s2;
             LblProgress.Content = progress;
         }
         public void ChangeColor()

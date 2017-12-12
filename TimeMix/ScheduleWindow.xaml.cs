@@ -27,16 +27,40 @@ namespace TimeMix
             TextBlock[0] = Tb0;
             TextBlock[1] = Tb1;
             TextBlock[2] = Tb2;
+            Update();
+        }
+
+        public void ChangeColor()
+        {
+
+
             foreach (var item in TextBlock)
             {
-             //   item.Text = "";
+                if (Public.InBlackStyle(this))
+                {//浅色
+                    item.Foreground = new SolidColorBrush(Colors.Black);
+                }
+                else
+                {
+                    item.Foreground = new SolidColorBrush(Colors.White);
+                }
+            }
+
+        }
+        /// <summary>
+        /// 更新数据
+        /// </summary>
+        public void Update()
+        {
+            foreach (var item in TextBlock)
+            {
+                item.Text = "";
                 item.Visibility = Visibility.Visible;
             }
             XElement x = XElement.Load(Environment.CurrentDirectory + "/File/Schedule.xml");
             int i = 0;
             foreach (var field in x.Elements())
             {
-                Console.Write(field);
                 if (i > 2)
                 {
                     break;
@@ -48,34 +72,11 @@ namespace TimeMix
             }
             foreach (var item in TextBlock)
             {
-                //if (item.Text == "")
-                //{
-                //    item.Visibility = Visibility.Collapsed;
-                //}
-            }
-        }
-
-        public void ChangeColor()
-        {
-            if (Public.InBlackStyle(this))//浅色
-            {
-                foreach (var item in TextBlock)
+                if (item.Text == "")
                 {
-                    item.Foreground = new SolidColorBrush(Colors.Black);
+                    item.Visibility = Visibility.Collapsed;
                 }
             }
-            else
-            {
-                foreach (var item in TextBlock)
-                {
-                    item.Foreground = new SolidColorBrush(Colors.White);
-                }
-            }
-        }
-        public void Update()
-        {
-
-
         }
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

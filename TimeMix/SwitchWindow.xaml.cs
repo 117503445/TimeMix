@@ -52,22 +52,12 @@ namespace TimeMix
         public SwitchWindow(MainWindow window)
         {
             InitializeComponent();
-
             windows.Clear();
-
-
-
-
-
-
             mainWindow = window;
             Top = (SystemParameters.PrimaryScreenHeight - Height) / 2;
             Left = SystemParameters.PrimaryScreenWidth - 1;
             timer.Tick += Timer_Tick;
-
-
             Loaded += SwitchWindow_Loaded;
-
         }
 
         private void SwitchWindow_Loaded(object sender, RoutedEventArgs e)
@@ -148,21 +138,20 @@ namespace TimeMix
         /// </summary>
         /// <param name="index"></param>
         /// <param name="show">是否展示</param>
-        public void SetVisible(int index,bool show)
+        public void SetVisible(int index, bool show)
         {
             string s = "";
             if (show)
             {
-                windows[index].window.Hide();
-                s = "/Resources/Switch/Close/" + windows[index].PicName + ".png";
-            }
-            else
-            {
                 windows[index].window.Show();
                 s = "/Resources/Switch/Open/" + windows[index].PicName + ".png";
             }
+            else
+            {
+                windows[index].window.Hide();
+                s = "/Resources/Switch/Close/" + windows[index].PicName + ".png";
+            }
             windows[index].image.Source = new BitmapImage(new Uri(s, UriKind.RelativeOrAbsolute));
-            return;
         }
 
         private void ImgClose_MouseDown(object sender, MouseButtonEventArgs e)
