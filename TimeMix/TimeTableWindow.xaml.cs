@@ -52,8 +52,6 @@ namespace TimeMix
         }
         public void ChangeColor()
         {
-
-
             foreach (var item in Labels)
             {
                     if (Public.InBlackStyle(this))//浅色
