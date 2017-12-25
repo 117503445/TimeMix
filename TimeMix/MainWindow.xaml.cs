@@ -113,18 +113,6 @@ namespace TimeMix
             Tbdpi.Text = Settings.Default.dpi.ToString();
             TbDeltaTime.Text = Settings.Default.deltaTime.ToString();
             ChkTomorrowClass.IsChecked = Settings.Default.isTomorrowClass;
-
-
-            TimeService.NetTimeClient netTime = new TimeService.NetTimeClient();
-            try
-            {
-                Console.WriteLine(netTime.GetTime());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("连接失败");
-                Logger.Write(ex);
-            }
         }
 
         private void Timer3000_Tick(object sender, EventArgs e)
