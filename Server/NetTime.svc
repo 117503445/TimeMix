@@ -1,1 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="Server.NetTime" CodeBehind="NetTime.svc.cs" %>
