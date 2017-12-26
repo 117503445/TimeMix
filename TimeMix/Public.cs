@@ -71,14 +71,9 @@ namespace TimeMix
                 return false;
             }
             bool[] b = new bool[3];
-
             b[0] = IsBlack(window, 0, 0);
-
             b[1] = IsBlack(window, (int)window.Width / 2, (int)window.Height / 2);
-
             b[2] = IsBlack(window, (int)window.Width, (int)window.Height);
-
-
             int count = 0;
             foreach (var item in b)
             {

@@ -5,6 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeMix"
         mc:Ignorable="d"
-        Title="StartWindow" Height="100" Width="300" Loaded="Window_Loaded">
+        Title="StartWindow" Height="66" Width="231" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <TextBlock Text="TimeMix" FontSize="48" FontWeight="Bold" FontStyle="Italic"></TextBlock>
 </Window>

@@ -94,14 +94,6 @@ namespace TimeMix
             Public.timeTableWindow.Left = Settings.Default.pTimeTableWindow.X;
             Public.timeTableWindow.Top = Settings.Default.pTimeTableWindow.Y;
 
-
-            DispatcherTimer timer3000 = new DispatcherTimer();
-            {
-                timer3000.IsEnabled = true;
-                timer3000.Interval = TimeSpan.FromSeconds(3);
-                timer3000.Tick += Timer3000_Tick;
-            }
-
             DispatcherTimer timer1000 = new DispatcherTimer();
             {
                 timer1000.IsEnabled = true;
@@ -120,20 +112,18 @@ namespace TimeMix
 
 
         }
-        private void Timer3000_Tick(object sender, EventArgs e)
+
+        private void Timer1000_Tick(object sender, EventArgs e)
         {
             Public.timeTableWindow.ChangeColor();
             Public.timeWindow.ChangeColor();
             Public.classTableWindow.ChangeColor();
             Public.ScheduleWindow.ChangeColor();
-        }
 
-        private void Timer1000_Tick(object sender, EventArgs e)
-        {
+
+
             //TbChangeHeTime.Text = "长河时间 " + Public.ChangHeTime().ToString();
             Public.classTableWindow.Topmost = true;
-
-
 #if !DEBUG
             try
             {
