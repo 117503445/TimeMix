@@ -17,61 +17,23 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
+
 namespace TimeMix
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SettingWindow : Window
     {
-        public MainWindow()
+        public SettingWindow()
         {
-
             InitializeComponent();
-            
             Loaded += MainWindow_Loaded;
-
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            Hide();
-            Public.timeWindow = new TimeWindow();
-            //  timeWindow.Show();
-
-            Public.classTableWindow = new ClassTableWindow();
-            // classTableWindow.Show();
-            Public.timeTableWindow = new TimeTableWindow();
-            // timeTableWindow.Show();
-
-
-            Public.editTimeWindow = new EditTimeWindow();
-            Public.ScheduleWindow = new ScheduleWindow();
-
-            Public.switchWindow = new SwitchWindow(this);
-            Public.switchWindow.Show();
-
-
-            DispatcherTimer timer3000 = new DispatcherTimer();
-            {
-                timer3000.IsEnabled = true;
-                timer3000.Interval = TimeSpan.FromSeconds(3);
-                timer3000.Tick += Timer3000_Tick;
-            }
-
-            DispatcherTimer timer1000 = new DispatcherTimer();
-            {
-                timer1000.IsEnabled = true;
-                timer1000.Interval = TimeSpan.FromSeconds(1);
-                timer1000.Tick += Timer1000_Tick;
-            }
-            DispatcherTimer timer100 = new DispatcherTimer();
-            {
-                timer100.IsEnabled = true;
-                timer100.Interval = TimeSpan.FromMilliseconds(100);
-                timer100.Tick += Timer100_Tick;
-            }
-            DirectoryInfo dir = new DirectoryInfo(pathData);
+            DirectoryInfo dir = new DirectoryInfo(Public.PathData);
             if (dir.Exists)
             {
                 FileInfo[] fiList = dir.GetFiles();
@@ -98,8 +60,6 @@ namespace TimeMix
 
             }
             //TimeCore.Core core = new TimeCore.Core(@"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\时间NEW.txt", @"C:\User\File\Program\TimeMix\TimeMix\File\Data\Source\课表NEW.txt", deltaTime: 0);
-
-
             CboTime.SelectedItem = Settings.Default.nameTime;
             CboClass.SelectedItem = Settings.Default.nameClass;
             if (CboTime.SelectedItem == null)
@@ -114,66 +74,6 @@ namespace TimeMix
             TbDeltaTime.Text = Settings.Default.deltaTime.ToString();
             ChkTomorrowClass.IsChecked = Settings.Default.isTomorrowClass;
         }
-
-        private void Timer3000_Tick(object sender, EventArgs e)
-        {
-            Public.timeTableWindow.ChangeColor();
-            Public.timeWindow.ChangeColor();
-            Public.classTableWindow.ChangeColor();
-            Public.ScheduleWindow.ChangeColor();
-        }
-
-        private void Timer100_Tick(object sender, EventArgs e)
-        {
-            Public.timeWindow.ChangeTime();
-        }
-
-        /// <summary>
-        /// Environment.CurrentDirectory + @"\File\Data"
-        /// </summary>
-        readonly string pathData = Environment.CurrentDirectory + @"\File\Data";
-
-        private void Timer1000_Tick(object sender, EventArgs e)
-        {
-            TbChangeHeTime.Text = "长河时间 " + Public.ChangHeTime().ToString();
-            Public.classTableWindow.Topmost = true;
-
-            string pathTime = pathData + "/" + CboTime.SelectedItem.ToString() + "/";
-            string pathClass = pathData + "/" + CboClass.SelectedItem.ToString();
-
-#if !DEBUG
-            try
-            {
-                Core.Update(pathTime, pathClass, Public.ChangHeTime());
-            }
-            catch (Exception ex)
-            {
-                Logger.Write(ex);
-                return;
-            }
-#else
-            Core.Update(pathTime, pathClass, Public.ChangHeTime());
-#endif
-            //timeWindow.Topmost = true;
-
-            Public.timeTableWindow.Changedata(Core.CurrentTimeSection, Core.Progress);
-            int week = (int)Public.ChangHeTime().DayOfWeek;
-            if (Public.ChangHeTime().CompareTo(Core.LastClassEndTime[week]) > 0 && Settings.Default.isTomorrowClass)
-            {
-                //明天课表
-                Public.classTableWindow.ChangeClass(Core.GetClass((int)Public.ChangHeTime().AddDays(1).DayOfWeek), true);
-                Public.classTableWindow.ChangeWeek(Public.ChangHeTime().AddDays(1).DayOfWeek);
-            }
-            else
-            {
-                //今天课表
-                Public.classTableWindow.ChangeClass(Core.GetClass());
-                Public.classTableWindow.ChangeWeek(Public.ChangHeTime().DayOfWeek);
-
-            }
-
-        }
-
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -195,12 +95,14 @@ namespace TimeMix
         private void CboTime_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Settings.Default.nameTime = CboTime.SelectedItem.ToString();
+            Public.pathTime = Public.PathData + "/" + CboTime.SelectedItem.ToString() + "/";
             Settings.Default.Save();
         }
 
         private void CboClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Settings.Default.nameClass = CboClass.SelectedItem.ToString();
+            Public.pathClass = Public.PathData + "/" + CboClass.SelectedItem.ToString();
             Settings.Default.Save();
         }
 

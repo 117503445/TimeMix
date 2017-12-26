@@ -8,6 +8,9 @@ using System.Windows;
 
 namespace TimeMix
 {
+    /// <summary>
+    /// 提供公共的窗体,方法
+    /// </summary>
     public static class Public
     {
         public static TimeWindow timeWindow;
@@ -16,6 +19,15 @@ namespace TimeMix
         public static SwitchWindow switchWindow;
         public static ScheduleWindow ScheduleWindow;
         public static EditTimeWindow editTimeWindow;
+        public static SettingWindow SettingWindow;
+        /// <summary>
+        /// Environment.CurrentDirectory + @"\File\Data"
+        /// </summary>
+        public static string PathData => Environment.CurrentDirectory + @"\File\Data";
+
+
+        public static string pathTime = PathData + "\\" + Settings.Default.nameTime + "\\";
+        public static string pathClass = PathData + "\\" + Settings.Default.nameClass;
         /// <summary>
         /// 获取长河时间
         /// </summary>

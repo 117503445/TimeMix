@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeMix"
         mc:Ignorable="d"
-        Title="ScheduleWindow" Height="170.667" Width="259.333" WindowStyle="None" AllowsTransparency="True" Background="#02FFFFFF" FontSize="26" MouseLeftButtonDown="Window_MouseLeftButtonDown" SizeToContent="WidthAndHeight" Topmost="True" ShowInTaskbar="False">
+        Title="ScheduleWindow" Height="170.667" Width="259.333" WindowStyle="None" AllowsTransparency="True" Background="#02FFFFFF" FontSize="26" MouseLeftButtonDown="Window_MouseLeftButtonDown" SizeToContent="WidthAndHeight" Topmost="True" ShowInTaskbar="False" ResizeMode="NoResize">
     <StackPanel>
         <TextBlock x:Name="Tb0"  Text="高考 150天"></TextBlock>
         <TextBlock x:Name="Tb1"  Text="高考 150天"></TextBlock>

@@ -20,7 +20,9 @@ namespace TimeMix
     /// </summary>
     public partial class SwitchWindow : Window
     {
-        MainWindow mainWindow;
+        /// <summary>
+        /// 用于动画
+        /// </summary>
         DispatcherTimer timer = new DispatcherTimer
         {
             IsEnabled = true,
@@ -40,7 +42,6 @@ namespace TimeMix
             /// 对应图片
             /// </summary>
             public Image image;
-
             public WindowCollection(Window window, string picName, Image image)
             {
                 this.window = window;
@@ -49,11 +50,10 @@ namespace TimeMix
             }
         }
         List<WindowCollection> windows = new List<WindowCollection>();
-        public SwitchWindow(MainWindow window)
+        public SwitchWindow()
         {
             InitializeComponent();
             windows.Clear();
-            mainWindow = window;
             Top = (SystemParameters.PrimaryScreenHeight - Height) / 2;
             Left = SystemParameters.PrimaryScreenWidth - 1;
             timer.Tick += Timer_Tick;
@@ -62,10 +62,17 @@ namespace TimeMix
 
         private void SwitchWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            Public.timeWindow = new TimeWindow();
+            Public.classTableWindow = new ClassTableWindow();
+            Public.timeTableWindow = new TimeTableWindow();
+            Public.editTimeWindow = new EditTimeWindow();
+            Public.ScheduleWindow = new ScheduleWindow();
+            Public.editTimeWindow = new EditTimeWindow();
+            Public.SettingWindow = new SettingWindow();
             windows.Add(new WindowCollection(Public.timeWindow, "Time", Public.switchWindow.ImgTime));
             windows.Add(new WindowCollection(Public.classTableWindow, "ClassTable", Public.switchWindow.ImgClassTable));
             windows.Add(new WindowCollection(Public.timeTableWindow, "TimeTable", Public.switchWindow.ImgTimeTable));
-            windows.Add(new WindowCollection(Public.switchWindow.mainWindow, "Setting", Public.switchWindow.ImgSetting));
+            windows.Add(new WindowCollection(Public.SettingWindow, "Setting", Public.switchWindow.ImgSetting));
             windows.Add(new WindowCollection(Public.ScheduleWindow, "Schedule", Public.switchWindow.ImgSchedule));
 
             if (Settings.Default.isTimeWindowShowed)
@@ -87,8 +94,85 @@ namespace TimeMix
             Public.timeTableWindow.Left = Settings.Default.pTimeTableWindow.X;
             Public.timeTableWindow.Top = Settings.Default.pTimeTableWindow.Y;
 
+
+            DispatcherTimer timer3000 = new DispatcherTimer();
+            {
+                timer3000.IsEnabled = true;
+                timer3000.Interval = TimeSpan.FromSeconds(3);
+                timer3000.Tick += Timer3000_Tick;
+            }
+
+            DispatcherTimer timer1000 = new DispatcherTimer();
+            {
+                timer1000.IsEnabled = true;
+                timer1000.Interval = TimeSpan.FromSeconds(1);
+                timer1000.Tick += Timer1000_Tick;
+            }
+            DispatcherTimer timer100 = new DispatcherTimer();
+            {
+                timer100.IsEnabled = true;
+                timer100.Interval = TimeSpan.FromMilliseconds(100);
+                timer100.Tick += Timer100_Tick;
+            }
+
+
+
+
+
+        }
+        private void Timer3000_Tick(object sender, EventArgs e)
+        {
+            Public.timeTableWindow.ChangeColor();
+            Public.timeWindow.ChangeColor();
+            Public.classTableWindow.ChangeColor();
+            Public.ScheduleWindow.ChangeColor();
         }
 
+        private void Timer1000_Tick(object sender, EventArgs e)
+        {
+            //TbChangeHeTime.Text = "长河时间 " + Public.ChangHeTime().ToString();
+            Public.classTableWindow.Topmost = true;
+
+
+#if !DEBUG
+            try
+            {
+                Core.Update(Public.pathTime, Public.pathClass, Public.ChangHeTime());
+            }
+            catch (Exception ex)
+            {
+                Logger.Write(ex);
+                return;
+            }
+#else
+            Core.Update(Public.pathTime, Public.pathClass, Public.ChangHeTime());
+
+#endif
+            //timeWindow.Topmost = true;
+
+            Public.timeTableWindow.Changedata(Core.CurrentTimeSection, Core.Progress);
+            int week = (int)Public.ChangHeTime().DayOfWeek;
+            if (Public.ChangHeTime().CompareTo(Core.LastClassEndTime[week]) > 0 && Settings.Default.isTomorrowClass)
+            {
+                //明天课表
+                Public.classTableWindow.ChangeClass(Core.GetClass((int)Public.ChangHeTime().AddDays(1).DayOfWeek), true);
+                Public.classTableWindow.ChangeWeek(Public.ChangHeTime().AddDays(1).DayOfWeek);
+            }
+            else
+            {
+                //今天课表
+                Public.classTableWindow.ChangeClass(Core.GetClass());
+                Public.classTableWindow.ChangeWeek(Public.ChangHeTime().DayOfWeek);
+
+            }
+
+        }
+
+
+        private void Timer100_Tick(object sender, EventArgs e)
+        {
+            Public.timeWindow.ChangeTime();
+        }
         private void Timer_Tick(object sender, EventArgs e)
         {
             //3s后归位
