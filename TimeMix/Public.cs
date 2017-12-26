@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Drawing = System.Drawing;
 using System.Windows;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace TimeMix
 {
@@ -113,23 +115,15 @@ namespace TimeMix
         /// </summary>
         public static void ExitProgram()
         {
-            Settings.Default.isClassTableWindowShowed = classTableWindow.IsVisible;
-            Settings.Default.isTimeTableWindowShowed = timeTableWindow.IsVisible;
-            Settings.Default.isTimeWindowShowed = timeWindow.IsVisible;
-
-            if (!Double.IsNaN(timeWindow.Left) && !Double.IsNaN(timeWindow.Top))
+            foreach (var item in switchWindow.windows)
             {
-                Settings.Default.pTimeWindow = new Point(timeWindow.Left, timeWindow.Top);
+                item.WindowToData();
             }
-            if (!Double.IsNaN(classTableWindow.Left) && !Double.IsNaN(classTableWindow.Top))
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
+            using (FileStream fileStream = new FileStream("windows.dat", FileMode.Create, FileAccess.Write))
             {
-                Settings.Default.pClassTableWindow = new Point(classTableWindow.Left, classTableWindow.Top);
+                binaryFormatter.Serialize(fileStream, switchWindow.windows);
             }
-            if (!Double.IsNaN(timeTableWindow.Left) && !Double.IsNaN(timeTableWindow.Top))
-            {
-                Settings.Default.pTimeTableWindow = new Point(timeTableWindow.Left, timeTableWindow.Top);
-            }
-
             Settings.Default.Save();
             System.Diagnostics.Process.GetCurrentProcess().Kill();
 
