@@ -80,7 +80,6 @@ namespace TimeMix
                 item.DataToWindow();
             }
 
-
             DispatcherTimer timer1000 = new DispatcherTimer();
             {
                 timer1000.IsEnabled = true;

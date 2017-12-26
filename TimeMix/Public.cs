@@ -7,6 +7,7 @@ using Drawing = System.Drawing;
 using System.Windows;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Runtime.Remoting.Messaging;
 
 namespace TimeMix
 {
@@ -62,6 +63,10 @@ namespace TimeMix
             }
 
         }
+        public delegate bool GetColor(Window window);
+        public static GetColor getColor = new GetColor(InBlackStyle);
+
+
         /// <summary>
         /// true-黑色字体,false-白色字体
         /// </summary>
@@ -92,7 +97,11 @@ namespace TimeMix
         /// <returns></returns>
         private static bool IsBlack(Window window, int deltaX, int deltaY)
         {
-            Drawing.Rectangle rc = new Drawing.Rectangle((int)window.Left + deltaX, (int)window.Top + deltaY, (int)SystemParameters.PrimaryScreenWidth, (int)SystemParameters.PrimaryScreenHeight);
+            bool result = false;
+            window.Dispatcher.Invoke(new Action(delegate
+            {
+
+                Drawing.Rectangle rc = new Drawing.Rectangle((int)window.Left + deltaX, (int)window.Top + deltaY, (int)SystemParameters.PrimaryScreenWidth, (int)SystemParameters.PrimaryScreenHeight);
             var bitmap = new Drawing.Bitmap(1, 1);
             using (Drawing.Graphics g = Drawing.Graphics.FromImage(bitmap))
             {
@@ -101,14 +110,16 @@ namespace TimeMix
             Drawing.Color color = bitmap.GetPixel(0, 0);
             bitmap.Dispose();
 
-            if (color.R + color.G + color.B > 384)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+                if (color.R + color.G + color.B > 384)
+                {
+                    result = true;
+                }
+                else
+                {
+                    result = false;
+                }
+            }));
+            return result;
         }
         /// <summary>
         /// 退出程序
