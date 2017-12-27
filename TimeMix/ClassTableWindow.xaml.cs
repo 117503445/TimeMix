@@ -18,39 +18,18 @@ namespace TimeMix
     /// <summary>
     /// ClassTableWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class ClassTableWindow : Window, IFunctionWindow
+    public partial class ClassTableWindow : FunctionWindow
     {
-        Label[] labels;
         public ClassTableWindow()
         {
             InitializeComponent();
 
-            labels = new Label[] { Lbl1, Lbl2, Lbl3, Lbl4, Lbl5, Lbl6, Lbl7, Lbl8, Lbl9, LblWeek };
+            Controls = new Control[] { Lbl1, Lbl2, Lbl3, Lbl4, Lbl5, Lbl6, Lbl7, Lbl8, Lbl9, LblWeek };
 
         }
 
-        private void Lbl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
 
-        }
 
-        public async void ChangeColor()
-        {
-            if (await Public.IsBlack(Left, Top))//浅色
-            {
-                foreach (var item in labels)
-                {
-                    item.Foreground = new SolidColorBrush(Colors.Black);
-                }
-            }
-            else
-            {
-                foreach (var item in labels)
-                {
-                    item.Foreground = new SolidColorBrush(Colors.White);
-                }
-            }
-        }
         public void ChangeClass(List<Core.ClassSection> classTable)
         {
 
@@ -75,18 +54,18 @@ namespace TimeMix
             for (int i = 0; i < 9; i++)
             {
 
-                labels[i].Content = classTable[i].Name;
+                ((Label)Controls[i]).Content = classTable[i].Name;
 
                 //Console.Write(classTable[i].EndTime + "   " + classTable[i].Name + "  ");
                 //Console.WriteLine(classTable[i].EndTime.CompareTo(Public.ChangHeTime()) < 0);
                 if (classTable[i].EndTime.CompareTo(Public.ChangHeTime()) < 0)
                 {
 
-                    labels[i].Visibility = Visibility.Collapsed;
+                    (Controls[i]).Visibility = Visibility.Collapsed;
                 }
                 else
                 {
-                    labels[i].Visibility = Visibility.Visible;
+                    Controls[i].Visibility = Visibility.Visible;
                 }
             }
 
@@ -98,16 +77,7 @@ namespace TimeMix
             LblWeek.Content = s;
 
         }
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
 
-            DragMove();
-            Public.PreventOutOfScreen(this);
-        }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            e.Cancel = true;
-        }
     }
 }

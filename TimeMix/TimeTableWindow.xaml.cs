@@ -18,21 +18,14 @@ namespace TimeMix
     /// <summary>
     /// TimeTableWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class TimeTableWindow : Window, IFunctionWindow
+    public partial class TimeTableWindow:FunctionWindow
     {
-        Label[] Labels;
         public TimeTableWindow()
         {
             InitializeComponent();
-            Labels = new Label[] { LblClass, LblBeginTime, LblEndTime, LblProgress };
-
+            Controls = new Label[] { LblClass, LblBeginTime, LblEndTime, LblProgress };
         }
 
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-            Public.PreventOutOfScreen(this);
-        }
         public void Changedata(Core.TimeSection timeSection, string progress)
         {
             LblClass.Content = timeSection.name;
@@ -50,25 +43,7 @@ namespace TimeMix
             LblEndTime.Content = s2;
             LblProgress.Content = progress;
         }
-        public async void ChangeColor()
-        {
-            foreach (var item in Labels)
-            {
-                if (await Public.IsBlack(Left, Top))//浅色
-                {
-                    item.Foreground = new SolidColorBrush(Colors.Black);
-                }
-                else
-                {
-                    item.Foreground = new SolidColorBrush(Colors.White);
-                }
-            }
-        }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            e.Cancel = true;
-        }
     }
 }
 

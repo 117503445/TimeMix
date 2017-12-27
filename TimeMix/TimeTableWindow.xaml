@@ -1,11 +1,11 @@
-﻿<Window x:Class="TimeMix.TimeTableWindow"
+﻿<local:FunctionWindow x:Class="TimeMix.TimeTableWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeMix"
         mc:Ignorable="d"
-        Title="Hello" Height="78" Width="156" WindowStyle="None" FontWeight="ExtraBlack" FontSize="18" MouseLeftButtonDown="Window_MouseLeftButtonDown" Topmost="True" Background="#02FFFFFF" AllowsTransparency="True" ResizeMode="NoResize" ShowInTaskbar="False" Closing="Window_Closing">
+        Title="TimeTable" Height="78" Width="156" FontWeight="ExtraBlack" FontSize="18">
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="29*"/>
@@ -30,4 +30,4 @@
         </Grid>
 
     </Grid>
-</Window>
+</local:FunctionWindow>

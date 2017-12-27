@@ -1,11 +1,12 @@
-﻿<Window x:Class="TimeMix.TimeWindow"
+﻿<local:FunctionWindow
+    x:Class="TimeMix.TimeWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeMix"
         mc:Ignorable="d"
-        Title="TimeWindow" Height="78" Width="156" WindowStyle="None" AllowsTransparency="True" MouseLeftButtonDown="Window_MouseLeftButtonDown"  Background="#02FFFFFF" Topmost="True" ResizeMode="NoResize" ShowInTaskbar="False"  Closing="Window_Closing">
+        Title="TimeWindow" Height="78" Width="156">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="137*"/>
@@ -15,4 +16,4 @@
         <Label x:Name="LblSmall" Content="23" FontSize="20" Padding="0" Grid.Column="1" Height="26" VerticalAlignment="Bottom"/>
 
     </Grid>
-</Window>
+</local:FunctionWindow>

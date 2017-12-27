@@ -19,7 +19,7 @@ namespace TimeMix
     /// <summary>
     /// TimeWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class TimeWindow : Window, IFunctionWindow
+    public partial class TimeWindow : FunctionWindow
     {
         /// <summary>
         /// 更新时间
@@ -43,30 +43,8 @@ namespace TimeMix
         public TimeWindow()
         {
             InitializeComponent();
+            Controls = new Control[] { LblBig, LblSmall };
             //colorStyle = new ColorStyle(this, new Control[] { LblBig, LblSmall });
-        }
-
-        public async void ChangeColor()
-        {
-            if (await Public.IsBlack(Left, Top))
-            {
-                LblBig.Foreground = new SolidColorBrush(Colors.Black);
-                LblSmall.Foreground = new SolidColorBrush(Colors.Black);
-            }
-            else
-            {
-                LblBig.Foreground = new SolidColorBrush(Colors.White);
-                LblSmall.Foreground = new SolidColorBrush(Colors.White);
-            }
-        }
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-            Public.PreventOutOfScreen(this);
-        }
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            e.Cancel = true;
         }
     }
 }

@@ -18,43 +18,23 @@ namespace TimeMix
     /// <summary>
     /// ScheduleWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class ScheduleWindow : Window, IFunctionWindow
+    public partial class ScheduleWindow : FunctionWindow
     {
-        TextBlock[] TextBlock = new TextBlock[3];
+
         public ScheduleWindow()
         {
             InitializeComponent();
-            TextBlock[0] = Tb0;
-            TextBlock[1] = Tb1;
-            TextBlock[2] = Tb2;
+            Controls = new Control[] { Lbl0, Lbl1, Lbl2 };
             Update();
-        }
-
-        public async void ChangeColor()
-        {
-
-
-            foreach (var item in TextBlock)
-            {
-                if (await Public.IsBlack(Left, Top))
-                {//浅色
-                    item.Foreground = new SolidColorBrush(Colors.Black);
-                }
-                else
-                {
-                    item.Foreground = new SolidColorBrush(Colors.White);
-                }
-            }
-
         }
         /// <summary>
         /// 更新数据
         /// </summary>
         public void Update()
         {
-            foreach (var item in TextBlock)
+            foreach (var item in Controls)
             {
-                item.Text = "";
+                ((Label)item).Content = "";
                 item.Visibility = Visibility.Visible;
             }
             XElement x = XElement.Load(Environment.CurrentDirectory + "/File/Schedule.xml");
@@ -65,22 +45,18 @@ namespace TimeMix
                 {
                     break;
                 }
-                TextBlock[i].Text = field.Attribute("Name").Value;
+               ((Label)Controls[i]).Content = field.Attribute("Name").Value;
                 DateTime d = Convert.ToDateTime(field.Attribute("Date").Value);
-                TextBlock[i].Text += "剩余" + ((d - DateTime.Now).Days) + "天";
+                ((Label)Controls[i]).Content += "剩余" + ((d - DateTime.Now).Days) + "天";
                 i++;
             }
-            foreach (var item in TextBlock)
+            foreach (var item in Controls)
             {
-                if (item.Text == "")
+                if ((string)((Label)item).Content == "")
                 {
                     item.Visibility = Visibility.Collapsed;
                 }
             }
-        }
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
         }
     }
 }
