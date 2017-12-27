@@ -30,21 +30,21 @@ namespace TimeMix
             Update();
         }
 
-        public void ChangeColor()
+        public async void ChangeColor()
         {
 
 
-            //foreach (var item in TextBlock)
-            //{
-            //    if (Public.InBlackStyle(this))
-            //    {//浅色
-            //        item.Foreground = new SolidColorBrush(Colors.Black);
-            //    }
-            //    else
-            //    {
-            //        item.Foreground = new SolidColorBrush(Colors.White);
-            //    }
-            //}
+            foreach (var item in TextBlock)
+            {
+                if (await Public.IsBlack(Left, Top))
+                {//浅色
+                    item.Foreground = new SolidColorBrush(Colors.Black);
+                }
+                else
+                {
+                    item.Foreground = new SolidColorBrush(Colors.White);
+                }
+            }
 
         }
         /// <summary>

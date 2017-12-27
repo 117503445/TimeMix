@@ -55,12 +55,9 @@ namespace TimeMix
             }
             else
             {
-
                 LblBig.Foreground = new SolidColorBrush(Colors.White);
                 LblSmall.Foreground = new SolidColorBrush(Colors.White);
             }
-
-
         }
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

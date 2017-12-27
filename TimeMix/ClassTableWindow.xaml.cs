@@ -18,7 +18,7 @@ namespace TimeMix
     /// <summary>
     /// ClassTableWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class ClassTableWindow : Window,IFunctionWindow
+    public partial class ClassTableWindow : Window, IFunctionWindow
     {
         Label[] labels;
         public ClassTableWindow()
@@ -34,22 +34,22 @@ namespace TimeMix
 
         }
 
-        public void ChangeColor()
+        public async void ChangeColor()
         {
-            //if (Public.InBlackStyle(this))//浅色
-            //{
-            //    foreach (var item in labels)
-            //    {
-            //        item.Foreground = new SolidColorBrush(Colors.Black);
-            //    }
-            //}
-            //else
-            //{
-            //    foreach (var item in labels)
-            //    {
-            //        item.Foreground = new SolidColorBrush(Colors.White);
-            //    }
-            //}
+            if (await Public.IsBlack(Left, Top))//浅色
+            {
+                foreach (var item in labels)
+                {
+                    item.Foreground = new SolidColorBrush(Colors.Black);
+                }
+            }
+            else
+            {
+                foreach (var item in labels)
+                {
+                    item.Foreground = new SolidColorBrush(Colors.White);
+                }
+            }
         }
         public void ChangeClass(List<Core.ClassSection> classTable)
         {

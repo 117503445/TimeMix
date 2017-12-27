@@ -50,19 +50,19 @@ namespace TimeMix
             LblEndTime.Content = s2;
             LblProgress.Content = progress;
         }
-        public void ChangeColor()
+        public async void ChangeColor()
         {
-            //foreach (var item in Labels)
-            //{
-            //    if (Public.InBlackStyle(this))//浅色
-            //    {
-            //        item.Foreground = new SolidColorBrush(Colors.Black);
-            //    }
-            //    else
-            //    {
-            //        item.Foreground = new SolidColorBrush(Colors.White);
-            //    }
-            //}
+            foreach (var item in Labels)
+            {
+                if (await Public.IsBlack(Left, Top))//浅色
+                {
+                    item.Foreground = new SolidColorBrush(Colors.Black);
+                }
+                else
+                {
+                    item.Foreground = new SolidColorBrush(Colors.White);
+                }
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
