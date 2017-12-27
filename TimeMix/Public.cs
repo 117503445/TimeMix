@@ -63,63 +63,34 @@ namespace TimeMix
             }
 
         }
-        public delegate bool GetColor(Window window);
-        public static GetColor getColor = new GetColor(InBlackStyle);
-
-
         /// <summary>
         /// true-黑色字体,false-白色字体
         /// </summary>
         /// <returns></returns>
-        public static bool InBlackStyle(Window window)
+        public static Task<bool> IsBlack(double Left, double Top)
         {
-            if (!window.IsVisible)
+            return Task.Run(() =>
             {
-                return false;
-            }
-            bool[] b = new bool[3];
-            b[0] = IsBlack(window, 0, 0);
-            b[1] = IsBlack(window, (int)window.Width / 2, (int)window.Height / 2);
-            b[2] = IsBlack(window, (int)window.Width, (int)window.Height);
-            int count = 0;
-            foreach (var item in b)
-            {
-                if (item)
+                int deltaX = 0;
+                int deltaY = 0;
+                Drawing.Rectangle rc = new Drawing.Rectangle((int)Left + deltaX, (int)Top + deltaY, (int)SystemParameters.PrimaryScreenWidth, (int)SystemParameters.PrimaryScreenHeight);
+                var bitmap = new Drawing.Bitmap(1, 1);
+                using (Drawing.Graphics g = Drawing.Graphics.FromImage(bitmap))
                 {
-                    count++;
+                    g.CopyFromScreen((int)(rc.X * Settings.Default.dpi), (int)(rc.Y * Settings.Default.dpi), 0, 0, rc.Size, Drawing.CopyPixelOperation.SourceCopy);
                 }
-            }
-            return count > 1;
-        }
-        /// <summary>
-        /// true-黑色字体,false-白色字体
-        /// </summary>
-        /// <returns></returns>
-        private static bool IsBlack(Window window, int deltaX, int deltaY)
-        {
-            bool result = false;
-            window.Dispatcher.Invoke(new Action(delegate
-            {
-
-                Drawing.Rectangle rc = new Drawing.Rectangle((int)window.Left + deltaX, (int)window.Top + deltaY, (int)SystemParameters.PrimaryScreenWidth, (int)SystemParameters.PrimaryScreenHeight);
-            var bitmap = new Drawing.Bitmap(1, 1);
-            using (Drawing.Graphics g = Drawing.Graphics.FromImage(bitmap))
-            {
-                g.CopyFromScreen((int)(rc.X * Settings.Default.dpi), (int)(rc.Y * Settings.Default.dpi), 0, 0, rc.Size, Drawing.CopyPixelOperation.SourceCopy);
-            }
-            Drawing.Color color = bitmap.GetPixel(0, 0);
-            bitmap.Dispose();
-
+                Drawing.Color color = bitmap.GetPixel(0, 0);
+                bitmap.Dispose();
                 if (color.R + color.G + color.B > 384)
                 {
-                    result = true;
+                    return true;
                 }
                 else
                 {
-                    result = false;
+                    return false;
                 }
-            }));
-            return result;
+            });
+
         }
         /// <summary>
         /// 退出程序

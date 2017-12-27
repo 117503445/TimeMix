@@ -39,49 +39,34 @@ namespace TimeMix
             }
             LblSmall.Content = s2;
         }
-
+        //private ColorStyle colorStyle;
         public TimeWindow()
         {
             InitializeComponent();
+            //colorStyle = new ColorStyle(this, new Control[] { LblBig, LblSmall });
         }
 
-        public void GetColorDone(IAsyncResult itfAR)
+        public async void ChangeColor()
         {
-            AsyncResult ar = (AsyncResult)itfAR;
-            Public.GetColor b = (Public.GetColor)ar.AsyncDelegate;
-            Console.WriteLine("Done");
-
-            if (b.EndInvoke(itfAR))//浅色
+            if (await Public.IsBlack(Left, Top))
             {
-                Dispatcher.Invoke(new Action(delegate
-                {
-                    LblBig.Foreground = new SolidColorBrush(Colors.Black);
-                    LblSmall.Foreground = new SolidColorBrush(Colors.Black);
-                }));
+                LblBig.Foreground = new SolidColorBrush(Colors.Black);
+                LblSmall.Foreground = new SolidColorBrush(Colors.Black);
             }
             else
             {
-                Dispatcher.Invoke(new Action(delegate
-                 {
-                     LblBig.Foreground = new SolidColorBrush(Colors.White);
-                     LblSmall.Foreground = new SolidColorBrush(Colors.White);
-                 }));
+
+                LblBig.Foreground = new SolidColorBrush(Colors.White);
+                LblSmall.Foreground = new SolidColorBrush(Colors.White);
             }
 
-        }
 
-        public void ChangeColor()
-        {
-            Public.getColor.BeginInvoke(this, new AsyncCallback(GetColorDone), null);
         }
-
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
             Public.PreventOutOfScreen(this);
         }
-
-
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;

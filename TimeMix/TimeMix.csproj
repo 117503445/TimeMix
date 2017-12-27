@@ -53,6 +53,9 @@
   <PropertyGroup>
     <StartupObject>TimeMix.App</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>TimeMIx.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -79,6 +82,7 @@
     <Compile Include="ClassTableWindow.xaml.cs">
       <DependentUpon>ClassTableWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ColorStyle.cs" />
     <Compile Include="EditTimeWindow.xaml.cs">
       <DependentUpon>EditTimeWindow.xaml</DependentUpon>
     </Compile>
@@ -256,6 +260,7 @@
     <Content Include="File\Log\Log.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="TimeMIx.ico" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

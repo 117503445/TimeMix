@@ -36,20 +36,20 @@ namespace TimeMix
 
         public void ChangeColor()
         {
-            if (Public.InBlackStyle(this))//浅色
-            {
-                foreach (var item in labels)
-                {
-                    item.Foreground = new SolidColorBrush(Colors.Black);
-                }
-            }
-            else
-            {
-                foreach (var item in labels)
-                {
-                    item.Foreground = new SolidColorBrush(Colors.White);
-                }
-            }
+            //if (Public.InBlackStyle(this))//浅色
+            //{
+            //    foreach (var item in labels)
+            //    {
+            //        item.Foreground = new SolidColorBrush(Colors.Black);
+            //    }
+            //}
+            //else
+            //{
+            //    foreach (var item in labels)
+            //    {
+            //        item.Foreground = new SolidColorBrush(Colors.White);
+            //    }
+            //}
         }
         public void ChangeClass(List<Core.ClassSection> classTable)
         {
