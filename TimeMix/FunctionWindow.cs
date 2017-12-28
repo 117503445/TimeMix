@@ -59,7 +59,7 @@ namespace TimeMix
 
         public async void ChangeColor()
         {
-            if (await Public.IsBlack(Left, Top))
+            if (await Public.IsBlack(Left, Top,Width,Height))
             {
                 foreach (var item in Controls)
                     item.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black);

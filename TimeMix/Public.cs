@@ -67,28 +67,32 @@ namespace TimeMix
         /// true-黑色字体,false-白色字体
         /// </summary>
         /// <returns></returns>
-        public static Task<bool> IsBlack(double Left, double Top)
+        public static Task<bool> IsBlack(double Left, double Top, double Width, double Height)
         {
+
             return Task.Run(() =>
             {
-                int deltaX = 0;
-                int deltaY = 0;
-                Drawing.Rectangle rc = new Drawing.Rectangle((int)Left + deltaX, (int)Top + deltaY, (int)SystemParameters.PrimaryScreenWidth, (int)SystemParameters.PrimaryScreenHeight);
-                var bitmap = new Drawing.Bitmap(1, 1);
-                using (Drawing.Graphics g = Drawing.Graphics.FromImage(bitmap))
+                Drawing.Rectangle[] rectangles = new Drawing.Rectangle[] {
+                    new Drawing.Rectangle((int)Left, (int)Top , (int)SystemParameters.PrimaryScreenWidth, (int)SystemParameters.PrimaryScreenHeight),
+                    new Drawing.Rectangle((int)Left +(int) Width/2, (int)Top + (int)Height/2, (int)SystemParameters.PrimaryScreenWidth, (int)SystemParameters.PrimaryScreenHeight),
+                    new Drawing.Rectangle((int)Left + (int)Width, (int)Top + (int)Height, (int)SystemParameters.PrimaryScreenWidth, (int)SystemParameters.PrimaryScreenHeight)
+                };
+                int counter = 0;
+                foreach (var rc in rectangles)
                 {
-                    g.CopyFromScreen((int)(rc.X * Settings.Default.dpi), (int)(rc.Y * Settings.Default.dpi), 0, 0, rc.Size, Drawing.CopyPixelOperation.SourceCopy);
+                    var bitmap = new Drawing.Bitmap(1, 1);
+                    using (Drawing.Graphics g = Drawing.Graphics.FromImage(bitmap))
+                    {
+                        g.CopyFromScreen((int)(rc.X * Settings.Default.dpi), (int)(rc.Y * Settings.Default.dpi), 0, 0, rc.Size, Drawing.CopyPixelOperation.SourceCopy);
+                    }
+                    Drawing.Color color = bitmap.GetPixel(0, 0);
+                    bitmap.Dispose();
+                    if (color.R + color.G + color.B > 384)
+                    {
+                        counter++;
+                    }
                 }
-                Drawing.Color color = bitmap.GetPixel(0, 0);
-                bitmap.Dispose();
-                if (color.R + color.G + color.B > 384)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return counter>= ((double)rectangles.Length)/2;
             });
 
         }
