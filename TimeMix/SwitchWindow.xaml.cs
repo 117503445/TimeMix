@@ -92,11 +92,6 @@ namespace TimeMix
                 timer100.Interval = TimeSpan.FromMilliseconds(100);
                 timer100.Tick += Timer100_Tick;
             }
-
-
-
-
-
         }
 
         private void Timer1000_Tick(object sender, EventArgs e)
@@ -118,6 +113,8 @@ namespace TimeMix
             catch (Exception ex)
             {
                 Logger.Write(ex);
+                Public.timeTableWindow.ErrorLoad();
+                Public.classTableWindow.ErrorLoad();
                 return;
             }
 #else

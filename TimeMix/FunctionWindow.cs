@@ -59,7 +59,7 @@ namespace TimeMix
 
         public async void ChangeColor()
         {
-            if (await Public.IsBlack(Left, Top,Width,Height))
+            if (await Public.IsBlack(Left, Top, Width, Height))
             {
                 foreach (var item in Controls)
                     item.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black);
@@ -68,6 +68,16 @@ namespace TimeMix
             {
                 foreach (var item in Controls)
                     item.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.White);
+            }
+        }
+        /// <summary>
+        /// 读取失败
+        /// </summary>
+        public void ErrorLoad()
+        {
+            foreach (Label item in Controls)
+            {
+                item.Content = "错误";
             }
         }
     }

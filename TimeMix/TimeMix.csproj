@@ -95,12 +95,10 @@
     <Compile Include="ClassTableWindow.xaml.cs">
       <DependentUpon>ClassTableWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ColorStyle.cs" />
     <Compile Include="EditTimeWindow.xaml.cs">
       <DependentUpon>EditTimeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="FunctionWindow.cs" />
-    <Compile Include="IFunctionWindow.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Public.cs" />
     <Compile Include="ScheduleWindow.xaml.cs">
