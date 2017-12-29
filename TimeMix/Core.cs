@@ -242,7 +242,7 @@ namespace TimeMix
             /// <summary>
             /// 课程,无课程为-1,index从0开始
             /// </summary>
-            public int Class;
+            public int Class = -1;
         }
         public class ClassSection
         {
@@ -256,6 +256,9 @@ namespace TimeMix
         /// 进度
         /// </summary>
         private static string progress;
+        /// <summary>
+        /// 进度
+        /// </summary>
         public static string Progress { get => progress; set => progress = value; }
         public static TimeSection CurrentTimeSection { get => currentTimeSection; set => currentTimeSection = value; }
         /// <summary>
