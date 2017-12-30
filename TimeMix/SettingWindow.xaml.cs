@@ -73,6 +73,7 @@ namespace TimeMix
             Tbdpi.Text = Settings.Default.dpi.ToString();
             TbDeltaTime.Text = Settings.Default.deltaTime.ToString();
             ChkTomorrowClass.IsChecked = Settings.Default.isTomorrowClass;
+            ChkNetTime.IsChecked = Properties.Settings.Default.NetTime;
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -180,6 +181,11 @@ namespace TimeMix
             System.Windows.Forms.Application.Restart();
             Application.Current.Shutdown();
 
+        }
+
+        private void ChkNetTime_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.NetTime = (bool)ChkNetTime.IsChecked;
         }
     }
 }

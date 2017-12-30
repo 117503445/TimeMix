@@ -25,7 +25,16 @@
             </TabItem>
             <TabItem Header="一般设置">
                 <Grid Background="#FFE5E5E5">
-                    <CheckBox x:Name="ChkAutoStart" Content="开机自启(X)" HorizontalAlignment="Left" Margin="15,44,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="ChkAutoStart" Content="开机自启(X)" HorizontalAlignment="Left" Margin="15,37,0,0" VerticalAlignment="Top"/>
+
+
+
+                    <Label Content="时间差" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,62,0,0" />
+                    <TextBox x:Name="TbDeltaTime" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"  TextChanged="TbDeltaTime_TextChanged" Margin="62,62,0,0"/>
+                    <Button x:Name="BtnMinusTime" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="23"  Click="BtnMinusTime_Click" Margin="212,62,0,0" Height="23"/>
+                    <Button x:Name="BtnAddTime" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="23"  Click="BtnAddTime_Click" Margin="186,62,0,0" Height="23"/>
+                    <CheckBox x:Name="ChkNetTime"  Content="启用网络时间" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,67,0,0" Click="ChkNetTime_Click" />
+
                 </Grid>
 
             </TabItem>
@@ -33,10 +42,7 @@
                 <Grid Background="#FFE5E5E5">
                     <TextBox x:Name="Tbdpi" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="54,10,0,0" TextChanged="Tbdpi_TextChanged"/>
                     <Label Content="DPI" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,8,0,0"/>
-                    <Label Content="时间差" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,38,0,0"/>
-                    <TextBox x:Name="TbDeltaTime" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="54,40,0,0" TextChanged="TbDeltaTime_TextChanged"/>
-                    <Button x:Name="BtnMinusTime" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Margin="191,40,0,0" Click="BtnMinusTime_Click"/>
-                    <Button x:Name="BtnAddTime" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Margin="216,40,0,0" Click="BtnAddTime_Click"/>
+
                     <Button x:Name="BtnDefaultSetting" Content="初始化设置" Margin="54,68,343,157" Click="BtnDefaultSetting_Click"></Button>
                 </Grid>
             </TabItem>
