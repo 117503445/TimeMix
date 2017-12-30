@@ -168,5 +168,18 @@ namespace TimeMix
         {
 
         }
+        /// <summary>
+        /// 初始化设置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnDefaultSetting_Click(object sender, RoutedEventArgs e)
+        {
+            Settings.Default.Reset();
+            //重启
+            System.Windows.Forms.Application.Restart();
+            Application.Current.Shutdown();
+
+        }
     }
 }

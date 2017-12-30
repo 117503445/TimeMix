@@ -37,6 +37,7 @@
                     <TextBox x:Name="TbDeltaTime" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="54,40,0,0" TextChanged="TbDeltaTime_TextChanged"/>
                     <Button x:Name="BtnMinusTime" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Margin="191,40,0,0" Click="BtnMinusTime_Click"/>
                     <Button x:Name="BtnAddTime" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Margin="216,40,0,0" Click="BtnAddTime_Click"/>
+                    <Button x:Name="BtnDefaultSetting" Content="初始化设置" Margin="54,68,343,157" Click="BtnDefaultSetting_Click"></Button>
                 </Grid>
             </TabItem>
             <TabItem Header="开发者选项">

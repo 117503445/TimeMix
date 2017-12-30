@@ -210,7 +210,6 @@ namespace TimeMix
             //    list.Add(classSection[week, i].Name);
             //}
             //return list;
-
             List<ClassSection> list = new List<ClassSection>();
             for (int i = 0; i < classSection.GetLength(1); i++)
             {

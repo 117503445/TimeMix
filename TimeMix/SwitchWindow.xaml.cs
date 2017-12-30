@@ -100,9 +100,6 @@ namespace TimeMix
             Public.timeWindow.ChangeColor();
             Public.classTableWindow.ChangeColor();
             Public.ScheduleWindow.ChangeColor();
-
-
-
             //TbChangeHeTime.Text = "长河时间 " + Public.ChangHeTime().ToString();
             Public.classTableWindow.Topmost = true;
 #if !DEBUG
@@ -120,6 +117,7 @@ namespace TimeMix
 #else
             Core.Update(Public.pathTime, Public.pathClass, Public.ChangHeTime());
 
+
 #endif
             //timeWindow.Topmost = true;
 
@@ -136,7 +134,6 @@ namespace TimeMix
                 //今天课表
                 Public.classTableWindow.ChangeClass(Core.GetClass());
                 Public.classTableWindow.ChangeWeek(Public.ChangHeTime().DayOfWeek);
-
             }
 
         }
