@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Runtime.Serialization.Formatters.Binary;
+using Settings = TimeMix.Properties.Settings;
 
 namespace TimeMix
 {

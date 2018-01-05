@@ -26,17 +26,12 @@
             <TabItem Header="一般设置">
                 <Grid Background="#FFE5E5E5">
                     <CheckBox x:Name="ChkAutoStart" Content="开机自启(X)" HorizontalAlignment="Left" Margin="15,37,0,0" VerticalAlignment="Top"/>
-
-
-
                     <Label Content="时间差" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,62,0,0" />
                     <TextBox x:Name="TbDeltaTime" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"  TextChanged="TbDeltaTime_TextChanged" Margin="62,62,0,0"/>
                     <Button x:Name="BtnMinusTime" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="23"  Click="BtnMinusTime_Click" Margin="212,62,0,0" Height="23"/>
                     <Button x:Name="BtnAddTime" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="23"  Click="BtnAddTime_Click" Margin="186,62,0,0" Height="23"/>
                     <CheckBox x:Name="ChkNetTime"  Content="启用网络时间" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,67,0,0" Click="ChkNetTime_Click" />
-
                 </Grid>
-
             </TabItem>
             <TabItem Header="高级设置">
                 <TabControl>
@@ -49,8 +44,6 @@
                     </TabItem>
                     <TabItem Header="网络">
                         <Canvas Background="#FFE5E5E5">
-                            <TextBlock  Canvas.Left="10" Canvas.Top="69">网名</TextBlock>
-                            <TextBox x:Name="TbNetName" Canvas.Left="42" Canvas.Top="69" Height="32" Width="239" TextChanged="TbNetName_TextChanged"></TextBox>
                             <TextBlock  Canvas.Left="10" Canvas.Top="29">路径</TextBlock>
                             <TextBox x:Name="TbNetPath" Canvas.Left="42" Canvas.Top="29"  Height="32" Width="239" TextChanged="TbNetPath_TextChanged"></TextBox>
                         </Canvas>

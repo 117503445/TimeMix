@@ -2,14 +2,26 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TimeMix.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="NetTime" Type="System.Boolean" Scope="User">
+    <Setting Name="isEnableNetTime" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="NetName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">timeMix</Value>
-    </Setting>
     <Setting Name="NetPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">\\CLASSV\FolderShare</Value>
+      <Value Profile="(Default)">\\CLASSV\FolderShare\Static\data\TimeMix_deltaTime.txt</Value>
+    </Setting>
+    <Setting Name="nameClass" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="nameTime" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="dpi" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="deltaTime" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="isTomorrowClass" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

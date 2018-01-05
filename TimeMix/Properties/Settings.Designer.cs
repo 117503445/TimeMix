@@ -26,36 +26,84 @@ namespace TimeMix.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool NetTime {
+        public bool isEnableNetTime {
             get {
-                return ((bool)(this["NetTime"]));
+                return ((bool)(this["isEnableNetTime"]));
             }
             set {
-                this["NetTime"] = value;
+                this["isEnableNetTime"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("timeMix")]
-        public string NetName {
-            get {
-                return ((string)(this["NetName"]));
-            }
-            set {
-                this["NetName"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\\\\CLASSV\\FolderShare")]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\CLASSV\\FolderShare\\Static\\data\\TimeMix_deltaTime.txt")]
         public string NetPath {
             get {
                 return ((string)(this["NetPath"]));
             }
             set {
                 this["NetPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string nameClass {
+            get {
+                return ((string)(this["nameClass"]));
+            }
+            set {
+                this["nameClass"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string nameTime {
+            get {
+                return ((string)(this["nameTime"]));
+            }
+            set {
+                this["nameTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public double dpi {
+            get {
+                return ((double)(this["dpi"]));
+            }
+            set {
+                this["dpi"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int deltaTime {
+            get {
+                return ((int)(this["deltaTime"]));
+            }
+            set {
+                this["deltaTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isTomorrowClass {
+            get {
+                return ((bool)(this["isTomorrowClass"]));
+            }
+            set {
+                this["isTomorrowClass"] = value;
             }
         }
     }

@@ -7,6 +7,7 @@ using Drawing = System.Drawing;
 using System.Windows;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using Settings = TimeMix.Properties.Settings;
 using System.Runtime.Remoting.Messaging;
 
 namespace TimeMix
@@ -110,7 +111,6 @@ namespace TimeMix
             {
                 binaryFormatter.Serialize(fileStream, switchWindow.windows);
             }
-            Settings.Default.Save();
             System.Diagnostics.Process.GetCurrentProcess().Kill();
 
         }
