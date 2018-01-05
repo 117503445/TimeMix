@@ -21,7 +21,11 @@
 
         private void SettingChangingEventHandler(object sender, System.Configuration.SettingChangingEventArgs e)
         {
-            TimeMix.Properties.Settings.Default.Save();
+            if (e.SettingName == "isTomorrowClass")
+            {
+                var i = e.NewValue;
+            }
+            Default.Save();
             return;
             // 在此处添加用于处理 SettingChangingEvent 事件的代码。
             switch (e.SettingName)

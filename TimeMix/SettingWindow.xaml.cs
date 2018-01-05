@@ -30,7 +30,6 @@ namespace TimeMix
         public SettingWindow()
         {
             InitializeComponent();
-            Loaded += MainWindow_Loaded;
             if (Settings.Default.isEnableNetTime)
             {
                 SetDeltaTimeByNet();
@@ -51,15 +50,7 @@ namespace TimeMix
                 Logger.Write(ex);
             }
         }
-        private void Connect_GetMethod(string in_methodName, string in_methodParameters, out string out_methodName, out string out_methodParameters)
-        {
-            Type type = typeof(MethodCollection);
-            object[] parameters = in_methodParameters.Split(',');
-            var result = ((string[])type.GetMethod(in_methodName).Invoke(null, parameters));
-            out_methodName = result[0];
-            out_methodParameters = result[1];
-        }
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             DirectoryInfo dir = new DirectoryInfo(Public.PathData);
             if (dir.Exists)
@@ -104,40 +95,33 @@ namespace TimeMix
             ChkNetTime.IsChecked = Settings.Default.isEnableNetTime;
             TbNetPath.Text = Settings.Default.NetPath;
 
-
         }
-
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
-
         private void Window_Closed(object sender, EventArgs e)
         {
             Public.ExitProgram();
         }
-
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Hide();
             Public.switchWindow.SetVisible(3, false);
             e.Cancel = true;
         }
-
         private void CboTime_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Settings.Default.nameTime = CboTime.SelectedItem.ToString();
             Public.pathTime = Public.PathData + "/" + CboTime.SelectedItem.ToString() + "/";
 
         }
-
         private void CboClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Settings.Default.nameClass = CboClass.SelectedItem.ToString();
             Public.pathClass = Public.PathData + "/" + CboClass.SelectedItem.ToString();
 
         }
-
         private void Tbdpi_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
@@ -149,7 +133,6 @@ namespace TimeMix
                 Logger.Write(ex);
             }
         }
-
         private void TbDeltaTime_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
@@ -162,41 +145,29 @@ namespace TimeMix
             }
 
         }
-
         private void ChkTomorrowClass_Click(object sender, RoutedEventArgs e)
         {
             Settings.Default.isTomorrowClass = (bool)ChkTomorrowClass.IsChecked;
         }
-
         private void BtnMinusTime_Click(object sender, RoutedEventArgs e)
         {
             TbDeltaTime.Text = (int.Parse(TbDeltaTime.Text) - 1).ToString();
         }
-
         private void BtnAddTime_Click(object sender, RoutedEventArgs e)
         {
             TbDeltaTime.Text = (int.Parse(TbDeltaTime.Text) + 1).ToString();
         }
-
-
         private void BtnData_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", AppDomain.CurrentDomain.BaseDirectory + "File\\data");
         }
-
         private void BtnTimeMix_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", ".");
         }
-
         private void BtnOpenEditTime_Click(object sender, RoutedEventArgs e)
         {
             Public.editTimeWindow.Show();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
         /// <summary>
         /// 初始化设置
@@ -211,28 +182,15 @@ namespace TimeMix
             Application.Current.Shutdown();
 
         }
-
         private void ChkNetTime_Click(object sender, RoutedEventArgs e)
         {
             Settings.Default.isEnableNetTime = (bool)ChkNetTime.IsChecked;
 
         }
-
-
         private void TbNetPath_TextChanged(object sender, TextChangedEventArgs e)
         {
             Settings.Default.NetPath = TbNetPath.Text;
         }
 
-        private class MethodCollection
-        {
-            public static string[] SetChangHeTime(string Time)
-            {
-                MessageBox.Show(string.Format("I received {0}", Time));
-                int i = (Convert.ToDateTime(Time) - DateTime.Now).Seconds;
-                MessageBox.Show(i.ToString());
-                return new string[] { "in", "OK" };
-            }
-        }
     }
 }
