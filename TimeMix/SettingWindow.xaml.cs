@@ -16,7 +16,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-
+using TimeMix.Properties;
+using s = TimeMix.Properties.Settings;
 
 namespace TimeMix
 {
@@ -25,12 +26,35 @@ namespace TimeMix
     /// </summary>
     public partial class SettingWindow : Window
     {
+        
         public SettingWindow()
         {
             InitializeComponent();
             Loaded += MainWindow_Loaded;
-        }
+            if (Properties.Settings.Default.NetTime)
+            {
 
+                SetDeltaTimeByNet();
+            }
+        }NetConnect.TxtConnect_Client client;
+        /// <summary>
+        /// 通过网络时间设置时间差
+        /// </summary>
+        private void SetDeltaTimeByNet()
+        {
+            
+            client = new NetConnect.TxtConnect_Client(Properties.Settings.Default.NetName, Properties.Settings.Default.NetPath);
+            client.GetMethod += Connect_GetMethod;
+            client.SendInfo("GetChangHeTime", "");
+        }
+        private void Connect_GetMethod(string in_methodName, string in_methodParameters, out string out_methodName, out string out_methodParameters)
+        {
+            Type type = typeof(MethodCollection);
+            object[] parameters = in_methodParameters.Split(',');
+            var result = ((string[])type.GetMethod(in_methodName).Invoke(null, parameters));
+            out_methodName = result[0];
+            out_methodParameters = result[1];
+        }
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             DirectoryInfo dir = new DirectoryInfo(Public.PathData);
@@ -74,6 +98,10 @@ namespace TimeMix
             TbDeltaTime.Text = Settings.Default.deltaTime.ToString();
             ChkTomorrowClass.IsChecked = Settings.Default.isTomorrowClass;
             ChkNetTime.IsChecked = Properties.Settings.Default.NetTime;
+            TbNetName.Text = Properties.Settings.Default.NetName;
+            TbNetPath.Text = Properties.Settings.Default.NetPath;
+
+
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -186,6 +214,28 @@ namespace TimeMix
         private void ChkNetTime_Click(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.NetTime = (bool)ChkNetTime.IsChecked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void TbNetName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            s.Default.NetName = TbNetName.Text;
+        }
+
+        private void TbNetPath_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            s.Default.NetPath = TbNetPath.Text;
+        }
+
+        private class MethodCollection
+        {
+            public static string[] SetChangHeTime(string Time)
+            {
+                MessageBox.Show(string.Format("I received {0}", Time));
+                int i = (Convert.ToDateTime(Time) - DateTime.Now).Seconds;
+                MessageBox.Show(i.ToString());
+                return new string[] { "in", "OK" };
+            }
         }
     }
 }

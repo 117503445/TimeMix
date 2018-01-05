@@ -34,5 +34,29 @@ namespace TimeMix.Properties {
                 this["NetTime"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("timeMix")]
+        public string NetName {
+            get {
+                return ((string)(this["NetName"]));
+            }
+            set {
+                this["NetName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\CLASSV\\FolderShare")]
+        public string NetPath {
+            get {
+                return ((string)(this["NetPath"]));
+            }
+            set {
+                this["NetPath"] = value;
+            }
+        }
     }
 }

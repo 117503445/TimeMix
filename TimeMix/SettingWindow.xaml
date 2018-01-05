@@ -39,12 +39,24 @@
 
             </TabItem>
             <TabItem Header="高级设置">
-                <Grid Background="#FFE5E5E5">
-                    <TextBox x:Name="Tbdpi" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="54,10,0,0" TextChanged="Tbdpi_TextChanged"/>
-                    <Label Content="DPI" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,8,0,0"/>
+                <TabControl>
+                    <TabItem Header="其他">
+                        <Canvas Background="#FFE5E5E5">
+                            <TextBox x:Name="Tbdpi" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="54,10,0,0" TextChanged="Tbdpi_TextChanged"/>
+                            <Label Content="DPI" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,8,0,0"/>
+                            <Button x:Name="BtnDefaultSetting" Content="初始化设置" Click="BtnDefaultSetting_Click" Canvas.Left="54" Canvas.Top="56"/>
+                        </Canvas>
+                    </TabItem>
+                    <TabItem Header="网络">
+                        <Canvas Background="#FFE5E5E5">
+                            <TextBlock  Canvas.Left="10" Canvas.Top="69">网名</TextBlock>
+                            <TextBox x:Name="TbNetName" Canvas.Left="42" Canvas.Top="69" Height="32" Width="239" TextChanged="TbNetName_TextChanged"></TextBox>
+                            <TextBlock  Canvas.Left="10" Canvas.Top="29">路径</TextBlock>
+                            <TextBox x:Name="TbNetPath" Canvas.Left="42" Canvas.Top="29"  Height="32" Width="239" TextChanged="TbNetPath_TextChanged"></TextBox>
+                        </Canvas>
+                    </TabItem>
+                </TabControl>
 
-                    <Button x:Name="BtnDefaultSetting" Content="初始化设置" Margin="54,68,343,157" Click="BtnDefaultSetting_Click"></Button>
-                </Grid>
             </TabItem>
             <TabItem Header="开发者选项">
                 <Canvas Background="#FFE5E5E5">
