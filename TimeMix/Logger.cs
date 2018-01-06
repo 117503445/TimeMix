@@ -15,14 +15,14 @@ namespace TimeMix
         static string pathLog = Environment.CurrentDirectory + @"\File\Log\Log.txt";
         public static void Write(Exception ex)
         {
-            string str =DateTime.Now.ToString()+";"+"ERROR" +";"+ex.Message + "\r\n";
+            string str = DateTime.Now.ToString() + ";" + "ERROR" + ";" + ex.Message + "\r\n";
             File.AppendAllText(pathLog, str);
             Console.WriteLine(ex.ToString());
         }
         public static void Write(string s)
         {
-            string str = DateTime.Now.ToString() + ";"+"INFO"+";" + s + "\r\n";
-            File.AppendAllText(pathLog,str);
+            string str = DateTime.Now.ToString() + ";" + "INFO" + ";" + s + "\r\n";
+            File.AppendAllText(pathLog, str);
         }
     }
 }

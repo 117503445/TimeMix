@@ -9,10 +9,10 @@
       <Value Profile="(Default)">\\CLASSV\FolderShare\Static\data\TimeMix_deltaTime.txt</Value>
     </Setting>
     <Setting Name="nameClass" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">课表_305.xml</Value>
     </Setting>
     <Setting Name="nameTime" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">时间_冬季_约束</Value>
     </Setting>
     <Setting Name="dpi" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1</Value>

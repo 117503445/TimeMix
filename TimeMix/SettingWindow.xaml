@@ -4,52 +4,53 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeMix"
+          xmlns:Properties="clr-namespace:TimeMix.Properties"
         mc:Ignorable="d"
-        Title="设置" Height="318" Width="517" WindowStyle="ThreeDBorderWindow" MouseLeftButtonDown="Window_MouseLeftButtonDown" Closed="Window_Closed" Closing="Window_Closing" Loaded="Window_Loaded">
+        Title="设置" Height="318" Width="517" WindowStyle="ThreeDBorderWindow" MouseLeftButtonDown="Window_MouseLeftButtonDown" Closed="Window_Closed" Closing="Window_Closing" Loaded="Window_Loaded" ResizeMode="NoResize">
+     
     <Grid>
         <TabControl>
-            <TabItem Header="课表">
-                <Grid Background="#FFE5E5E5">
-                    <Label Content="课表" HorizontalAlignment="Left" Margin="16,20,0,0" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="CboClass" VerticalAlignment="Top" Margin="67,24,236,0" SelectionChanged="CboClass_SelectionChanged"/>
-                    <CheckBox x:Name="ChkAutoHide" Content="上课隐藏(X)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,59,0,0"/>
-                    <CheckBox x:Name="ChkTomorrowClass" Content="明日课表" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,83,0,0" Height="23" Width="71" IsChecked="True" Click="ChkTomorrowClass_Click"/>
-                    <Button x:Name="BtnOpenEditTime" Content="编辑课表" HorizontalAlignment="Left" Height="31" Margin="17,106,0,0" VerticalAlignment="Top" Width="130" Click="BtnOpenEditTime_Click"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="时间表">
-                <Grid Background="#FFE5E5E5">
-                    <Label Content="时间表" HorizontalAlignment="Left" Margin="9,24,0,0" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="CboTime" VerticalAlignment="Top" Margin="60,24,243,0" SelectionChanged="CboTime_SelectionChanged"/>
-                </Grid>
-            </TabItem>
             <TabItem Header="一般设置">
-                <Grid Background="#FFE5E5E5">
-                    <CheckBox x:Name="ChkAutoStart" Content="开机自启(X)" HorizontalAlignment="Left" Margin="15,37,0,0" VerticalAlignment="Top"/>
-                    <Label Content="时间差" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,62,0,0" />
-                    <TextBox x:Name="TbDeltaTime" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"  TextChanged="TbDeltaTime_TextChanged" Margin="62,62,0,0"/>
-                    <Button x:Name="BtnMinusTime" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="23"  Click="BtnMinusTime_Click" Margin="212,62,0,0" Height="23"/>
-                    <Button x:Name="BtnAddTime" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="23"  Click="BtnAddTime_Click" Margin="186,62,0,0" Height="23"/>
-                    <CheckBox x:Name="ChkNetTime"  Content="启用网络时间" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,67,0,0" Click="ChkNetTime_Click" />
-                </Grid>
+                <Canvas Background="#FFE5E5E5">
+                    <Canvas Margin="16,20,236,215">
+                        <Grid Height="25" Width="251">
+                            <Label Content="课表" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="CboClass" VerticalAlignment="Top" Margin="51,4,0,0" SelectionChanged="CboClass_SelectionChanged"/>
+                        </Grid>
+                    </Canvas>
+                    <CheckBox x:Name="ChkAutoHide" Content="上课隐藏(X)" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="16" Canvas.Top="103"/>
+                    <CheckBox x:Name="ChkTomorrowClass" Content="明日课表" HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Width="71" IsChecked="True" Click="ChkTomorrowClass_Click" Canvas.Left="16" Canvas.Top="131"/>
+                    <Button x:Name="BtnOpenEditTime" Content="编辑课表" HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Width="137" Click="BtnOpenEditTime_Click" Canvas.Left="130" Canvas.Top="107"/>
+                    <Canvas Height="25" Canvas.Left="16" Canvas.Top="53" Width="251">
+                        <Label Content="时间表" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <ComboBox x:Name="CboTime" VerticalAlignment="Top" SelectionChanged="CboTime_SelectionChanged" Canvas.Left="51" Canvas.Top="4" Width="200"/>
+                    </Canvas>
+                </Canvas>
             </TabItem>
-            <TabItem Header="高级设置">
-                <TabControl>
-                    <TabItem Header="其他">
-                        <Canvas Background="#FFE5E5E5">
-                            <TextBox x:Name="Tbdpi" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="54,10,0,0" TextChanged="Tbdpi_TextChanged"/>
-                            <Label Content="DPI" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,8,0,0"/>
-                            <Button x:Name="BtnDefaultSetting" Content="初始化设置" Click="BtnDefaultSetting_Click" Canvas.Left="54" Canvas.Top="56"/>
-                        </Canvas>
-                    </TabItem>
-                    <TabItem Header="网络">
-                        <Canvas Background="#FFE5E5E5">
-                            <TextBlock  Canvas.Left="10" Canvas.Top="29">路径</TextBlock>
-                            <TextBox x:Name="TbNetPath" Canvas.Left="42" Canvas.Top="29"  Height="32" Width="239" TextChanged="TbNetPath_TextChanged"></TextBox>
-                        </Canvas>
-                    </TabItem>
-                </TabControl>
 
+            <TabItem Header="高级设置">
+                <Canvas Background="#FFE5E5E5">
+                    <CheckBox x:Name="ChkAutoStart" Content="开机自启(X)" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="151"/>
+                    <Canvas Height="25" Canvas.Left="10" Canvas.Top="55" Width="339">
+                        <TextBlock Text="时间差" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBox x:Name="TbDeltaTime" Text="{Binding Path=deltaTime,Source={x:Static Properties:Settings.Default}}" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="115"  TextChanged="TbDeltaTime_TextChanged" Canvas.Left="51"/>
+                        <Button x:Name="BtnMinusTime" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="25"  Click="BtnMinusTime_Click" Height="25" Canvas.Left="217"/>
+                        <Button x:Name="BtnAddTime" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="25"  Click="BtnAddTime_Click" Height="25" Canvas.Left="187"/>
+                        <CheckBox x:Name="ChkNetTime"  Content="启用网络时间" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ChkNetTime_Click" Canvas.Left="247" Canvas.Top="5" />
+                    </Canvas>
+                    <Canvas Height="25" Canvas.Left="10" Canvas.Top="16" Width="169">
+
+
+                        <TextBox x:Name="Tbdpi" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" TextChanged="Tbdpi_TextChanged" Canvas.Left="52"/>
+                        <TextBlock Text="DPI" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    </Canvas>
+                    <Button x:Name="BtnDefaultSetting" Content="初始化设置" Click="BtnDefaultSetting_Click" Canvas.Left="197" Canvas.Top="16" Height="25" Width="152"/>
+                    <Canvas Height="32" Canvas.Left="10" Canvas.Top="100" Width="410">
+                        <TextBlock><Run Text="路径"/></TextBlock>
+                        <TextBox x:Name="TbNetPath" Canvas.Left="51"  Height="32" Width="359" TextChanged="TbNetPath_TextChanged"/>
+                    </Canvas>
+                    <Button x:Name="BtnSetDeltaTimeByNet" Content="立刻刷新" Click="BtnSetDeltaTimeByNet_Click" Canvas.Left="354" Canvas.Top="55" Height="25" Width="66"/>
+                </Canvas>
             </TabItem>
             <TabItem Header="开发者选项">
                 <Canvas Background="#FFE5E5E5">
@@ -57,7 +58,6 @@
                     <Button x:Name="BtnTimeMix" Content="TimeMix文件夹" Click="BtnTimeMix_Click" Height="30" Canvas.Left="24" Canvas.Top="47" Width="109"/>
                     <Button x:Name="BtnData" Content="Data文件夹" Click="BtnData_Click" Height="30" Canvas.Left="24" Canvas.Top="80" Width="109"/>
                 </Canvas>
-
             </TabItem>
         </TabControl>
     </Grid>

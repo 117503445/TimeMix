@@ -49,7 +49,7 @@ namespace TimeMix.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("课表_305.xml")]
         public string nameClass {
             get {
                 return ((string)(this["nameClass"]));
@@ -61,7 +61,7 @@ namespace TimeMix.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("时间_冬季_约束")]
         public string nameTime {
             get {
                 return ((string)(this["nameTime"]));

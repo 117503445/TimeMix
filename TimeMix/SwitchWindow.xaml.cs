@@ -97,12 +97,13 @@ namespace TimeMix
 
         private void Timer1000_Tick(object sender, EventArgs e)
         {
+ 
 
             Public.timeTableWindow.ChangeColor();
             Public.timeWindow.ChangeColor();
             Public.classTableWindow.ChangeColor();
             Public.ScheduleWindow.ChangeColor();
-            //TbChangeHeTime.Text = "长河时间 " + Public.ChangHeTime().ToString();
+            Public.SettingWindow.TbChangeHeTime.Text = "长河时间 " + Public.ChangHeTime().ToString();
             Public.classTableWindow.Topmost = true;
 #if !DEBUG
             try
@@ -238,9 +239,9 @@ namespace TimeMix
 
         public Windows(Window window, string picName, Image image)
         {
-            this.Window = window;
+            Window = window;
             PicName = picName;
-            this.Image = image;
+            Image = image;
         }
         public void BindObject(Window window, Image image)
         {
