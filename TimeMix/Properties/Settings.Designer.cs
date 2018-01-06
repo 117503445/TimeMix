@@ -25,7 +25,7 @@ namespace TimeMix.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool isEnableNetTime {
             get {
                 return ((bool)(this["isEnableNetTime"]));
@@ -97,7 +97,7 @@ namespace TimeMix.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool isTomorrowClass {
             get {
                 return ((bool)(this["isTomorrowClass"]));

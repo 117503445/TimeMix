@@ -97,8 +97,6 @@ namespace TimeMix
 
         private void Timer1000_Tick(object sender, EventArgs e)
         {
- 
-
             Public.timeTableWindow.ChangeColor();
             Public.timeWindow.ChangeColor();
             Public.classTableWindow.ChangeColor();
@@ -119,11 +117,8 @@ namespace TimeMix
             }
 #else
             Core.Update(Public.pathTime, Public.pathClass, Public.ChangHeTime());
-
-
 #endif
             //timeWindow.Topmost = true;
-
             Public.timeTableWindow.Changedata(Core.CurrentTimeSection, Core.Progress);
             int week = (int)Public.ChangHeTime().DayOfWeek;
             if (Public.ChangHeTime().CompareTo(Core.LastClassEndTime[week]) > 0 && Settings.Default.isTomorrowClass)

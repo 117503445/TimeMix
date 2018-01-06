@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="isEnableNetTime" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="NetPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">\\CLASSV\FolderShare\Static\data\TimeMix_deltaTime.txt</Value>
@@ -21,7 +21,7 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="isTomorrowClass" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

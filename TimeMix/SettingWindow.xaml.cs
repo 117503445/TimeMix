@@ -114,11 +114,11 @@ namespace TimeMix
             {
                 CboClass.SelectedIndex = 0;
             }
-            Tbdpi.Text = Settings.Default.dpi.ToString();
+            //Tbdpi.Text = Settings.Default.dpi.ToString();
             
-            ChkTomorrowClass.IsChecked = Settings.Default.isTomorrowClass;
-            ChkNetTime.IsChecked = Settings.Default.isEnableNetTime;
-            TbNetPath.Text = Settings.Default.NetPath;
+            //ChkTomorrowClass.IsChecked = Settings.Default.isTomorrowClass;
+          //  ChkNetTime.IsChecked = Settings.Default.isEnableNetTime;
+           // TbNetPath.Text = Settings.Default.NetPath;
 
         }
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -215,7 +215,7 @@ namespace TimeMix
         }
         private void TbNetPath_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Settings.Default.NetPath = TbNetPath.Text;
+          Settings.Default.NetPath = TbNetPath.Text;
         }
 
         private void BtnSetDeltaTimeByNet_Click(object sender, RoutedEventArgs e)

@@ -19,7 +19,7 @@
                         </Grid>
                     </Canvas>
                     <CheckBox x:Name="ChkAutoHide" Content="上课隐藏(X)" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="16" Canvas.Top="103"/>
-                    <CheckBox x:Name="ChkTomorrowClass" Content="明日课表" HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Width="71" IsChecked="True" Click="ChkTomorrowClass_Click" Canvas.Left="16" Canvas.Top="131"/>
+                    <CheckBox x:Name="ChkTomorrowClass" Content="明日课表" HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Width="71" IsChecked="{Binding Path=isTomorrowClass,Source={x:Static Properties:Settings.Default}}" Click="ChkTomorrowClass_Click" Canvas.Left="16" Canvas.Top="131"/>
                     <Button x:Name="BtnOpenEditTime" Content="编辑课表" HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Width="137" Click="BtnOpenEditTime_Click" Canvas.Left="130" Canvas.Top="107"/>
                     <Canvas Height="25" Canvas.Left="16" Canvas.Top="53" Width="251">
                         <Label Content="时间表" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -36,18 +36,18 @@
                         <TextBox x:Name="TbDeltaTime" Text="{Binding Path=deltaTime,Source={x:Static Properties:Settings.Default}}" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="115"  TextChanged="TbDeltaTime_TextChanged" Canvas.Left="51"/>
                         <Button x:Name="BtnMinusTime" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="25"  Click="BtnMinusTime_Click" Height="25" Canvas.Left="217"/>
                         <Button x:Name="BtnAddTime" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="25"  Click="BtnAddTime_Click" Height="25" Canvas.Left="187"/>
-                        <CheckBox x:Name="ChkNetTime"  Content="启用网络时间" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ChkNetTime_Click" Canvas.Left="247" Canvas.Top="5" />
-                    </Canvas>
+                        <CheckBox x:Name="ChkNetTime" IsChecked="{Binding Path=isEnableNetTime,Source={x:Static Properties:Settings.Default}}"  Content="启用网络时间" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ChkNetTime_Click" Canvas.Left="247" Canvas.Top="5" />
+                    </Canvas> 
                     <Canvas Height="25" Canvas.Left="10" Canvas.Top="16" Width="169">
 
 
-                        <TextBox x:Name="Tbdpi" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" TextChanged="Tbdpi_TextChanged" Canvas.Left="52"/>
+                        <TextBox x:Name="Tbdpi" Text="{Binding Path=dpi,Source={x:Static Properties:Settings.Default}}"  HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" TextChanged="Tbdpi_TextChanged" Canvas.Left="52"/>
                         <TextBlock Text="DPI" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     </Canvas>
                     <Button x:Name="BtnDefaultSetting" Content="初始化设置" Click="BtnDefaultSetting_Click" Canvas.Left="197" Canvas.Top="16" Height="25" Width="152"/>
                     <Canvas Height="32" Canvas.Left="10" Canvas.Top="100" Width="410">
                         <TextBlock><Run Text="路径"/></TextBlock>
-                        <TextBox x:Name="TbNetPath" Canvas.Left="51"  Height="32" Width="359" TextChanged="TbNetPath_TextChanged"/>
+                        <TextBox x:Name="TbNetPath" Text="{Binding Path=NetPath,Source={x:Static Properties:Settings.Default}}" Canvas.Left="51"  Height="32" Width="359" TextChanged="TbNetPath_TextChanged"/>
                     </Canvas>
                     <Button x:Name="BtnSetDeltaTimeByNet" Content="立刻刷新" Click="BtnSetDeltaTimeByNet_Click" Canvas.Left="354" Canvas.Top="55" Height="25" Width="66"/>
                 </Canvas>
