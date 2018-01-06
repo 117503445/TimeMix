@@ -97,6 +97,7 @@ namespace TimeMix
 
         private void Timer1000_Tick(object sender, EventArgs e)
         {
+
             Public.timeTableWindow.ChangeColor();
             Public.timeWindow.ChangeColor();
             Public.classTableWindow.ChangeColor();

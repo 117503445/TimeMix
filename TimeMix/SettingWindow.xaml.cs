@@ -148,6 +148,7 @@ namespace TimeMix
         private void ChkTomorrowClass_Click(object sender, RoutedEventArgs e)
         {
             Settings.Default.isTomorrowClass = (bool)ChkTomorrowClass.IsChecked;
+            MessageBox.Show("Click"+ ((bool)ChkTomorrowClass.IsChecked).ToString());
         }
         private void BtnMinusTime_Click(object sender, RoutedEventArgs e)
         {
