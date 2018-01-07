@@ -26,7 +26,6 @@ namespace TimeMix
     /// </summary>
     public partial class SettingWindow : Window
     {
-
         public SettingWindow()
         {
             InitializeComponent();
@@ -35,46 +34,7 @@ namespace TimeMix
                 SetDeltaTimeByNet();
             }
         }
-        /// <summary>
-        /// 通过网络时间设置时间差
-        /// </summary>
-        private async void SetDeltaTimeByNet()
-        {
-
-            await Task.Run(() =>
-            {
-                BtnSetDeltaTimeByNet.Dispatcher.Invoke(() =>
-                {
-                    BtnSetDeltaTimeByNet.IsEnabled = false;
-                });
-                try
-                {
-                    string t = File.ReadAllText(Settings.Default.NetPath);
-                    Settings.Default.deltaTime = Convert.ToInt32(t);
-                    BtnSetDeltaTimeByNet.Dispatcher.Invoke(() =>
-                    {
-                        BtnSetDeltaTimeByNet.IsEnabled = true;
-                        BtnSetDeltaTimeByNet.Content = ":)";
-                    }); Thread.Sleep(1000);//如果成功,给予一个美丽的微笑!
-                    BtnSetDeltaTimeByNet.Dispatcher.Invoke(() =>
-                    {
-                        BtnSetDeltaTimeByNet.Content = "立即刷新";
-                    });
-                }
-                catch (Exception ex)
-                {
-                    Logger.Write(ex);
-#if !DEBUG
-                    MessageBox.Show(@"在试图获取网络时间时出错,若一直出现此错误请关闭'网络时间'功能");
-#endif
-                }
-                BtnSetDeltaTimeByNet.Dispatcher.Invoke(() =>
-                {
-                    BtnSetDeltaTimeByNet.IsEnabled = true;
-                });
-            });
-
-        }
+        #region 事件方法
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             DirectoryInfo dir = new DirectoryInfo(Public.PathData);
@@ -115,10 +75,10 @@ namespace TimeMix
                 CboClass.SelectedIndex = 0;
             }
             //Tbdpi.Text = Settings.Default.dpi.ToString();
-            
+
             //ChkTomorrowClass.IsChecked = Settings.Default.isTomorrowClass;
-          //  ChkNetTime.IsChecked = Settings.Default.isEnableNetTime;
-           // TbNetPath.Text = Settings.Default.NetPath;
+            //  ChkNetTime.IsChecked = Settings.Default.isEnableNetTime;
+            // TbNetPath.Text = Settings.Default.NetPath;
 
         }
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -147,6 +107,19 @@ namespace TimeMix
             Public.pathClass = Public.PathData + "/" + CboClass.SelectedItem.ToString();
 
         }
+        private void ChkTomorrowClass_Click(object sender, RoutedEventArgs e)
+        {
+            Settings.Default.isTomorrowClass = (bool)ChkTomorrowClass.IsChecked;
+            MessageBox.Show("Click" + ((bool)ChkTomorrowClass.IsChecked).ToString());
+        }
+        private void ChkNetTime_Click(object sender, RoutedEventArgs e)
+        {
+            Settings.Default.isEnableNetTime = (bool)ChkNetTime.IsChecked;
+        }
+        private void ChkAutoStart_Click(object sender, RoutedEventArgs e)
+        {
+            Settings.Default.isSelfRunning = (bool)ChkAutoStart.IsChecked;
+        }
         private void Tbdpi_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
@@ -170,10 +143,9 @@ namespace TimeMix
             }
 
         }
-        private void ChkTomorrowClass_Click(object sender, RoutedEventArgs e)
+        private void TbNetPath_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Settings.Default.isTomorrowClass = (bool)ChkTomorrowClass.IsChecked;
-            MessageBox.Show("Click" + ((bool)ChkTomorrowClass.IsChecked).ToString());
+            Settings.Default.NetPath = TbNetPath.Text;
         }
         private void BtnMinusTime_Click(object sender, RoutedEventArgs e)
         {
@@ -208,19 +180,52 @@ namespace TimeMix
             Application.Current.Shutdown();
 
         }
-        private void ChkNetTime_Click(object sender, RoutedEventArgs e)
-        {
-            Settings.Default.isEnableNetTime = (bool)ChkNetTime.IsChecked;
-
-        }
-        private void TbNetPath_TextChanged(object sender, TextChangedEventArgs e)
-        {
-          Settings.Default.NetPath = TbNetPath.Text;
-        }
-
         private void BtnSetDeltaTimeByNet_Click(object sender, RoutedEventArgs e)
         {
             SetDeltaTimeByNet();
         }
+        #endregion
+        /// <summary>
+        /// 通过网络时间设置时间差
+        /// </summary>
+        private async void SetDeltaTimeByNet()
+        {
+
+            await Task.Run(() =>
+            {
+                BtnSetDeltaTimeByNet.Dispatcher.Invoke(() =>
+                {
+                    BtnSetDeltaTimeByNet.IsEnabled = false;
+                });
+                try
+                {
+                    string t = File.ReadAllText(Settings.Default.NetPath);
+                    Settings.Default.deltaTime = Convert.ToInt32(t);
+                    BtnSetDeltaTimeByNet.Dispatcher.Invoke(() =>
+                    {
+                        BtnSetDeltaTimeByNet.IsEnabled = true;
+                        BtnSetDeltaTimeByNet.Content = ":)";
+                    }); Thread.Sleep(1000);//如果成功,给予一个美丽的微笑!
+                    BtnSetDeltaTimeByNet.Dispatcher.Invoke(() =>
+                    {
+                        BtnSetDeltaTimeByNet.Content = "立即刷新";
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Logger.Write(ex);
+#if !DEBUG
+                    MessageBox.Show(@"在试图获取网络时间时出错,若一直出现此错误请关闭'网络时间'功能");
+#endif
+                }
+                BtnSetDeltaTimeByNet.Dispatcher.Invoke(() =>
+                {
+                    BtnSetDeltaTimeByNet.IsEnabled = true;
+                });
+            });
+
+        }
+
+
     }
 }

@@ -13,7 +13,6 @@ namespace TimeMix.Properties
     //  在保存设置值之前将引发 SettingsSaving 事件。
     internal sealed partial class Settings
     {
-
         public Settings()
         {
             PropertyChanged += PropertyChangedEventHandler;

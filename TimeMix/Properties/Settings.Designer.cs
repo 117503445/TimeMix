@@ -106,5 +106,17 @@ namespace TimeMix.Properties {
                 this["isTomorrowClass"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool isSelfRunning {
+            get {
+                return ((bool)(this["isSelfRunning"]));
+            }
+            set {
+                this["isSelfRunning"] = value;
+            }
+        }
     }
 }
