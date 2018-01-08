@@ -116,10 +116,7 @@ namespace TimeMix
         {
             Settings.Default.isEnableNetTime = (bool)ChkNetTime.IsChecked;
         }
-        private void ChkAutoStart_Click(object sender, RoutedEventArgs e)
-        {
-            Settings.Default.isSelfRunning = (bool)ChkAutoStart.IsChecked;
-        }
+
         private void Tbdpi_TextChanged(object sender, TextChangedEventArgs e)
         {
             try

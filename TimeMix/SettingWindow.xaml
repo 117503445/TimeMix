@@ -30,7 +30,6 @@
 
             <TabItem Header="高级设置">
                 <Canvas Background="#FFE5E5E5">
-                    <CheckBox x:Name="ChkAutoStart" IsChecked="{Binding Path=isSelfRunning,Source={x:Static Properties:Settings.Default}}"  Content="开机自启" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="151" Click="ChkAutoStart_Click"/>
                     <Canvas Height="25" Canvas.Left="10" Canvas.Top="55" Width="339">
                         <TextBlock Text="时间差" HorizontalAlignment="Left" VerticalAlignment="Top" />
                         <TextBox x:Name="TbDeltaTime" Text="{Binding Path=deltaTime,Source={x:Static Properties:Settings.Default}}" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="115"  TextChanged="TbDeltaTime_TextChanged" Canvas.Left="51"/>
