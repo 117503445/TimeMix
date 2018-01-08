@@ -12,7 +12,7 @@ namespace TimeMix
         /// <summary>
         /// Environment.CurrentDirectory + @"\File\Log\Log.txt";
         /// </summary>
-        static string pathLog = Environment.CurrentDirectory + @"\File\Log\Log.txt";
+        static string pathLog = System.AppDomain.CurrentDomain.BaseDirectory + @"\File\Log\Log.txt";
         public static void Write(Exception ex)
         {
             string str = DateTime.Now.ToString() + ";" + "ERROR" + ";" + ex.Message + "\r\n";

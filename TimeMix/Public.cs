@@ -27,7 +27,7 @@ namespace TimeMix
         /// <summary>
         /// Environment.CurrentDirectory + @"\File\Data"
         /// </summary>
-        public static string PathData => Environment.CurrentDirectory + @"\File\Data";
+        public static string PathData => System.AppDomain.CurrentDomain.BaseDirectory+ @"\File\Data";
 
 
         public static string pathTime = PathData + "\\" + Settings.Default.nameTime + "\\";

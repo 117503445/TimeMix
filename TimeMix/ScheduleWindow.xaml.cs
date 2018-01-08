@@ -37,7 +37,7 @@ namespace TimeMix
                 ((Label)item).Content = "";
                 item.Visibility = Visibility.Visible;
             }
-            XElement x = XElement.Load(Environment.CurrentDirectory + "/File/Schedule.xml");
+            XElement x = XElement.Load(System.AppDomain.CurrentDomain.BaseDirectory + "/File/Schedule.xml");
             int i = 0;
             foreach (var field in x.Elements())
             {
