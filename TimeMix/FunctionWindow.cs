@@ -59,7 +59,8 @@ namespace TimeMix
 
         public async void ChangeColor()
         {
-            if (await Public.IsBlack(Left, Top, Width, Height))
+            bool b = await Public.IsBlack(Left, Top, Width, Height);
+            if (b)
             {
                 foreach (var item in Controls)
                     item.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black);
@@ -69,6 +70,17 @@ namespace TimeMix
                 foreach (var item in Controls)
                     item.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.White);
             }
+            if (lastColor != b)
+            {
+                Counter = 0;
+                ColorActive = true;
+            }
+
+            if (lastColor == b)
+            {
+                Counter++;
+            }
+            lastColor = b;
         }
         /// <summary>
         /// 读取失败
@@ -80,5 +92,26 @@ namespace TimeMix
                 item.Content = "错误";
             }
         }
+
+        private bool lastColor;
+
+        private static bool colorActive = true;
+        private static int counter;
+
+        public static bool ColorActive { get => colorActive; set => colorActive = value; }
+        public static int Counter
+        {
+            get { return counter; }
+            set
+            {
+                counter = value;
+                if (counter > 20)
+                {
+                    colorActive = false;
+                }
+            }
+        }
+
     }
+
 }

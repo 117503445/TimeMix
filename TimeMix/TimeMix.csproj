@@ -111,7 +111,6 @@
     <Compile Include="ScheduleWindow.xaml.cs">
       <DependentUpon>ScheduleWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SelfRunning.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>

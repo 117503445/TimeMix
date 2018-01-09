@@ -53,7 +53,7 @@ namespace TimeMix
             if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "windows.dat"))
             {
                 BinaryFormatter binaryFormatter = new BinaryFormatter();
-                using (FileStream fileStream = File.OpenRead(AppDomain.CurrentDomain.BaseDirectory+"windows.dat"))
+                using (FileStream fileStream = File.OpenRead(AppDomain.CurrentDomain.BaseDirectory + "windows.dat"))
                 {
                     windows = binaryFormatter.Deserialize(fileStream) as List<Windows>;
                 }
@@ -81,32 +81,52 @@ namespace TimeMix
                 item.DataToWindow();
             }
 
-            DispatcherTimer timer1000 = new DispatcherTimer();
+            DispatcherTimer timer1000 = new DispatcherTimer
             {
-                timer1000.IsEnabled = true;
-                timer1000.Interval = TimeSpan.FromSeconds(1);
-                timer1000.Tick += Timer1000_Tick;
-            }
-            DispatcherTimer timer100 = new DispatcherTimer();
+                IsEnabled = true,
+                Interval = TimeSpan.FromSeconds(1)
+
+            };
+            timer1000.Tick += Timer1000_Tick;
+            DispatcherTimer timer10000 = new DispatcherTimer
             {
-                timer100.IsEnabled = true;
-                timer100.Interval = TimeSpan.FromMilliseconds(100);
-                timer100.Tick += Timer100_Tick;
-            }
+                IsEnabled = true,
+                Interval = TimeSpan.FromSeconds(10)
+            }; timer10000.Tick += ((s, eventargs) => {
+
+                foreach (var item in windows)
+                {
+                    if (item.Window is FunctionWindow window)
+                    {
+                        if (window.IsVisible)
+                        {
+                            window.ChangeColor();
+                        }
+                    }
+                }
+
+            });
+
         }
 
         private void Timer1000_Tick(object sender, EventArgs e)
         {
-            Public.timeTableWindow.ChangeColor();
-            Public.timeWindow.ChangeColor();
-            Public.classTableWindow.ChangeColor();
-            Public.ScheduleWindow.ChangeColor();
+            foreach (var item in windows)
+            {
+                if (item.Window is FunctionWindow window)
+                {
+                    if (window.IsVisible&&FunctionWindow.ColorActive)
+                    {
+                        window.ChangeColor();
+                    }
+                    window.Topmost = true;
+                }
+            }
             Public.SettingWindow.TbChangeHeTime.Text = "长河时间 " + Public.ChangHeTime().ToString();
-            Public.classTableWindow.Topmost = true;
 #if !DEBUG
             try
             {
-                Core.Update(Public.pathTime, Public.pathClass, Public.ChangHeTime());
+                Core.Load(Public.pathTime, Public.pathClass, Public.ChangHeTime());
             }
             catch (Exception ex)
             {
@@ -116,10 +136,11 @@ namespace TimeMix
                 return;
             }
 #else
-            Core.Update(Public.pathTime, Public.pathClass, Public.ChangHeTime());
+            Core.Load(Public.pathTime, Public.pathClass, Public.ChangHeTime());
 #endif
             //timeWindow.Topmost = true;
             Public.timeTableWindow.Changedata(Core.CurrentTimeSection, Core.Progress);
+            Public.timeWindow.ChangeTime();
             int week = (int)Public.ChangHeTime().DayOfWeek;
             if (Public.ChangHeTime().CompareTo(Core.LastClassEndTime[week]) > 0 && Settings.Default.isTomorrowClass)
             {
@@ -134,12 +155,6 @@ namespace TimeMix
                 Public.classTableWindow.ChangeWeek(Public.ChangHeTime().DayOfWeek);
             }
 
-        }
-
-
-        private void Timer100_Tick(object sender, EventArgs e)
-        {
-            Public.timeWindow.ChangeTime();
         }
         private void Timer_Tick(object sender, EventArgs e)
         {

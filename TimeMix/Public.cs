@@ -27,7 +27,7 @@ namespace TimeMix
         /// <summary>
         /// Environment.CurrentDirectory + @"\File\Data"
         /// </summary>
-        public static string PathData => AppDomain.CurrentDomain.BaseDirectory+ @"\File\Data";
+        public static string PathData => AppDomain.CurrentDomain.BaseDirectory+ @"\File\Data";
 
 
         public static string pathTime = PathData + "\\" + Settings.Default.nameTime + "\\";
@@ -70,7 +70,6 @@ namespace TimeMix
         /// <returns></returns>
         public static Task<bool> IsBlack(double Left, double Top, double Width, double Height)
         {
-
             return Task.Run(() =>
             {
                 Drawing.Rectangle[] rectangles = new Drawing.Rectangle[] {

@@ -9,14 +9,17 @@ namespace TimeMix
 {
     public static class Core
     {
+        private static string _lastPahtTime;
+        private static string _lastPathClass;
+
         /// <summary>
         /// 更新
         /// </summary>
         /// <param name="pathTime">时间表路径,文件夹</param>
         /// <param name="pathClass">课表路径,文件</param>
-        public static void Update(string pathTime, string pathClass)
+        public static void Load(string pathTime, string pathClass)
         {
-            Update(pathTime, pathClass, DateTime.Now);
+            Load(pathTime, pathClass, DateTime.Now);
         }
         /// <summary>
         /// 更新
@@ -24,11 +27,14 @@ namespace TimeMix
         /// <param name="pathTime">时间表路径,文件夹</param>
         /// <param name="pathClass">课表路径,文件</param>
         /// <param name="changHeTime">长河时间</param>
-        public static void Update(string pathTime, string pathClass, DateTime changHeTime)
+        public static void Load(string pathTime, string pathClass, DateTime changHeTime)
         {
+            if (true)
+            {
+
+            }
             //Console.WriteLine();
             //Console.WriteLine("ChangHetime={0}", changHeTime);
-
             for (int i = 0; i < timeSections.Length; i++)//初始化
             {
                 timeSections[i] = new List<TimeSection>();
