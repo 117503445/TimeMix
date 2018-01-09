@@ -27,7 +27,7 @@ namespace TimeMix
         /// <summary>
         /// Environment.CurrentDirectory + @"\File\Data"
         /// </summary>
-        public static string PathData => System.AppDomain.CurrentDomain.BaseDirectory+ @"\File\Data";
+        public static string PathData => AppDomain.CurrentDomain.BaseDirectory+ @"\File\Data";
 
 
         public static string pathTime = PathData + "\\" + Settings.Default.nameTime + "\\";
@@ -107,7 +107,7 @@ namespace TimeMix
                 item.WindowToData();
             }
             BinaryFormatter binaryFormatter = new BinaryFormatter();
-            using (FileStream fileStream = new FileStream("windows.dat", FileMode.Create, FileAccess.Write))
+            using (FileStream fileStream = new FileStream(AppDomain.CurrentDomain.BaseDirectory+"windows.dat", FileMode.Create, FileAccess.Write))
             {
                 binaryFormatter.Serialize(fileStream, switchWindow.windows);
             }

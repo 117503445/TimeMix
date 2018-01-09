@@ -50,10 +50,10 @@ namespace TimeMix
             Public.editTimeWindow = new EditTimeWindow();
             Public.ScheduleWindow = new ScheduleWindow();
             Public.SettingWindow = new SettingWindow();
-            if (File.Exists("windows.dat"))
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "windows.dat"))
             {
                 BinaryFormatter binaryFormatter = new BinaryFormatter();
-                using (FileStream fileStream = File.OpenRead("windows.dat"))
+                using (FileStream fileStream = File.OpenRead(AppDomain.CurrentDomain.BaseDirectory+"windows.dat"))
                 {
                     windows = binaryFormatter.Deserialize(fileStream) as List<Windows>;
                 }

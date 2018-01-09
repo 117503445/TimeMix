@@ -22,7 +22,7 @@ namespace TimeMix
     /// </summary>
     public partial class EditTimeWindow : Window
     {
-        string pathXml = System.AppDomain.CurrentDomain.BaseDirectory + "/File/Data";
+        string pathXml = AppDomain.CurrentDomain.BaseDirectory + "/File/Data";
         /// <summary>
         /// 指向的TextBox被选中的行数
         /// </summary>
