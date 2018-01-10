@@ -234,29 +234,35 @@
     <Resource Include="Resources\Switch\Open\TimeTable.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="File\Data\时间_冬季_约束\Saturday.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="File\Data\课表_305 - A.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="File\Data\课表_305 - B.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="File\Data\课表_305 - C.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="File\Data\课表_305 - D.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="File\Data\课表_305 - E.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="File\Data\课表_考试.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="File\Data\时间_考试\Daily.xml" />
+    <Resource Include="File\Data\时间_考试\Monday.xml" />
+    <Resource Include="File\Data\时间_考试\Public.xml" />
+    <Resource Include="File\Data\时间_考试\TimeFile.xml" />
+    <Resource Include="File\Data\时间_考试\Tuesday.xml" />
+    <Resource Include="File\Data\时间_考试\Wednesday.xml" />
     <Content Include="File\Schedule.xml">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="File\Data\课表_305_1204.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="File\Data\时间_冬季_约束 - 1204\Daily.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="File\Data\时间_冬季_约束 - 1204\Monday.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="File\Data\时间_冬季_约束 - 1204\Public.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="File\Data\时间_冬季_约束 - 1204\TimeFile.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="File\Data\时间_冬季_约束 - 1204\Tuesday.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="File\Data\课表_305.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="File\Data\时间_冬季_约束\Daily.xml">

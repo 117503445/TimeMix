@@ -92,7 +92,8 @@ namespace TimeMix
             {
                 IsEnabled = true,
                 Interval = TimeSpan.FromSeconds(10)
-            }; timer10000.Tick += ((s, eventargs) => {
+            }; timer10000.Tick += ((s, eventargs) =>
+            {
 
                 foreach (var item in windows)
                 {
@@ -115,7 +116,7 @@ namespace TimeMix
             {
                 if (item.Window is FunctionWindow window)
                 {
-                    if (window.IsVisible&&FunctionWindow.ColorActive)
+                    if (window.IsVisible && FunctionWindow.ColorActive)
                     {
                         window.ChangeColor();
                     }
@@ -126,7 +127,8 @@ namespace TimeMix
 #if !DEBUG
             try
             {
-                Core.Load(Public.pathTime, Public.pathClass, Public.ChangHeTime());
+                Core.Load(Public.pathTime, Public.pathClass);
+                Core.CurrentTime = Public.ChangHeTime();
             }
             catch (Exception ex)
             {
@@ -136,7 +138,8 @@ namespace TimeMix
                 return;
             }
 #else
-            Core.Load(Public.pathTime, Public.pathClass, Public.ChangHeTime());
+            Core.Load(Public.pathTime, Public.pathClass);
+            Core.CurrentTime = Public.ChangHeTime();
 #endif
             //timeWindow.Topmost = true;
             Public.timeTableWindow.Changedata(Core.CurrentTimeSection, Core.Progress);

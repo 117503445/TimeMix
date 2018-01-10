@@ -9,30 +9,17 @@ namespace TimeMix
 {
     public static class Core
     {
-        private static string _lastPahtTime;
-        private static string _lastPathClass;
+        private static DateTime currentTime;
 
-        /// <summary>
-        /// 更新
-        /// </summary>
-        /// <param name="pathTime">时间表路径,文件夹</param>
-        /// <param name="pathClass">课表路径,文件</param>
-        public static void Load(string pathTime, string pathClass)
-        {
-            Load(pathTime, pathClass, DateTime.Now);
-        }
         /// <summary>
         /// 更新
         /// </summary>
         /// <param name="pathTime">时间表路径,文件夹</param>
         /// <param name="pathClass">课表路径,文件</param>
         /// <param name="changHeTime">长河时间</param>
-        public static void Load(string pathTime, string pathClass, DateTime changHeTime)
+        public static void Load(string pathTime, string pathClass)
         {
-            if (true)
-            {
 
-            }
             //Console.WriteLine();
             //Console.WriteLine("ChangHetime={0}", changHeTime);
             for (int i = 0; i < timeSections.Length; i++)//初始化
@@ -113,18 +100,6 @@ namespace TimeMix
                 }
             }
 
-            int currentWeek = (int)DateTime.Now.DayOfWeek;
-
-            for (int i = 0; i < timeSections[currentWeek].Count; i++)
-            {
-                if (timeSections[currentWeek][i].beginTime.CompareTo(changHeTime) <= 0 & timeSections[currentWeek][i].endTime.CompareTo(changHeTime) > 0)
-                {
-                    currentTimeSection = timeSections[currentWeek][i];
-                }
-                //Console.WriteLine(timeSections[currentWeek][i].beginTime);
-                //Console.WriteLine(timeSections[currentWeek][i].endTime);
-                //Console.WriteLine();
-            }
 
             for (int i = 0; i < timeSections.Length; i++)//计算最后一节课的结束时间,辅助明日课表功能
             {
@@ -145,10 +120,7 @@ namespace TimeMix
             //Console.WriteLine(currentTimeSection.beginTime);
             //Console.WriteLine(currentTimeSection.endTime);
             //Console.WriteLine();
-            string preProgress = ((changHeTime - currentTimeSection.beginTime).TotalSeconds / (currentTimeSection.endTime - currentTimeSection.beginTime).TotalSeconds * 100).ToString();//计算进度
-            progress = FormatProgress(preProgress);
-            //Console.WriteLine(CurrentTimeSection.ToString());
-            //Console.WriteLine(progress);
+
 
 
         }
@@ -264,12 +236,45 @@ namespace TimeMix
         /// <summary>
         /// 进度
         /// </summary>
-        public static string Progress { get => progress; set => progress = value; }
-        public static TimeSection CurrentTimeSection { get => currentTimeSection; set => currentTimeSection = value; }
+        public static string Progress
+        {
+            get
+            {
+                string preProgress = ((CurrentTime - currentTimeSection.beginTime).TotalSeconds / (currentTimeSection.endTime - currentTimeSection.beginTime).TotalSeconds * 100).ToString();//计算进度
+                progress = FormatProgress(preProgress);
+                return progress;
+                //Console.WriteLine(CurrentTimeSection.ToString());
+                //Console.WriteLine(progress);
+            }
+            set => progress = value;
+        }
+        public static TimeSection CurrentTimeSection
+        {
+            get
+            {
+
+                int currentWeek = (int)DateTime.Now.DayOfWeek;
+
+                for (int i = 0; i < timeSections[currentWeek].Count; i++)
+                {
+                    if (timeSections[currentWeek][i].beginTime.CompareTo(currentTime) <= 0 & timeSections[currentWeek][i].endTime.CompareTo(currentTime) > 0)
+                    {
+                        currentTimeSection = timeSections[currentWeek][i];
+                    }
+                    //Console.WriteLine(timeSections[currentWeek][i].beginTime);
+                    //Console.WriteLine(timeSections[currentWeek][i].endTime);
+                    //Console.WriteLine();
+                }
+                return currentTimeSection;
+
+            }
+            set => currentTimeSection = value;
+        }
         /// <summary>
         /// 第九节课的结束时间
         /// </summary>
         public static DateTime[] LastClassEndTime { get => lastClassEndTime; set => lastClassEndTime = value; }
+        public static DateTime CurrentTime { get => currentTime; set => currentTime = value; }
 
         private static TimeSection currentTimeSection;
         /// <summary>

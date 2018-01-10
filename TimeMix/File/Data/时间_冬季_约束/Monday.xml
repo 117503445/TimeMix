@@ -4,8 +4,8 @@
   <Section BeginTime="6:00" Name="早晨" Class="" />
   <Section BeginTime="6:50" Name="早自修" Class="" />
   <Section BeginTime="7:20" Name="晨会" Class="" />
-  <Section BeginTime="7:00" Name="class1" Class="0" />
-  <Section BeginTime="8:00" Name="下课" Class="" />
-  <Section BeginTime="8:00" Name="class2" Class="1" />
-  <Section BeginTime="9:00" Name="下课" Class="" />
+  <Section BeginTime="7:48" Name="class0" Class="0" />
+  <Section BeginTime="8:30" Name="下课" Class="" />
+  <Section BeginTime="8:38" Name="class1" Class="1" />
+  <Section BeginTime="9:20" Name="下课" Class="" />
 </TimeSection>

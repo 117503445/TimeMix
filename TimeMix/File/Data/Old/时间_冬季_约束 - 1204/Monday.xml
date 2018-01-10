@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TimeSection>
+  <Section BeginTime="0:00" Name="早读前" Class="" />
+  <Section BeginTime="6:00" Name="早晨" Class="" />
+  <Section BeginTime="6:50" Name="早自修" Class="" />
+  <Section BeginTime="9:00" Name="语文" Class="0" />
+  <Section BeginTime="11:30" Name="中午" Class="" />
+  <Section BeginTime="13:30" Name="物理" Class="1" />
+  <Section BeginTime="15:00" Name="下课" Class="" />
+  <Section BeginTime="15:20" Name="政治" Class="2" />
+  <Section BeginTime="16:50" Name="傍晚" Class="" />
+  <Section BeginTime="18:00" Name="晚自修1" Class="" />
+  <Section BeginTime="19:00" Name="下课" Class="" />
+  <Section BeginTime="19:08" Name="晚自修2" Class="" />
+  <Section BeginTime="20:10" Name="下课" Class="" />
+  <Section BeginTime="20:18" Name="大保健操" Class="" />
+  <Section BeginTime="20:25" Name="晚自修3" Class="" />
+  <Section BeginTime="21:50" Name="Relax!" Class="" />
+</TimeSection>

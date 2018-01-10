@@ -11,8 +11,7 @@
     <File>Tuesday.xml</File>
   </day>
   <day week="3">
-    <File>Daily.xml</File>
-    <File>Public.xml</File>
+    <File>Wednesday.xml</File>
   </day>
   <day week="4">
     <File>Daily.xml</File>

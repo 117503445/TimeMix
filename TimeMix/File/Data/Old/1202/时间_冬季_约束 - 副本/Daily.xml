@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TimeSection>
+  <Section BeginTime="0:00" Name="早读前" Class="" />
+  <Section BeginTime="6:00" Name="早晨" Class="" />
+  <Section BeginTime="6:50" Name="早自修" Class="" />
+  <Section BeginTime="7:25" Name="下课" Class="" />
+  <Section BeginTime="7:33" Name="class1" Class="0" />
+  <Section BeginTime="8:15" Name="下课" Class="" />
+  <Section BeginTime="8:23" Name="class2" Class="1" />
+  <Section BeginTime="9:05" Name="大课间" Class="" />
+</TimeSection>

@@ -6,15 +6,12 @@
   </day>
   <day week="1">
     <File>Monday.xml</File>
-    <File>Public.xml</File>
   </day>
   <day week="2">
-    <File>Daily.xml</File>
-    <File>Public.xml</File>
+    <File>Tuesday.xml</File>
   </day>
   <day week="3">
-    <File>Daily.xml</File>
-    <File>Public.xml</File>
+    <File>3.xml</File>
   </day>
   <day week="4">
     <File>Daily.xml</File>
@@ -25,6 +22,7 @@
     <File>Public.xml</File>
   </day>
   <day week="6">
-    <File>6.xml</File>
+    <File>Daily.xml</File>
+    <File>Public.xml</File>
   </day>
 </Week>

@@ -55,4 +55,12 @@
     <Section Class="7" Name="自修" />
     <Section Class="8" Name="" />
   </Sections>
+    <Sections Week="6">
+    <Section Class="0" Name="B2" />
+    <Section Class="1" Name="B3" />
+    <Section Class="2" Name="B1" />
+    <Section Class="3" Name="语文" />
+    <Section Class="4" Name="英语" />
+    <Section Class="5" Name="数学" />
+  </Sections>
 </ClassSection>

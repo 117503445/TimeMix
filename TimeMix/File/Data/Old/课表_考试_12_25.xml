@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassSection>
+  <Sections Week="1">
+    <Section Class="0" Name="语文" />
+    <Section Class="1" Name="历史" />
+    <Section Class="2" Name="物理" />
+  </Sections>
+    <Sections Week="2">
+    <Section Class="0" Name="化学" />
+    <Section Class="1" Name="技术" />
+    <Section Class="2" Name="地理" />
+    <Section Class="3" Name="生物" />
+  </Sections>
+    <Sections Week="3">
+    <Section Class="0" Name="数学" />
+    <Section Class="1" Name="政治" />
+    <Section Class="2" Name="英语" />
+  </Sections>
+    <Sections Week="4">
+    <Section Class="0" Name="语文" />
+    <Section Class="1" Name="数学" />
+    <Section Class="2" Name="B3" />
+    <Section Class="3" Name="B1" />
+    <Section Class="4" Name="B2" />
+    <Section Class="5" Name="艺术" />
+    <Section Class="6" Name="英语" />
+    <Section Class="7" Name="体育" />
+    <Section Class="8" Name="自修" />
+  </Sections>
+    <Sections Week="5">
+    <Section Class="0" Name="B3" />
+    <Section Class="1" Name="B1" />
+    <Section Class="2" Name="B2" />
+    <Section Class="3" Name="数学" />
+    <Section Class="4" Name="英语" />
+    <Section Class="5" Name="语文" />
+    <Section Class="6" Name="自修" />
+    <Section Class="7" Name="自修" />
+    <Section Class="8" Name="体锻" />
+  </Sections>
+</ClassSection>
