@@ -23,10 +23,11 @@ namespace TimeMix
         public StartWindow()
         {
             InitializeComponent();
+            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
+        {OpenCheckIn.Load();
             Public.switchWindow = new SwitchWindow();
             Public.switchWindow.Show();
             Close();
