@@ -19,7 +19,9 @@
                         </Grid>
                     </Canvas>
                     <CheckBox x:Name="ChkAutoHide" Content="上课隐藏(X)" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="16" Canvas.Top="103"/>
+                  
                     <CheckBox x:Name="ChkTomorrowClass" Content="明日课表" HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Width="71" IsChecked="{Binding Path=isTomorrowClass,Source={x:Static Properties:Settings.Default}}" Click="ChkTomorrowClass_Click" Canvas.Left="16" Canvas.Top="131"/>
+                    <CheckBox x:Name="ChkCheckIn" Content="CheckIn" IsChecked="{Binding Path=isCheckIn,Source={x:Static Properties:Settings.Default}}"  Height="20" Width="71" Canvas.Left="16" Canvas.Top="159" Click="ChkCheckIn_Click"></CheckBox>
                     <Button x:Name="BtnOpenEditTime" Content="编辑课表" HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Width="137" Click="BtnOpenEditTime_Click" Canvas.Left="130" Canvas.Top="107"/>
                     <Canvas Height="25" Canvas.Left="16" Canvas.Top="53" Width="251">
                         <Label Content="时间表" HorizontalAlignment="Left" VerticalAlignment="Top"/>

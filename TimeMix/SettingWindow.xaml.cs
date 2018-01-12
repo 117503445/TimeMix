@@ -116,6 +116,10 @@ namespace TimeMix
         {
             Settings.Default.isEnableNetTime = (bool)ChkNetTime.IsChecked;
         }
+        private void ChkCheckIn_Click(object sender, RoutedEventArgs e)
+        {
+            Settings.Default.isCheckIn = (bool)ChkCheckIn.IsChecked;
+        }
 
         private void Tbdpi_TextChanged(object sender, TextChangedEventArgs e)
         {

@@ -106,5 +106,17 @@ namespace TimeMix.Properties {
                 this["isTomorrowClass"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isCheckIn {
+            get {
+                return ((bool)(this["isCheckIn"]));
+            }
+            set {
+                this["isCheckIn"] = value;
+            }
+        }
     }
 }

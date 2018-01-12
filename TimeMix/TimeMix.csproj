@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="FunctionWindow.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="OpenCheckIn.cs" />
     <Compile Include="Public.cs" />
     <Compile Include="ScheduleWindow.xaml.cs">
       <DependentUpon>ScheduleWindow.xaml</DependentUpon>
@@ -261,6 +262,10 @@
     <Resource Include="File\Data\时间_考试\TimeFile.xml" />
     <Resource Include="File\Data\时间_考试\Tuesday.xml" />
     <Resource Include="File\Data\时间_考试\Wednesday.xml" />
+    <Content Include="File\CheckIn.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="File\Schedule.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
