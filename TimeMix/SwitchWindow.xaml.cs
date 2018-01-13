@@ -123,6 +123,7 @@ namespace TimeMix
                     window.Topmost = true;
                 }
             }
+           
             Public.SettingWindow.TbChangeHeTime.Text = "长河时间 " + Public.ChangHeTime().ToString();
 #if !DEBUG
             try

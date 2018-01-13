@@ -8,4 +8,8 @@
     <add>7:10:02</add>
     <add>8:24:31</add>
   </Day>
+  <Day dayofweek="6">
+    <add>7:10:02</add>
+    <add>8:24:31</add>
+  </Day>
 </Fields>
