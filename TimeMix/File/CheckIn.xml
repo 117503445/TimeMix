@@ -1,15 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Fields>
+  <Day dayofweek ="0">
+    <add>17:40:00</add>
+    <add>20:28:00</add>
+  </Day>
   <Day dayofweek ="1">
-    <add>12:10:31</add>
-    <add>12:14:31</add>
+    <add>6:50:00</add>
+    <add>12:45:00</add>
+    <add>17:40:00</add>
+    <add>20:28:00</add>
   </Day>
-  <Day dayofweek="5">
-    <add>7:10:02</add>
-    <add>8:24:31</add>
+  <Day dayofweek ="2">
+    <add>6:50:00</add>
+    <add>12:45:00</add>
+    <add>17:40:00</add>
+    <add>20:28:00</add>
   </Day>
-  <Day dayofweek="6">
-    <add>7:10:02</add>
-    <add>8:24:31</add>
+  <Day dayofweek ="3">
+    <add>6:50:00</add>
+    <add>12:45:00</add>
+    <add>15:35:00</add>
+    <add>17:40:00</add>
+    <add>20:28:00</add>
+  </Day>
+  <Day dayofweek ="4">
+    <add>6:50:00</add>
+    <add>10:18:00</add>
+    <add>12:45:00</add>
+    <add>17:40:00</add>
+    <add>20:28:00</add>
+  </Day>
+  <Day dayofweek ="5">
+    <add>6:50:00</add>
+    <add>12:45:00</add>
+    <add>15:35:00</add>
+    <add>17:40:00</add>
+    <add>20:28:00</add>
+  </Day>
+  <Day dayofweek ="6">
+    <add>6:50:00</add>
+    <add>10:18:00</add>
+    <add>12:45:00</add>
+    <add>15:35:00</add>
   </Day>
 </Fields>

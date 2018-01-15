@@ -88,6 +88,7 @@ namespace TimeMix
 
             };
             timer1000.Tick += Timer1000_Tick;
+            timer1000.Start();
             DispatcherTimer timer10000 = new DispatcherTimer
             {
                 IsEnabled = true,
@@ -112,6 +113,7 @@ namespace TimeMix
 
         private void Timer1000_Tick(object sender, EventArgs e)
         {
+            OpenCheckIn.Check();
             foreach (var item in windows)
             {
                 if (item.Window is FunctionWindow window)
@@ -123,7 +125,6 @@ namespace TimeMix
                     window.Topmost = true;
                 }
             }
-           
             Public.SettingWindow.TbChangeHeTime.Text = "长河时间 " + Public.ChangHeTime().ToString();
 #if !DEBUG
             try

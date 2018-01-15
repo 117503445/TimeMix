@@ -19,7 +19,7 @@ namespace TimeMix
         /// <param name="changHeTime">长河时间</param>
         public static void Load(string pathTime, string pathClass)
         {
-        
+
             //Console.WriteLine();
             //Console.WriteLine("ChangHetime={0}", changHeTime);
             for (int i = 0; i < timeSections.Length; i++)//初始化

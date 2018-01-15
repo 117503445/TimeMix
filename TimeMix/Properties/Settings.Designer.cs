@@ -118,5 +118,17 @@ namespace TimeMix.Properties {
                 this["isCheckIn"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\"C:\\User\\App\\CheckIn\\CheckIn.exe\"")]
+        public string CheckPath {
+            get {
+                return ((string)(this["CheckPath"]));
+            }
+            set {
+                this["CheckPath"] = value;
+            }
+        }
     }
 }
