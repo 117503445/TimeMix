@@ -20,9 +20,9 @@ namespace TimeMix
             XElement xElement = XElement.Load(AppDomain.CurrentDomain.BaseDirectory + "File/CheckIn.xml");
             //Console.WriteLine(xElement);
 
-            var times = (from item in xElement.Elements()
-                         where item.Name == "Day" && item.Attribute("dayofweek").Value == ((int)DateTime.Now.DayOfWeek).ToString()
-                         select item).First().Elements();
+            //var times = (from item in xElement.Elements()
+            //             where item.Name == "Day" && item.Attribute("dayofweek").Value == ((int)Public.ChangHeTime.DayOfWeek).ToString()
+            //             select item).First().Elements();
             for (int i = 0; i < list.Length; i++)
             {
                 list[i] = new List<DateTime>();
@@ -42,56 +42,24 @@ namespace TimeMix
             //        Console.WriteLine(i);
             //    }
             //}
-            timer = new DispatcherTimer
-            {
-                Interval = TimeSpan.FromSeconds(1)
-            };
-            timer.Tick += (s, e) => { };
-            timer.Start();
         }
         public static void Check()
         {
             //Console.WriteLine("---Check---");
-            foreach (var item in list[(int)DateTime.Now.DayOfWeek])
+            foreach (var item in list[(int)Public.ChangHeTime().DayOfWeek])
             {
-                TimeSpan span = (item - DateTime.Now);
+                TimeSpan span = (item - Public.ChangHeTime());
                 if (span < TimeSpan.FromSeconds(1) && span > TimeSpan.FromSeconds(-1))
                 {
                     Process p = new Process();
-                    p.StartInfo.FileName = TimeMix.Properties.Settings.Default.CheckPath;
+                    p.StartInfo.FileName = Properties.Settings.Default.CheckPath;
                     p.Start();
                 }
                 //Console.WriteLine(item);
             }
 
-           // Console.WriteLine("---end---");
+            // Console.WriteLine("---end---");
 
-        }
-
-    }
-    public class CheckInCollection
-    {
-        DayOfWeek dayOfWeek;
-        IEnumerable<DateTime> dateTimes;
-        public DayOfWeek DayOfWeek { get => dayOfWeek; set => dayOfWeek = value; }
-
-        public CheckInCollection(DayOfWeek dayOfWeek, IEnumerable<DateTime> dateTimes)
-        {
-            this.dayOfWeek = dayOfWeek;
-            this.dateTimes = dateTimes;
-        }
-
-        public bool Exist(DateTime value)
-        {
-            var arg = from item in dateTimes where item.TimeOfDay == value.TimeOfDay select item.TimeOfDay;
-            if (arg != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
     }

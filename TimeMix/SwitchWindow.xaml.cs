@@ -83,9 +83,7 @@ namespace TimeMix
 
             DispatcherTimer timer1000 = new DispatcherTimer
             {
-                IsEnabled = true,
                 Interval = TimeSpan.FromSeconds(1)
-
             };
             timer1000.Tick += Timer1000_Tick;
             timer1000.Start();
@@ -93,9 +91,9 @@ namespace TimeMix
             {
                 IsEnabled = true,
                 Interval = TimeSpan.FromSeconds(10)
-            }; timer10000.Tick += ((s, eventargs) =>
+            };
+            timer10000.Tick += ((s, eventargs) =>
             {
-
                 foreach (var item in windows)
                 {
                     if (item.Window is FunctionWindow window)
@@ -113,7 +111,11 @@ namespace TimeMix
 
         private void Timer1000_Tick(object sender, EventArgs e)
         {
-            OpenCheckIn.Check();
+            if (Settings.Default.isCheckIn)
+            {
+                OpenCheckIn.Check();
+            }
+
             foreach (var item in windows)
             {
                 if (item.Window is FunctionWindow window)
