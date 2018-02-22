@@ -91,6 +91,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="TLib">
+      <HintPath>..\..\TLib\TLib\bin\Release\TLib.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -106,7 +109,6 @@
       <DependentUpon>EditTimeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="FunctionWindow.cs" />
-    <Compile Include="Logger.cs" />
     <Compile Include="OpenCheckIn.cs" />
     <Compile Include="Public.cs" />
     <Compile Include="ScheduleWindow.xaml.cs">
