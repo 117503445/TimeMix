@@ -5,17 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimeMix"
         mc:Ignorable="d"
-        Title="TimeTable" Height="78" Width="156" FontWeight="ExtraBlack" FontSize="18">
+        Title="TimeTable" Height="78" Width="156" FontWeight="ExtraBlack" FontSize="18" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="#02FFFFFF">
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="29*"/>
             <RowDefinition Height="48*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="37*"/>
-        </Grid.ColumnDefinitions>
-        <Label x:Name="LblClass" Content="读取错误" HorizontalContentAlignment="Center" Padding="0" FontSize="20" Margin="0,0,0,0.333"/>
-        <Grid Margin="0,29,0,0" Grid.RowSpan="2">
+        <Label x:Name="LblClass" Content="读取错误" HorizontalContentAlignment="Center" Padding="0" FontSize="20" Margin="0,0,0,0.333" Grid.ColumnSpan="2" />
+        <Grid Margin="0,29,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="14*"/>
                 <ColumnDefinition Width="17*"/>
@@ -28,6 +25,7 @@
             </StackPanel>
             <Label x:Name="LblProgress" Content="4.3%" Padding="0" HorizontalContentAlignment="Center" Margin="5,10,0,10" Grid.Column="1"/>
         </Grid>
-
+        <Line x:Name="LineVertical" Stroke="Black" StrokeThickness="3" Y2="78" X2="138" X1="138" Grid.RowSpan="2"/>
+        <Line Name="LineProgress" Grid.RowSpan="2" Y1="50" Y2="50"  X1="128" X2="148" Stroke="Black" StrokeThickness="5"></Line>
     </Grid>
 </local:FunctionWindow>

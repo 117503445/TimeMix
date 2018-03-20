@@ -147,7 +147,8 @@ namespace TimeMix
             Core.CurrentTime = Public.ChangHeTime();
 #endif
             //timeWindow.Topmost = true;
-            Public.timeTableWindow.Changedata(Core.CurrentTimeSection, Core.Progress);
+            Public.timeTableWindow.Changedata(Core.CurrentTimeSection, Core.FormatProgress(Core.Progress));
+            Public.timeTableWindow.MoveLineProgress(Core.Progress);
             Public.timeWindow.ChangeTime();
             int week = (int)Public.ChangHeTime().DayOfWeek;
             if (Public.ChangHeTime().CompareTo(Core.LastClassEndTime[week]) > 0 && Settings.Default.isTomorrowClass)

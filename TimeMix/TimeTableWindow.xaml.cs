@@ -18,12 +18,12 @@ namespace TimeMix
     /// <summary>
     /// TimeTableWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class TimeTableWindow:FunctionWindow
+    public partial class TimeTableWindow : FunctionWindow
     {
         public TimeTableWindow()
         {
             InitializeComponent();
-            Controls = new Label[] { LblClass, LblBeginTime, LblEndTime, LblProgress };
+            Controls = new FrameworkElement[] { LblClass, LblBeginTime, LblEndTime, LblProgress,LineVertical,LineProgress };
         }
 
         public void Changedata(Core.TimeSection timeSection, string progress)
@@ -42,6 +42,12 @@ namespace TimeMix
             }
             LblEndTime.Content = s2;
             LblProgress.Content = progress;
+        }
+        public void MoveLineProgress(double progress)
+        {
+            double p = progress / 100;
+            LineProgress.Y1 = p * this.Height;
+            LineProgress.Y2 = LineProgress.Y1;
         }
 
     }

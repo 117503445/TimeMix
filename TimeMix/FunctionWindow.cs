@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Shapes;
 
 namespace TimeMix
 {
@@ -45,7 +46,7 @@ namespace TimeMix
         /// <summary>
         /// 需要变色的控件
         /// </summary>
-        protected Control[] Controls;
+        protected FrameworkElement[] Controls;
         /// <summary>
         /// 添加拖动支持
         /// </summary>
@@ -63,12 +64,26 @@ namespace TimeMix
             if (b)
             {
                 foreach (var item in Controls)
-                    item.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black);
+                    if (item is Label label)
+                    {
+                        label.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black);
+                    }
+                    else if (item is Line line)
+                    {
+                        line.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black);
+                    }
             }
             else
             {
                 foreach (var item in Controls)
-                    item.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.White);
+                    if (item is Label label)
+                    {
+                        label.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.White);
+                    }
+                    else if (item is Line line)
+                    {
+                        line.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.White);
+                    }
             }
             if (lastColor != b)
             {

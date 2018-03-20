@@ -125,8 +125,9 @@ namespace TimeMix
 
         }
 
-        private static string FormatProgress(string progress)
+        public static string FormatProgress(double sourceProgress)
         {
+            string progress = sourceProgress.ToString();
             int p = progress.IndexOf('.');
             string finalProgress = progress;
             if (p != -1)
@@ -232,19 +233,20 @@ namespace TimeMix
         /// <summary>
         /// 进度
         /// </summary>
-        private static string progress;
+        private static double progress;
         /// <summary>
         /// 进度
         /// </summary>
-        public static string Progress
+        public static double Progress
         {
             get
             {
-                string preProgress = ((CurrentTime - currentTimeSection.beginTime).TotalSeconds / (currentTimeSection.endTime - currentTimeSection.beginTime).TotalSeconds * 100).ToString();//计算进度
-                progress = FormatProgress(preProgress);
-                return progress;
-                //Console.WriteLine(CurrentTimeSection.ToString());
-                //Console.WriteLine(progress);
+                double preProgress = ((CurrentTime - currentTimeSection.beginTime).TotalSeconds / (currentTimeSection.endTime - currentTimeSection.beginTime).TotalSeconds * 100);//计算进度
+                                                                                                                                                                                  //progress = FormatProgress(preProgress);
+                                                                                                                                                                                  //return progress;
+                                                                                                                                                                                  //Console.WriteLine(CurrentTimeSection.ToString());
+                                                                                                                                                                                  //Console.WriteLine(progress);
+                return preProgress;
             }
             set => progress = value;
         }
