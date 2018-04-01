@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Runtime.Serialization.Formatters.Binary;
 using Settings = TimeMix.Properties.Settings;
-
+using User.SoftWare;
 
 namespace TimeMix
 {
@@ -137,7 +137,7 @@ namespace TimeMix
             }
             catch (Exception ex)
             {
-                Logger.Write(ex);
+                ULogger.WriteException(ex);
                 Public.timeTableWindow.ErrorLoad();
                 Public.classTableWindow.ErrorLoad();
                 return;
