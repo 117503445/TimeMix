@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using TLib;
+using User.SoftWare;
 
 namespace TimeMix
 {
@@ -26,6 +26,7 @@ namespace TimeMix
         }
         protected override void OnStartup(StartupEventArgs e)
         {
+
             // Get Reference to the current Process
             Process thisProc = Process.GetCurrentProcess();
             // Check how many total processes have the same name as the current one
@@ -55,7 +56,7 @@ namespace TimeMix
             if (e.ExceptionObject is Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                Logger.Write(ex);
+                ULogger.WriteException(ex);
             }
         }
         void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
@@ -63,7 +64,7 @@ namespace TimeMix
             //可以记录日志并转向错误bug窗口友好提示用户
             e.Handled = true;
             MessageBox.Show("消息:" + e.Exception.Message + "\r\n" + e.Exception.StackTrace);
-            Logger.Write(e.Exception);
+            ULogger.WriteException(e.Exception);
 
         }
     }

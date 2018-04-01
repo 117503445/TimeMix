@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using TimeMix.Properties;
 using Settings = TimeMix.Properties.Settings;
-using TLib;
+using User.SoftWare;
 
 namespace TimeMix
 {
@@ -130,7 +130,7 @@ namespace TimeMix
             }
             catch (Exception ex)
             {
-                Logger.Write(ex);
+                ULogger.WriteException(ex);
             }
         }
         private void TbDeltaTime_TextChanged(object sender, TextChangedEventArgs e)
@@ -141,7 +141,7 @@ namespace TimeMix
             }
             catch (Exception ex)
             {
-                Logger.Write(ex);
+                ULogger.WriteException(ex);
             }
 
         }
@@ -215,7 +215,7 @@ namespace TimeMix
                 }
                 catch (Exception ex)
                 {
-                    Logger.Write(ex);
+                    ULogger.WriteException(ex);
 #if !DEBUG
                     MessageBox.Show(@"在试图获取网络时间时出错,若一直出现此错误请关闭'网络时间'功能");
 #endif
