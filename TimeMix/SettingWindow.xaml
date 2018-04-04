@@ -10,7 +10,7 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Medium"
-        TextElement.FontSize="14"
+        TextElement.FontSize="14" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
         
         >
 
@@ -28,7 +28,6 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.5*"/>
                         <ColumnDefinition />
-
                         <ColumnDefinition />
                         <ColumnDefinition />
                         <ColumnDefinition />
@@ -36,7 +35,6 @@
                     </Grid.ColumnDefinitions>
                     <Label Content="课表" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <ComboBox x:Name="CboClass" VerticalAlignment="Stretch" SelectionChanged="CboClass_SelectionChanged" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-
                     <Label Content="时间表" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
                     <ComboBox x:Name="CboTime" VerticalAlignment="Stretch" SelectionChanged="CboTime_SelectionChanged" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
 
@@ -50,29 +48,47 @@
 
                 </Grid>
             </TabItem>
-
             <TabItem Header="高级设置">
-                <Canvas Background="{DynamicResource MaterialDesignPaper}">
-                    <Canvas Height="25" Canvas.Left="10" Canvas.Top="55" Width="339">
-                        <TextBlock Text="时间差" HorizontalAlignment="Left" VerticalAlignment="Top" TextElement.Foreground="{DynamicResource MaterialDesignBody}" />
-                        <TextBox x:Name="TbDeltaTime" Text="{Binding Path=deltaTime,Source={x:Static Properties:Settings.Default}}" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="115"  TextChanged="TbDeltaTime_TextChanged" Canvas.Left="51" TextElement.Foreground="{DynamicResource MaterialDesignBody}"/>
-                        <Button x:Name="BtnMinusTime" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="25"  Click="BtnMinusTime_Click" Height="25" Canvas.Left="217" />
-                        <Button x:Name="BtnAddTime" Content="+345" HorizontalAlignment="Left" VerticalAlignment="Top" Width="25"  Click="BtnAddTime_Click" Height="25" Canvas.Left="187" Foreground="Black" Background="#FFDDDDDD" FontSize="9" FontWeight="Normal"/>
-                        <CheckBox x:Name="ChkNetTime" IsChecked="{Binding Path=isEnableNetTime,Source={x:Static Properties:Settings.Default}}"  Content="启用网络时间" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ChkNetTime_Click" Canvas.Left="247" Canvas.Top="5" TextElement.Foreground="{DynamicResource MaterialDesignBody}"  />
-                    </Canvas>
-                    <Canvas Height="25" Canvas.Left="10" Canvas.Top="16" Width="169">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="时间差" TextElement.Foreground="{DynamicResource MaterialDesignBody}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <TextBox x:Name="TbDeltaTime" Text="{Binding Path=deltaTime,Source={x:Static Properties:Settings.Default}}"  TextWrapping="Wrap"   TextChanged="TbDeltaTime_TextChanged" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" />
+                    <Button x:Name="BtnMinusTime" Content="-"  Click="BtnMinusTime_Click" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"    />
+                    <Button x:Name="BtnAddTime" Content="+" Click="BtnAddTime_Click" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <CheckBox x:Name="ChkNetTime" IsChecked="{Binding Path=isEnableNetTime,Source={x:Static Properties:Settings.Default}}"  Content="启用网络时间"  Click="ChkNetTime_Click" TextElement.Foreground="{DynamicResource MaterialDesignBody}" Grid.Column="1"
+Grid.ColumnSpan="2"                              Grid.Row="3"  />
+
+                    <TextBox x:Name="Tbdpi" Text="{Binding Path=dpi,Source={x:Static Properties:Settings.Default}}"  TextWrapping="Wrap"  TextChanged="Tbdpi_TextChanged" TextElement.Foreground="{DynamicResource MaterialDesignBody}" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+                    <TextBlock Text="DPI" TextElement.Foreground="{DynamicResource MaterialDesignBody}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                    <Button x:Name="BtnDefaultSetting" Content="初始化设置" Click="BtnDefaultSetting_Click" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2"  />
+
+                    <TextBlock TextElement.Foreground="{DynamicResource MaterialDesignBody}" Grid.Column="3" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" ><Run Text="路径"/></TextBlock>
+                    <TextBox x:Name="TbNetPath" Text="{Binding Path=NetPath,Source={x:Static Properties:Settings.Default}}" TextChanged="TbNetPath_TextChanged" TextElement.Foreground="{DynamicResource MaterialDesignBody}" Grid.Row="2" Grid.ColumnSpan="5" Grid.Column="4" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+
+                    <Button x:Name="BtnSetDeltaTimeByNet" Content="立刻刷新" Click="BtnSetDeltaTimeByNet_Click" Grid.Column="6" Grid.Row="3" Grid.ColumnSpan="2" />
+
+                </Grid>
 
 
-                        <TextBox x:Name="Tbdpi" Text="{Binding Path=dpi,Source={x:Static Properties:Settings.Default}}"  HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" TextChanged="Tbdpi_TextChanged" Canvas.Left="52" TextElement.Foreground="{DynamicResource MaterialDesignBody}"/>
-                        <TextBlock Text="DPI" HorizontalAlignment="Left" VerticalAlignment="Top" TextElement.Foreground="{DynamicResource MaterialDesignBody}"/>
-                    </Canvas>
-                    <Button x:Name="BtnDefaultSetting" Content="初始化设置" Click="BtnDefaultSetting_Click" Canvas.Left="197" Canvas.Top="16" Height="25" Width="152"/>
-                    <Canvas Height="32" Canvas.Left="10" Canvas.Top="100" Width="410">
-                        <TextBlock TextElement.Foreground="{DynamicResource MaterialDesignBody}"><Run Text="路径"/></TextBlock>
-                        <TextBox x:Name="TbNetPath" Text="{Binding Path=NetPath,Source={x:Static Properties:Settings.Default}}" Canvas.Left="51"  Height="32" Width="359" TextChanged="TbNetPath_TextChanged" TextElement.Foreground="{DynamicResource MaterialDesignBody}"/>
-                    </Canvas>
-                    <Button x:Name="BtnSetDeltaTimeByNet" Content="立刻刷新" Click="BtnSetDeltaTimeByNet_Click" Canvas.Left="354" Canvas.Top="55" Height="25" Width="66"/>
-                </Canvas>
+
             </TabItem>
             <TabItem Header="开发者选项">
                 <Canvas Background="{DynamicResource MaterialDesignPaper}">
