@@ -102,9 +102,13 @@ namespace TimeMix
         /// </summary>
         public void ErrorLoad()
         {
-            foreach (Label item in Controls)
+            foreach (FrameworkElement item in Controls)
             {
-                item.Content = "错误";
+                if (item is Label label)
+                {
+                    label.Content = "Error!";
+                }
+               
             }
         }
 
