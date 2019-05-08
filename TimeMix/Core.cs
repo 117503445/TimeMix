@@ -275,14 +275,10 @@ namespace TimeMix
         /// <summary>
         /// 第九节课的结束时间
         /// </summary>
-        public static DateTime[] LastClassEndTime { get => lastClassEndTime; set => lastClassEndTime = value; }
+        public static DateTime[] LastClassEndTime { get; set; } = new DateTime[7];
         public static DateTime CurrentTime { get => currentTime; set => currentTime = value; }
 
         private static TimeSection currentTimeSection;
-        /// <summary>
-        /// 第九节课的结束时间
-        /// </summary>
-        private static DateTime[] lastClassEndTime = new DateTime[7];
     }
 
 }
